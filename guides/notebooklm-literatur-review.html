@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM für Literatur-Reviews — Komplettanleitung</title>
+    <meta name="description" content="20 Papers in ein Notebook laden, Zusammenhänge finden, strukturierten Review erstellen. Schritt-für-Schritt-Anleitung.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #d4d4d4;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        .container { max-width: 640px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+        .back { display: inline-block; color: #6366f1; text-decoration: none; font-size: 0.85rem; margin-bottom: 2rem; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 1.75rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { color: #666; font-size: 0.85rem; margin-bottom: 2.5rem; }
+        h2 { font-size: 1.2rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+        h3 { font-size: 1.05rem; font-weight: 600; color: #e0e0e0; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 1rem; }
+        code {
+            background: #1a1a2e; color: #a5b4fc; padding: 0.15rem 0.4rem; border-radius: 4px;
+            font-size: 0.9em; font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        pre {
+            background: #111; border: 1px solid #222; border-radius: 8px; padding: 1rem 1.25rem;
+            margin: 1rem 0 1.5rem; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;
+            font-family: 'SF Mono', 'Fira Code', monospace; color: #a5b4fc;
+        }
+        ul, ol { margin: 0.75rem 0 1.25rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .step-box {
+            background: #111827; border: 1px solid #1e293b; border-radius: 10px;
+            padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+        }
+        .step-number {
+            display: inline-block; background: #6366f1; color: #fff; font-weight: 700;
+            padding: 0.15rem 0.65rem; border-radius: 6px; font-size: 0.8rem;
+            margin-right: 0.5rem; letter-spacing: 0.03em;
+        }
+        .step-title { font-size: 1.05rem; font-weight: 600; color: #fff; }
+        .step-box p { margin-top: 0.75rem; margin-bottom: 0.5rem; }
+        .prompt-example {
+            background: #0f172a; border-left: 3px solid #6366f1;
+            padding: 0.75rem 1rem; border-radius: 0 6px 6px 0;
+            margin: 0.75rem 0; font-style: italic; color: #94a3b8;
+        }
+        .warning {
+            background: #1c1007; border-left: 3px solid #f59e0b;
+            padding: 0.75rem 1rem; border-radius: 0 6px 6px 0;
+            margin: 1rem 0; color: #d4a44a;
+        }
+        .footer {
+            text-align: center; margin-top: 3rem; padding-top: 2rem;
+            border-top: 1px solid #1a1a1a; color: #555; font-size: 0.85rem;
+        }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back">&larr; Alle Guides</a>
+
+        <h1>NotebookLM für Literatur-Reviews</h1>
+        <div class="meta">5-Seiten-Guide &middot; Out Of The Box Science</div>
+
+        <p>Ein Literatur-Review ist eine der zeitaufwändigsten Aufgaben in der Wissenschaft: Papers sammeln, lesen, vergleichen, Zusammenhänge erkennen, strukturiert zusammenschreiben. NotebookLM von Google kann diesen Prozess nicht ersetzen — aber es kann die Phase zwischen "Paper gesammelt" und "Review geschrieben" massiv beschleunigen.</p>
+
+        <p>Dieser Guide zeigt dir den kompletten Workflow, Schritt für Schritt.</p>
+
+        <h2>Was du brauchst</h2>
+        <ul>
+            <li>Einen Google-Account (NotebookLM ist kostenlos)</li>
+            <li>10-25 Quellen — idealerweise als <strong>Markdown-Dateien (.md)</strong>, alternativ als PDF</li>
+            <li>Eine grobe Forschungsfrage, die den Review zusammenhält</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Markdown statt PDF — warum das wichtig ist:</strong> NotebookLM arbeitet mit dem Text deiner Quellen. Bei PDFs muss es den Text erst aus dem Layout extrahieren — das funktioniert bei zweispaltigen Paper-Layouts, eingescannten Dokumenten oder komplexen Tabellen oft schlecht. Markdown-Dateien (.md) sind reiner Text mit einfacher Formatierung — die werden sauber und vollständig indexiert (durchsuchbar gemacht). Wenn du Papers als PDF hast: Kein Problem, aber halte sie unter 50 Seiten pro Datei. Bei längeren Dokumenten sinkt die Indexierungsqualität spürbar — Passagen am Ende werden schlechter erfasst.
+        </div>
+
+        <div class="warning">
+            <strong>Wichtig:</strong> NotebookLM antwortet ausschließlich auf Basis deiner hochgeladenen Quellen. Es erfindet nichts dazu und durchsucht nicht das Internet. Das ist ein Feature, kein Bug — du weißt immer, woher eine Aussage kommt.
+        </div>
+
+        <h2>Der Workflow</h2>
+
+        <div class="step-box">
+            <span class="step-number">Schritt 1</span>
+            <span class="step-title">Notebook anlegen und Papers hochladen</span>
+            <p>Geh auf <code>notebooklm.google.com</code> und erstelle ein neues Notebook. Gib ihm einen klaren Namen, z.B. "Review: KI in der Hochschullehre 2024-2026".</p>
+            <p>Lade deine Quellen hoch. Am besten als Markdown-Dateien — falls du nur PDFs hast, funktioniert das auch, aber achte auf maximal 50 Seiten pro Datei. NotebookLM akzeptiert bis zu 50 Quellen pro Notebook.</p>
+            <p><strong>Tipp 1:</strong> Viele Paper-Datenbanken bieten neben PDF auch einen "Export als Text" oder HTML an. Kopiere den Text in eine .md-Datei — das liefert sauberere Ergebnisse als ein PDF mit Spalten-Layout.</p>
+            <p><strong>Tipp 2:</strong> Lade die Papers in thematischen Blöcken hoch (z.B. erst die 8 zu Methodik, dann die 7 zu Ergebnissen). So behältst du den Überblick.</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">Schritt 2</span>
+            <span class="step-title">Überblick verschaffen — das Briefing Doc</span>
+            <p>Nachdem alle Quellen geladen sind, klicke im Studio-Bereich (rechte Seite) auf <strong>"Briefing Doc"</strong>. NotebookLM erstellt automatisch eine Zusammenfassung aller deiner Quellen — mit den zentralen Themen, wiederkehrenden Konzepten und Kernaussagen.</p>
+            <p>Das Briefing Doc ist dein Startpunkt. Lies es durch und markiere dir die Cluster (Themengruppen), die du erkennst.</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">Schritt 3</span>
+            <span class="step-title">Gezielte Fragen stellen</span>
+            <p>Jetzt wird es interaktiv. Stell NotebookLM Fragen, die dein Review strukturieren. Jede Antwort kommt mit Quellenangaben (klickbar, direkt zur Textstelle im Paper).</p>
+
+            <h3>Fragen für den Theorie-Teil:</h3>
+            <div class="prompt-example">"Welche theoretischen Rahmenmodelle werden in den Quellen am häufigsten verwendet? Liste sie mit den jeweiligen Autoren."</div>
+            <div class="prompt-example">"Wo widersprechen sich die Quellen? Zeig mir konkrete Stellen."</div>
+
+            <h3>Fragen für den Methoden-Teil:</h3>
+            <div class="prompt-example">"Vergleiche die Stichprobengrößen und Methoden aller empirischen Studien in meinen Quellen. Erstelle eine Tabelle."</div>
+            <div class="prompt-example">"Welche Studien nutzen qualitative, welche quantitative Methoden? Gibt es Mixed-Methods-Ansätze?"</div>
+
+            <h3>Fragen für die Synthese:</h3>
+            <div class="prompt-example">"Was sind die drei am häufigsten genannten Ergebnisse über alle Studien hinweg?"</div>
+            <div class="prompt-example">"Welche Forschungslücken identifizieren die Autoren selbst?"</div>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">Schritt 4</span>
+            <span class="step-title">Notizen sammeln und strukturieren</span>
+            <p>Jede gute Antwort von NotebookLM: Klicke auf <strong>"Pin to Note"</strong> (Zur Notiz hinzufügen). So baust du dir im linken Bereich eine Sammlung an vorstrukturierten Bausteinen auf.</p>
+            <p>Ordne deine Notizen nach der Struktur deines Reviews:</p>
+            <ol>
+                <li>Einleitung / Forschungsfrage</li>
+                <li>Theoretischer Hintergrund</li>
+                <li>Methoden-Vergleich</li>
+                <li>Ergebnisse / Synthese</li>
+                <li>Forschungslücken / Ausblick</li>
+            </ol>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">Schritt 5</span>
+            <span class="step-title">Outputs generieren — weit mehr als nur Text</span>
+            <p>Die meisten kennen nur den Chat. Aber NotebookLM kann aus deinen Quellen eine ganze Reihe von Formaten generieren — über den <strong>Studio-Bereich</strong> (rechte Seite). Das sind die für Lehrer und Dozenten relevantesten:</p>
+
+            <h3>Briefing Doc (Zusammenfassung)</h3>
+            <p>Klick auf "Briefing Doc" im Studio. NotebookLM erstellt eine strukturierte Zusammenfassung aller Quellen — Kernthemen, wiederkehrende Konzepte, zentrale Argumente. Das ist dein Überblick auf einer Seite, bevor du in die Tiefe gehst.</p>
+
+            <h3>Audio-Überblick (Podcast-Format)</h3>
+            <p>NotebookLM kann aus deinen Quellen eine Audio-Zusammenfassung generieren — zwei KI-Stimmen diskutieren die wichtigsten Punkte aus deinen Papers, wie ein Podcast. Klingt nach Spielerei, hat aber einen echten Nutzen: Du kannst dir den Überblick über 20 Papers <strong>auf dem Weg zur Uni anhören</strong>, statt alles am Bildschirm lesen zu müssen. Du kannst die Audio-Version auch Studierenden als Einstieg zur Verfügung stellen.</p>
+
+            <h3>Quiz generieren</h3>
+            <p>Klick auf "Quiz" im Studio. NotebookLM erstellt Multiple-Choice-Fragen auf Basis deiner Quellen — mit Antwortoptionen und Erklärungen. Für die Lehre ist das Gold wert:</p>
+            <ul>
+                <li><strong>Prüfungsvorbereitung:</strong> Quiz an Studierende weitergeben als Selbsttest vor der Klausur</li>
+                <li><strong>Seminarvorbereitung:</strong> Quiz als Einstieg in eine Sitzung — "Habt ihr die Pflichtlektüre gelesen?"</li>
+                <li><strong>Eigene Überprüfung:</strong> Teste dich selbst, ob du die Kernaussagen der Papers richtig erfasst hast</li>
+            </ul>
+
+            <h3>FAQ-Dokument</h3>
+            <p>Generiert häufige Fragen und Antworten aus deinen Quellen. Nützlich als Handout für Studierende: "Die 10 wichtigsten Fragen zu [Thema] — beantwortet aus der aktuellen Literatur."</p>
+
+            <h3>Zeitleiste</h3>
+            <p>Ordnet Ereignisse, Entwicklungen oder Veröffentlichungsdaten aus deinen Quellen chronologisch an. Hilfreich für Reviews, die eine historische Entwicklung nachzeichnen.</p>
+
+            <h3>Review-Entwurf (über den Chat)</h3>
+            <p>Für den eigentlichen Literatur-Review-Text nutzt du den Chat:</p>
+            <div class="prompt-example">"Schreib einen Literatur-Review-Entwurf auf Basis meiner Notizen. Struktur: Einleitung, Theoretischer Hintergrund, Methoden, Ergebnisse, Diskussion. Jede Aussage mit Quellenangabe. Akademischer Stil, Deutsch."</div>
+            <p>Das Ergebnis ist ein <strong>Entwurf</strong>, kein fertiger Text. Aber ein Entwurf, der auf deinen echten Quellen basiert und jede Aussage belegen kann.</p>
+        </div>
+
+        <div class="step-box">
+            <span class="step-number">Schritt 6</span>
+            <span class="step-title">Überarbeiten — der wichtigste Schritt</span>
+            <p>Kein KI-Tool ersetzt dein wissenschaftliches Urteil. Im letzten Schritt prüfst du:</p>
+            <ul>
+                <li><strong>Stimmen die Quellenangaben?</strong> Klick auf jede Referenz und prüfe, ob die Aussage tatsächlich im Paper steht.</li>
+                <li><strong>Ist die Synthese schlüssig?</strong> NotebookLM kann Informationen zusammentragen, aber die Argumentation musst du selbst beurteilen.</li>
+                <li><strong>Fehlt etwas?</strong> Welche Perspektiven oder Studien sind unterrepräsentiert?</li>
+                <li><strong>Ist der rote Faden erkennbar?</strong> Überarbeite die Übergänge zwischen den Abschnitten.</li>
+            </ul>
+        </div>
+
+        <h2>Zeitersparnis — realistisch eingeschätzt</h2>
+        <p>Ein traditioneller Literatur-Review mit 20 Papers dauert erfahrungsgemäß 40-80 Stunden (je nach Tiefe). Mit NotebookLM sparst du vor allem in zwei Phasen:</p>
+        <ul>
+            <li><strong>Querlesen und Vergleichen</strong> (normalerweise ~30% der Zeit): NotebookLM kann Quellen in Sekunden vergleichen, die du sonst Stunden lang nebeneinander legen würdest.</li>
+            <li><strong>Erster Entwurf</strong> (normalerweise ~20% der Zeit): Statt vor einer leeren Seite zu sitzen, hast du einen quellenbasierten Entwurf als Startpunkt.</li>
+        </ul>
+        <p>Die Überarbeitung und das wissenschaftliche Urteil bleiben gleich aufwändig. Realistisch: <strong>30-50% Zeitersparnis</strong>, nicht 90%.</p>
+
+        <h2>Häufige Fehler</h2>
+        <ul>
+            <li><strong>Zu viele Papers auf einmal.</strong> Bei 40+ Quellen wird NotebookLM ungenau. Besser: 15-25 pro Notebook, aufgeteilt nach Themenclustern.</li>
+            <li><strong>Zu lange PDFs.</strong> Dokumente über 50 Seiten werden am Ende schlechter indexiert. Teile lange Dokumente lieber in Kapitel auf, oder konvertiere sie zu Markdown.</li>
+            <li><strong>Dem Entwurf blind vertrauen.</strong> NotebookLM fasst zusammen, was in den Quellen steht — es bewertet nicht die Qualität der Studien. Das musst du tun.</li>
+            <li><strong>Quellenangaben nicht prüfen.</strong> In seltenen Fällen ordnet NotebookLM eine Aussage der falschen Quelle zu. Immer gegenchecken.</li>
+        </ul>
+
+        <div class="footer">
+            <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
+        </div>
+    </div>
+</body>
+</html>

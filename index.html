@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenlose KI-Guides — Out Of The Box Science</title>
+    <meta name="description" content="Kostenlose Guides zu Claude Code, NotebookLM und KI-Tools für Wissenschaft, Lehre und Technik. Kein Haken, kein Newsletter-Zwang.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+        }
+
+        .guide-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: border-color 0.2s, background 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .guide-card:hover {
+            border-color: #444;
+            background: #1a1a1a;
+        }
+
+        .guide-info { flex: 1; }
+
+        .guide-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+
+        .guide-desc {
+            font-size: 0.9rem;
+            color: #999;
+            line-height: 1.5;
+        }
+
+        .guide-meta {
+            font-size: 0.85rem;
+            color: #6366f1;
+            white-space: nowrap;
+            padding-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #555;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-left: 0.25rem;
+        }
+
+        .section-label:first-of-type {
+            margin-top: 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .footer a:hover { text-decoration: underline; }
+
+        .badge-new {
+            display: inline-block;
+            background: #6366f1;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.6rem; }
+            .guide-card { flex-direction: column; gap: 0.5rem; }
+            .guide-meta { padding-top: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kostenlose KI-Guides</h1>
+        <p class="subtitle">Für Wissenschaft, Lehre und Technik. Kein Haken.</p>
+
+        <div class="section-label">Claude Code</div>
+
+        <a href="guides/claude-code-fuer-dozenten.html" class="guide-card">
+            <div class="guide-info">
+                <div class="guide-title">Claude Code für Dozenten — Setup in 5 Minuten <span class="badge-new">Neu</span></div>
+                <div class="guide-desc">Installation, erste Schritte und 10 Befehle die du als Dozent sofort nutzen kannst. Kein Coding nötig.</div>
+            </div>
+            <div class="guide-meta">2-Seiten-Guide &rarr;</div>
+        </a>
+
+        <a href="guides/5-claude-features-fuer-dozenten.html" class="guide-card">
+            <div class="guide-info">
+                <div class="guide-title">5 Claude-Features die jeder Lehrer und Dozent kennen sollte <span class="badge-new">Neu</span></div>
+                <div class="guide-desc">Plan Mode, Memory Files, Skills, Hooks und Compact Mode — was sie tun und warum sie für die Lehre relevant sind.</div>
+            </div>
+            <div class="guide-meta">3-Seiten-Guide &rarr;</div>
+        </a>
+
+        <div class="section-label">NotebookLM</div>
+
+        <a href="guides/notebooklm-literatur-review.html" class="guide-card">
+            <div class="guide-info">
+                <div class="guide-title">NotebookLM für Literatur-Reviews <span class="badge-new">Neu</span></div>
+                <div class="guide-desc">Wie du 20 Papers in ein Notebook lädst, Zusammenhänge findest und einen strukturierten Review erstellst. Schritt-für-Schritt.</div>
+            </div>
+            <div class="guide-meta">5-Seiten-Guide &rarr;</div>
+        </a>
+
+        <!--
+        <div class="section-label">Wissenschaftliches Arbeiten</div>
+
+        <a href="#" class="guide-card">
+            <div class="guide-info">
+                <div class="guide-title">DSGVO-konform mit KI arbeiten: Was Dozenten wissen müssen</div>
+                <div class="guide-desc">Welche KI-Tools du in der Lehre einsetzen darfst, wo die Grenzen liegen, und wie du auf der sicheren Seite bleibst.</div>
+            </div>
+            <div class="guide-meta">Bald verfügbar</div>
+        </a>
+
+        <a href="#" class="guide-card">
+            <div class="guide-info">
+                <div class="guide-title">Prompting für Wissenschaftler — 4 Methoden</div>
+                <div class="guide-desc">Von einfachen Fragen bis zu Specification Engineering. Welche Prompt-Methode wann funktioniert.</div>
+            </div>
+            <div class="guide-meta">Bald verfügbar</div>
+        </a>
+        -->
+
+        <div class="footer">
+            <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
+        </div>
+    </div>
+</body>
+</html>

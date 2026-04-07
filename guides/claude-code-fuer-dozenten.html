@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code für Lehrer und Dozenten — Setup in 5 Minuten</title>
+    <meta name="description" content="Claude Code installieren und als Lehrer oder Dozent sofort nutzen. 10 Befehle für Lehrmaterial, Feedback, Recherche. Kein Coding.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #d4d4d4;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+        .back {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+        .back:hover { text-decoration: underline; }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 2.5rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        p { margin-bottom: 1rem; }
+        code {
+            background: #1a1a2e;
+            color: #a5b4fc;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        pre {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0 1.5rem;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            color: #a5b4fc;
+        }
+        ul, ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+        }
+        li { margin-bottom: 0.5rem; }
+        .highlight-box {
+            background: #111827;
+            border-left: 3px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .highlight-box strong { color: #fff; }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back">&larr; Alle Guides</a>
+
+        <h1>Claude Code für Dozenten — Setup in 5 Minuten</h1>
+        <div class="meta">2-Seiten-Guide &middot; Out Of The Box Science</div>
+
+        <h2>Was ist Claude Code?</h2>
+        <p>Claude Code ist ein Kommandozeilen-Tool (CLI) von Anthropic — der Firma hinter Claude. Anders als der normale Claude-Chat arbeitet Claude Code direkt mit deinen Dateien: Es liest Dokumente, erstellt neue, und kann ganze Workflows steuern. Alles über normale Sprache, kein Programmieren nötig.</p>
+
+        <p>Für Dozenten heißt das konkret: Du gibst einen Auftrag in Textform, und Claude Code setzt ihn um — in deinen echten Dateien, auf deinem Rechner.</p>
+
+        <h2>Installation (1 Befehl)</h2>
+        <p>Du brauchst nur ein Terminal (auf dem Mac: "Terminal" App, auf Windows: PowerShell) und einen Anthropic-Account.</p>
+
+        <pre>npm install -g @anthropic-ai/claude-code</pre>
+
+        <p>Falls <code>npm</code> noch nicht installiert ist: Lade <a href="https://nodejs.org" style="color: #6366f1;">Node.js</a> herunter (LTS-Version). Das installiert npm automatisch mit.</p>
+
+        <p>Danach einmal starten:</p>
+        <pre>claude</pre>
+        <p>Beim ersten Start wirst du aufgefordert, dich mit deinem Anthropic-Account anzumelden. Das war's.</p>
+
+        <h2>10 Befehle für den Lehralltag</h2>
+        <p>Du tippst einfach in natürlicher Sprache, was du brauchst. Hier 10 Beispiele, die sofort funktionieren:</p>
+
+        <div class="highlight-box">
+            <strong>Lehrmaterial</strong>
+            <ol>
+                <li><code>Erstelle eine Gliederung für eine 90-Minuten-Vorlesung zum Thema [X]</code></li>
+                <li><code>Schreib ein Handout zu [Thema] — maximal 2 Seiten, mit Quellenangaben</code></li>
+                <li><code>Erstelle 10 Multiple-Choice-Fragen zu [Thema] mit Lösungen und Erklärungen</code></li>
+            </ol>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Feedback & Bewertung</strong>
+            <ol start="4">
+                <li><code>Lies die Datei hausarbeit.pdf und gib konstruktives Feedback in 5 Punkten</code></li>
+                <li><code>Erstelle ein Bewertungsraster für eine Seminararbeit zum Thema [X]</code></li>
+            </ol>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Recherche & Vorbereitung</strong>
+            <ol start="6">
+                <li><code>Fasse die 3 wichtigsten Argumente aus dieser PDF zusammen</code></li>
+                <li><code>Vergleiche die Methoden in paper-a.pdf und paper-b.pdf</code></li>
+                <li><code>Schreib eine annotierte Bibliografie zu den 5 Papers in diesem Ordner</code></li>
+            </ol>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Organisation</strong>
+            <ol start="9">
+                <li><code>Erstelle einen Semesterplan für 14 Wochen zum Thema [X] als Markdown-Tabelle</code></li>
+                <li><code>Sortiere alle Dateien in diesem Ordner nach Thema in Unterordner</code></li>
+            </ol>
+        </div>
+
+        <h2>Wichtig zu wissen</h2>
+        <ul>
+            <li><strong>Deine Dateien bleiben lokal.</strong> Claude Code arbeitet auf deinem Rechner. Nichts wird automatisch in die Cloud hochgeladen.</li>
+            <li><strong>Du bestätigst jeden Schritt.</strong> Bevor Claude Code eine Datei ändert, fragt es dich. Du behältst die Kontrolle.</li>
+            <li><strong>Kosten:</strong> Claude Code nutzt die Anthropic-API. Die Kosten liegen typischerweise bei ein paar Euro pro Monat bei normaler Nutzung. Es gibt auch ein Abo (Claude Max) das unbegrenzte Nutzung einschließt.</li>
+        </ul>
+
+        <div class="footer">
+            <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Claude-Features die jeder Lehrer und Dozent kennen sollte</title>
+    <meta name="description" content="Plan Mode, Memory Files, Skills, Hooks und Mini-Apps — warum Claude Code mehr ist als ein Textgenerator. Für Lehrer und Dozenten.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #d4d4d4;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        .container { max-width: 640px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+        .back { display: inline-block; color: #6366f1; text-decoration: none; font-size: 0.85rem; margin-bottom: 2rem; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 1.75rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.02em; line-height: 1.3; }
+        .meta { color: #666; font-size: 0.85rem; margin-bottom: 2.5rem; }
+        h2 { font-size: 1.2rem; font-weight: 600; color: #fff; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; }
+        code {
+            background: #1a1a2e; color: #a5b4fc; padding: 0.15rem 0.4rem; border-radius: 4px;
+            font-size: 0.9em; font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        pre {
+            background: #111; border: 1px solid #222; border-radius: 8px; padding: 1rem 1.25rem;
+            margin: 1rem 0 1.5rem; overflow-x: auto; font-size: 0.85rem; line-height: 1.6;
+            font-family: 'SF Mono', 'Fira Code', monospace; color: #a5b4fc;
+        }
+        ul, ol { margin: 0.75rem 0 1.25rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        .feature-card {
+            background: #111827; border: 1px solid #1e293b; border-radius: 10px;
+            padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+        }
+        .feature-number {
+            display: inline-block; background: #6366f1; color: #fff; font-weight: 700;
+            width: 1.75rem; height: 1.75rem; border-radius: 50%; text-align: center;
+            line-height: 1.75rem; font-size: 0.85rem; margin-right: 0.5rem;
+        }
+        .feature-name { font-size: 1.1rem; font-weight: 600; color: #fff; }
+        .feature-card p { margin-top: 0.75rem; margin-bottom: 0.5rem; }
+        .use-case { color: #6366f1; font-weight: 500; font-size: 0.9rem; }
+        .callout {
+            background: #0f172a; border-left: 3px solid #6366f1;
+            padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .callout strong { color: #fff; }
+        .mini-app {
+            background: #0a1628; border: 1px solid #1e3a5f; border-radius: 10px;
+            padding: 1.25rem 1.5rem; margin: 1rem 0;
+        }
+        .mini-app-title {
+            font-weight: 600; color: #60a5fa; font-size: 0.95rem; margin-bottom: 0.5rem;
+        }
+        .mini-app p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .footer {
+            text-align: center; margin-top: 3rem; padding-top: 2rem;
+            border-top: 1px solid #1a1a1a; color: #555; font-size: 0.85rem;
+        }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back">&larr; Alle Guides</a>
+
+        <h1>5 Claude-Features die jeder Lehrer und Dozent kennen sollte</h1>
+        <div class="meta">3-Seiten-Guide &middot; Out Of The Box Science</div>
+
+        <p>Die meisten denken bei KI an Textgenerierung: Frage rein, Text raus. Aber das ist nicht der Grund, warum Claude Code für Lehrer und Dozenten interessant ist.</p>
+
+        <div class="callout">
+            <strong>Der eigentliche Hebel:</strong> Claude Code kann kleine, interaktive Anwendungen bauen — in Minuten, ohne dass du programmieren musst. Quizze, die Studierende im Browser ausfüllen. Korrektur-Tools, die deine Bewertungskriterien kennen. Dashboards, die den Lernfortschritt visualisieren. Das sind keine Science-Fiction-Szenarien — das funktioniert heute, mit einem einzigen Satz als Auftrag.
+        </div>
+
+        <p>Hier sind die fünf Features, die aus Claude Code ein echtes Arbeitsinstrument machen.</p>
+
+        <div class="feature-card">
+            <span class="feature-number">1</span>
+            <span class="feature-name">Mini-Apps bauen — ohne Coding</span>
+            <p>Das unterschätzteste Feature: Du beschreibst, was du brauchst, und Claude Code baut dir eine funktionierende Web-App. HTML, CSS, JavaScript — alles wird automatisch generiert. Du musst nichts davon verstehen.</p>
+            <p>Drei Beispiele aus dem Lehralltag:</p>
+
+            <div class="mini-app">
+                <div class="mini-app-title">Beispiel 1: Interaktives Quiz für Studierende</div>
+                <p>Prompt: <code>Erstelle ein Multiple-Choice-Quiz mit 15 Fragen zum Thema Forschungsmethoden. Am Ende: Auswertung mit Punktzahl und Erklärung für jede falsche Antwort. Als HTML-Datei die ich per Link teilen kann.</code></p>
+                <p>Ergebnis: Eine fertige HTML-Datei, die du auf einen Server lädst oder als Link verschickst. Studierende öffnen sie im Browser, machen das Quiz, bekommen sofort Feedback. Kein Moodle, kein LMS nötig.</p>
+            </div>
+
+            <div class="mini-app">
+                <div class="mini-app-title">Beispiel 2: Bewertungs-Rechner mit deinen Kriterien</div>
+                <p>Prompt: <code>Baue ein Bewertungstool für Seminararbeiten. Kriterien: Fragestellung (20%), Methodik (25%), Argumentation (30%), Formalia (15%), Sprache (10%). Schieberegler für jedes Kriterium, automatische Endnote, Textfeld für Kommentar pro Kriterium. Export als PDF.</code></p>
+                <p>Ergebnis: Ein Tool im Browser, das du bei jeder Bewertung öffnest. Gleiche Kriterien, gleiche Gewichtung, dokumentierbares Feedback.</p>
+            </div>
+
+            <div class="mini-app">
+                <div class="mini-app-title">Beispiel 3: Semesterplan-Dashboard</div>
+                <p>Prompt: <code>Erstelle ein Dashboard für mein Semester: 14 Wochen, 3 Kurse. Ich will pro Woche sehen: Thema, Pflichtlektüre, Abgaben, Status (geplant/vorbereitet/durchgeführt). Editierbar, Daten werden lokal im Browser gespeichert.</code></p>
+                <p>Ergebnis: Ein persönliches Planungstool, das nur du siehst. Keine App-Installation, keine Cloud, kein Account.</p>
+            </div>
+
+            <p class="use-case">Das ist der Grund, warum Claude Code für Dozenten relevant ist: Nicht weil es Texte schreibt — sondern weil es Werkzeuge baut, die es vorher nicht gab.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-number">2</span>
+            <span class="feature-name">Plan Mode</span>
+            <p>Plan Mode trennt <strong>Denken</strong> von <strong>Umsetzen</strong>. Bevor Claude Code anfängt Dateien zu erstellen, legt es erst einen Plan vor — und wartet auf dein OK.</p>
+            <p>Aktivieren: <code>/plan</code> eingeben.</p>
+            <p class="use-case">Lehre: Du sagst "Baue mir ein Quiz zu Modul 3" — Claude zeigt dir erst die Struktur (Fragetypen, Schwierigkeit, Themenabdeckung), bevor es losschreibt. Du korrigierst den Plan, nicht das Ergebnis.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-number">3</span>
+            <span class="feature-name">Memory Files</span>
+            <p>Claude vergisst normalerweise alles zwischen zwei Gesprächen. Memory Files ändern das. Du legst eine Datei namens <code>CLAUDE.md</code> in deinen Projektordner, und Claude liest sie bei jedem Start automatisch.</p>
+            <pre># CLAUDE.md — Modul "Forschungsmethoden"
+
+- Kurs: Forschungsmethoden I (BA, 3. Semester)
+- Sprache: Deutsch, Fachbegriffe auf Englisch
+- Stil: Handouts max. 2 Seiten, mit Quellenangaben
+- Prüfungsform: Hausarbeit (3.000 Wörter)
+- Mini-Apps: Immer als einzelne HTML-Datei,
+  Dark Mode, responsiv (mobilfähig)</pre>
+            <p class="use-case">Lehre: Du musst nie wieder erklären, welches Modul, welche Zielgruppe, welcher Stil. Und jede Mini-App, die Claude baut, folgt automatisch deinen Vorgaben.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-number">4</span>
+            <span class="feature-name">Skills</span>
+            <p>Skills sind wiederverwendbare Aufgaben. Statt jedes Mal den gleichen langen Prompt zu tippen, rufst du einen Skill mit einem Befehl auf.</p>
+            <pre># .claude/skills/quiz/SKILL.md
+
+Erstelle ein interaktives HTML-Quiz.
+Format: Single-Page HTML mit eingebettetem CSS/JS.
+Fragen: Multiple-Choice, 4 Optionen pro Frage.
+Am Ende: Punktzahl + Erklärung für falsche Antworten.
+Design: Dark Mode, große Touch-Targets für mobile Nutzung.</pre>
+            <p>Danach reicht: <code>/quiz Thema: Validität und Reliabilität, 15 Fragen</code></p>
+            <p class="use-case">Lehre: Du baust dir eine Bibliothek — /quiz, /handout, /bewertung, /seminarplan. Einmal definiert, jedes Semester wiederverwendbar. Wie Vorlagen, nur intelligent.</p>
+        </div>
+
+        <div class="feature-card">
+            <span class="feature-number">5</span>
+            <span class="feature-name">Hooks</span>
+            <p>Hooks sind automatische Aktionen, die bei bestimmten Ereignissen auslösen — ohne dass du daran denken musst. Du definierst sie einmal in den Claude-Code-Einstellungen.</p>
+
+            <p><strong>So richtest du einen Hook ein:</strong></p>
+            <p>Öffne die Claude-Code-Einstellungen über <code>/settings</code> und füge unter "hooks" eine Regel hinzu. Zum Beispiel:</p>
+            <pre>{
+  "hooks": {
+    "afterSave": [
+      {
+        "match": "*.html",
+        "command": "Prüfe die Datei auf Barrierefreiheit:
+                    Alt-Texte, Kontraste, Schriftgrößen."
+      }
+    ]
+  }
+}</pre>
+            <p>Was passiert: Jedes Mal wenn du eine HTML-Datei speicherst (z.B. eine Mini-App oder ein Quiz), prüft Claude automatisch, ob die Datei barrierefrei ist. Du musst nicht daran denken.</p>
+            <p><strong>Weitere Hook-Ideen für die Lehre:</strong></p>
+            <ul>
+                <li>Jedes neue Handout automatisch auf Quellenformat prüfen (APA, Harvard, etc.)</li>
+                <li>Bei jeder Quiz-Datei automatisch eine Lösungsdatei für dich mitgenerieren</li>
+                <li>Neue Dateien automatisch in die richtige Semesterordner-Struktur einsortieren</li>
+            </ul>
+            <p class="use-case">Hooks machen deine Workflows selbstlaufend. Einmal eingerichtet, arbeiten sie im Hintergrund mit.</p>
+        </div>
+
+        <h2>Bonus: Warum du in kurzen Sitzungen arbeiten solltest</h2>
+        <p>Claude Code hat ein sogenanntes Kontextfenster (die Menge an Text, die es gleichzeitig "im Kopf" behalten kann). Bei längeren Arbeitssitzungen füllt sich dieses Fenster — und dann passiert etwas, das du kennen solltest:</p>
+
+        <p><strong>Compact Mode</strong> komprimiert das bisherige Gespräch automatisch, wenn der Kontext voll wird. Claude fasst zusammen, was bisher passiert ist, und arbeitet mit der Zusammenfassung weiter. Klingt praktisch — hat aber einen Haken:</p>
+
+        <div class="callout">
+            <strong>Das Problem:</strong> Bei der Komprimierung gehen Details verloren. Claude "vergisst" Nuancen aus dem Gespräch: spezifische Formulierungen die du gewählt hast, kleine Korrekturen die du zwischendurch gemacht hast, oder den genauen Kontext einer früheren Entscheidung. Das Ergebnis: Die Qualität kann nach einem Compact-Schritt spürbar nachlassen — Claude wiederholt sich, weicht von deinen Vorgaben ab, oder verliert den roten Faden.
+        </div>
+
+        <p><strong>Die Lösung: Kurze Sitzungen + Memory Files.</strong></p>
+        <p>Statt alles in einer langen Sitzung zu erledigen, arbeitest du besser in kurzen, fokussierten Sessions:</p>
+        <ul>
+            <li><strong>Sitzung 1:</strong> Quiz erstellen → fertig → Sitzung beenden</li>
+            <li><strong>Sitzung 2:</strong> Handout schreiben → fertig → Sitzung beenden</li>
+            <li><strong>Sitzung 3:</strong> Bewertungstool bauen → fertig → Sitzung beenden</li>
+        </ul>
+        <p>Jede neue Sitzung startet mit vollem Kontextfenster. Und weil deine <strong>Memory Files</strong> (Feature 3) bei jedem Start automatisch geladen werden, kennt Claude trotzdem deinen Kurs, deine Vorgaben und deinen Stil — ohne dass du irgendwas wiederholen musst.</p>
+        <p>Memory Files sind also nicht nur bequem, sondern auch die Absicherung gegen Qualitätsverlust: Alles Wichtige steht in der Datei, nicht im Gesprächsverlauf.</p>
+
+        <h2>Zusammenfassung</h2>
+        <p>Claude Code ist kein besserer Textgenerator. Es ist eine Werkstatt: Du beschreibst, was du brauchst — ein Quiz, ein Bewertungstool, ein Dashboard — und Claude baut es. Die fünf Features hier machen den Unterschied zwischen "ab und zu mal was fragen" und einem konfigurierten System, das deinen Kontext kennt, nach deinen Standards arbeitet, und Aufgaben reproduzierbar erledigt.</p>
+        <p>Der Aufwand für Lehrer und Dozenten: Eine halbe Stunde Einrichtung. Der Effekt: Jedes Semester.</p>
+
+        <div class="footer">
+            <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
+        </div>
+    </div>
+</body>
+</html>
