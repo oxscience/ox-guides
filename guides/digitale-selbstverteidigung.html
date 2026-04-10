@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitale Selbstverteidigung 2026 — Privacy-Guide für Wissenschaftler & Tech-Professionals</title>
+    <meta name="description" content="Das 3-Stufen-System für digitale Privatsphäre 2026. Konkrete Tools und Schritte — vom Basisschutz bis zur vollen Souveränität. Kostenlos, ohne Newsletter-Zwang.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #d4d4d4;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .tools-grid .tool-card { margin: 0; }
+        .lehre-section {
+            background: #0d1117;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 2rem 2.25rem;
+            margin: 3rem 0 2rem;
+        }
+        .lehre-section h2 { margin-top: 0; }
+        .lehre-section .exercise { background: #111827; }
+        @media (max-width: 720px) {
+            .tools-grid { grid-template-columns: 1fr; }
+            .lehre-section { padding: 1.25rem 1.4rem; }
+        }
+        .back {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+        .back:hover { text-decoration: underline; }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 2.5rem;
+        }
+        .intro {
+            color: #999;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p { margin-bottom: 1rem; }
+        a { color: #6366f1; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            background: #1a1a2e;
+            color: #a5b4fc;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        ul, ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+        }
+        li { margin-bottom: 0.5rem; }
+        .tool-card {
+            background: #111827;
+            border-left: 3px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        .tool-card strong { color: #fff; }
+        .tool-card .tool-name {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .tool-card .tool-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+        }
+        .label-kostenlos { background: #064e3b; color: #6ee7b7; }
+        .label-freemium { background: #3b2f06; color: #fbbf24; }
+        .label-opensource { background: #1e1b4b; color: #a5b4fc; }
+        .label-hardware { background: #3b0a0a; color: #fca5a5; }
+        .tool-card p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .tool-card p:last-child { margin-bottom: 0; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6366f1;
+            margin-top: 3rem;
+            margin-bottom: 0;
+        }
+        .section-label + h2 { margin-top: 0.25rem; }
+        .highlight-box {
+            background: #111827;
+            border-left: 3px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .highlight-box strong { color: #fff; }
+        .golden-rule {
+            background: linear-gradient(135deg, #1a1a2e 0%, #111827 100%);
+            border: 1px solid #6366f1;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+        }
+        .golden-rule h2 { margin-top: 0; }
+        .exercise {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+        }
+        .exercise strong { color: #fff; }
+        .exercise .time {
+            color: #6366f1;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .threat-box {
+            background: #1a0f0f;
+            border-left: 3px solid #dc2626;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .threat-box strong { color: #fca5a5; }
+        .urgent-box {
+            background: #1a1408;
+            border: 1px solid #b45309;
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+        }
+        .urgent-box .urgent-label {
+            display: inline-block;
+            background: #f59e0b;
+            color: #1a1408;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+        .urgent-box h3 {
+            color: #fbbf24;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .urgent-box p { font-size: 0.9rem; }
+        .checklist {
+            list-style: none;
+            margin: 1rem 0 0.5rem;
+            padding: 0;
+        }
+        .checklist li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+        .checklist li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            border: 1.5px solid #f59e0b;
+            border-radius: 3px;
+            background: #0f0a02;
+        }
+        .urgent-box h4 {
+            color: #fbbf24;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .source-note {
+            color: #555;
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1a1a1a;
+        }
+        .source-note a { color: #666; }
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back">&larr; Alle Guides</a>
+
+        <h1>Digitale Selbstverteidigung 2026</h1>
+        <div class="meta">6-Seiten-Guide &middot; 3-Stufen-System &middot; Out Of The Box Science</div>
+
+        <p class="intro">Deutschland ist Teil der „14 Eyes"-Geheimdienstallianz. Die EU plant mit dem „Digital Omnibus" (2026) den Schutz pseudonymisierter Daten aufzuweichen. KI macht Profiling und Social Engineering effizienter. Und wenn eine Firma wie 23andMe insolvent geht, steht plötzlich euer DNA-Profil zum Verkauf. Die DSGVO allein reicht nicht mehr — ihr braucht technische Schutzmaßnahmen. Dieser Guide gibt euch ein dreistufiges System an die Hand.</p>
+
+        <!-- Warum jetzt + Anthropic-Memo -->
+        <div class="urgent-box">
+            <span class="urgent-label">Warum jetzt</span>
+            <h3>Es ist nicht mehr theoretisch</h3>
+            <p>Rechtlicher Schutz reicht schon eine ganze Weile nicht mehr aus. Deutschland tauscht im Rahmen der „14 Eyes" Überwachungsdaten mit dreizehn weiteren Staaten aus, die EU-Kommission plant für 2026 mit dem „Digital Omnibus" eine Reform, die Tracking ohne ausdrückliche Einwilligung deutlich erleichtert, und KI hebt Profiling auf ein Niveau, bei dem ein paar öffentliche Kommentare reichen, um euch erschreckend präzise zu modellieren. Das ist der Hintergrund, und der ist nicht neu — er wird nur Jahr für Jahr enger.</p>
+            <p style="margin-bottom: 0;">Konkret obendrauf kommt jetzt noch ein ziemlich unangenehmes Detail: Anthropic hat gerade ein Memo zu einer akuten, sehr realen Cyber-Bedrohung rausgehauen, und ja, das klingt erstmal nach dem üblichen Hype-Geräusch, ist aber tatsächlich keines — auch die Konkurrenz hat gegengelesen, und das Ding hält stand. Wie ihr konkret reagieren solltet, steht direkt unten in Stufe 1 unter <em>Updates</em>.</p>
+        </div>
+
+        <!-- Stufe 1 -->
+        <span class="section-label">Stufe 1 · Basisschutz</span>
+        <h2>Das Fundament (1–2 Wochenenden)</h2>
+        <p>Diese Maßnahmen sollte <em>jeder</em> umsetzen, der einen Computer benutzt. Wenig Aufwand, massive Wirkung.</p>
+
+        <h3>Updates — alles, was einen Chip hat</h3>
+
+        <p>Aus dem aktuellen Anthropic-Memo geht hervor, was viele in der Security-Szene ohnehin schon predigen: Die Mehrheit der heutigen Angriffe läuft nicht über euren Laptop oder euer Telefon, sondern über die Geräte, an die niemand denkt — Router, Auto-Infotainment, Smart-TV, der vernetzte Drucker im Arbeitszimmer, das alte Tablet im Kinderzimmer, das nur noch zum Netflix-Schauen herumliegt. Alles, wo ein Chip sitzt und Funk drinsteckt, gehört dazu. Und während fast jeder weiß, wie man iOS aktualisiert, wissen die wenigsten, wie sie ihren eigenen Router oder das Infotainment im Auto auf den neuesten Stand bringen — genau dieses Wissens-Loch ist das eigentliche Einfallstor.</p>
+
+        <ul class="checklist">
+            <li>Lernt, wie ihr <strong>jedes</strong> Gerät bei euch zu Hause updatet — vom iPhone über Laptop und Router bis zum Auto-Infotainment, Smart-TV und Drucker. Alles, wo ein Chip oder Funk drinsteckt, gehört auf die Liste.</li>
+            <li>Wo es Auto-Updates gibt: anschalten und nicht weiter darüber nachdenken. Bei der Hardware, die das nicht von selbst macht (Router, Auto, viele IoT-Geräte), legt euch eine simple Kalendererinnerung an — einmal im Monat fünf Minuten reicht völlig.</li>
+            <li>Nehmt eure Eltern, Großeltern und eure Partnerin mit. Wer normalerweise nur in den Apple Store läuft, wenn etwas blinkt, hat selten einen Plan davon, wie man einen Router von innen aktualisiert — und genau deren Geräte hängen oft im selben Heimnetz wie eure.</li>
+            <li>Falls ihr Draht zu politischen Vertretern habt: Thema vorsichtig reinbringen. Die meisten verstehen die technische Lage nicht annähernd, und ohne Druck aus dem Wahlkreis ändert sich daran auch nichts.</li>
+        </ul>
+
+        <p>Wir mussten alle erst lernen, halbwegs sinnvoll mit Social Media umzugehen — und so eine Verhaltensänderung steht uns jetzt bei den Updates bevor. Das wird keine einmalige Wochenend-Aktion, die ihr abhakt und vergesst, sondern eine kleine Routine, die einfach dazugehört wie das Aufladen vom Telefon oder der Service am Auto.</p>
+
+        <h3>Passwort-Management</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Bitwarden</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Quelloffener Passwortmanager mit Zero-Knowledge-Architektur (euer Anbieter kann eure Daten nicht lesen).</p>
+            <p><strong>Wofür:</strong> Ein starkes, zufälliges Passwort pro Dienst — ohne es euch merken zu müssen. Browser-integrierte Manager sind anfällig bei Datenlecks, nutzt die nicht.</p>
+            <p><strong>Wie:</strong> <a href="https://bitwarden.com">bitwarden.com</a> → Account → Master-Passphrase (4–6 zufällige Wörter) → Browser-Extension installieren</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">KeePassXC</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Komplett lokaler Passwortmanager. Keine Cloud, keine Synchronisation außer euer Tresor liegt auf einer Festplatte die ihr kontrolliert.</p>
+            <p><strong>Wofür:</strong> Für alle die keine Cloud wollen. Etwas unbequemer, dafür niemand zwischen euch und euren Daten.</p>
+            <p><strong>Wie:</strong> <a href="https://keepassxc.org">keepassxc.org</a> → Download → Tresor-Datei erstellen</p>
+        </div>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Sicherheitsfragen niemals wahrheitsgemäß beantworten.</strong>
+            <p style="margin-top: 0.4rem; margin-bottom: 0; font-size: 0.9rem;">„Mädchenname der Mutter" lässt sich googeln. Generiert stattdessen zufällige Antworten im Passwortmanager und speichert sie dort.</p>
+        </div>
+
+        <h3>Zwei-Faktor-Authentifizierung (2FA)</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Aegis Authenticator</span>
+            <span class="tool-label label-opensource">Open Source · Android</span>
+            <p><strong>Was es kann:</strong> App-basierte 2FA-Codes (TOTP), lokal verschlüsselt, exportierbar.</p>
+            <p><strong>Wofür:</strong> SMS-Codes sind unsicher — sie können per SIM-Swapping abgefangen werden. App-basiert ist der neue Standard.</p>
+            <p><strong>Wie:</strong> <a href="https://getaegis.app">getaegis.app</a> → Installieren → QR-Codes eurer Dienste scannen</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">YubiKey</span>
+            <span class="tool-label label-hardware">Hardware</span>
+            <p><strong>Was es kann:</strong> Physischer USB/NFC-Schlüssel als zweiter Faktor. Phishing-resistent auf Hardware-Ebene.</p>
+            <p><strong>Wofür:</strong> Höchstes 2FA-Niveau. Für kritische Accounts (Email, GitHub, Passwortmanager). Einmal kaufen (~50€), jahrelang nutzen.</p>
+            <p><strong>Wie:</strong> <a href="https://yubico.com">yubico.com</a> → Modell wählen → bei Diensten unter „Security Keys" registrieren</p>
+        </div>
+        </div>
+
+        <h3>Alltagstools</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Proton Mail</span>
+            <span class="tool-label label-freemium">Freemium</span>
+            <p><strong>Was es kann:</strong> Verschlüsselter Email-Dienst aus der Schweiz. Zero-Knowledge, der Anbieter kann eure Mails nicht lesen.</p>
+            <p><strong>Wofür:</strong> Ersatz für Gmail/Outlook wenn ihr mit sensiblen Inhalten (Forschungsdaten, Personalakten, Quellenschutz) arbeitet.</p>
+            <p><strong>Wie:</strong> <a href="https://proton.me">proton.me</a> → Kostenloser Account mit 1 GB. Alternative: <a href="https://tuta.com">Tuta</a> (aus Deutschland).</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Signal</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> End-to-End-verschlüsselter Messenger. Das Signal-Protokoll ist auch in WhatsApp eingebaut — aber bei Signal ohne Metadaten-Sammlung durch Meta.</p>
+            <p><strong>Wofür:</strong> Standard für vertrauliche Kommunikation mit Kollegen, Studierenden, Quellen. Alternative ohne Handynummer: <a href="https://threema.ch">Threema</a> (Schweizer Recht).</p>
+            <p><strong>Wie:</strong> <a href="https://signal.org">signal.org</a> → Installieren → Kontakte einladen</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Proton VPN / Mullvad</span>
+            <span class="tool-label label-freemium">Freemium</span>
+            <p><strong>Was es kann:</strong> VPN (Virtual Private Network, Tunnel der euren Datenverkehr verschleiert). Verbirgt eure IP-Adresse und verhindert dass euer Provider euer Surfverhalten mitschneidet.</p>
+            <p><strong>Wofür:</strong> WLAN in Hotels, Uni-Netzen, Konferenzen. Mullvad akzeptiert Bargeld per Post und verlangt keinen Account.</p>
+            <p><strong>Wie:</strong> <a href="https://protonvpn.com">protonvpn.com</a> (kostenlose Variante) oder <a href="https://mullvad.net">mullvad.net</a> (5€/Monat, anonym)</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">DuckDuckGo / Brave Search</span>
+            <span class="tool-label label-kostenlos">Kostenlos</span>
+            <p><strong>Was es kann:</strong> Suchmaschinen ohne Tracking. Kein personalisiertes Profil, keine gespeicherten Suchanfragen.</p>
+            <p><strong>Wofür:</strong> Direkter Google-Ersatz. Für wissenschaftliche Recherche oft sogar besser, weil die Ergebnisse nicht gefiltert sind.</p>
+            <p><strong>Wie:</strong> <a href="https://duckduckgo.com">duckduckgo.com</a> oder <a href="https://search.brave.com">search.brave.com</a> → als Standardsuche im Browser setzen</p>
+        </div>
+        </div>
+
+        <h3>Digitalen Fußabdruck aufräumen</h3>
+        <p>Einmal im Monat den eigenen Namen googeln. Alte Accounts löschen über <a href="https://justdeleteme.xyz">justdeleteme.xyz</a>. Google-Aktivitätsprotokolle deaktivieren unter <a href="https://myactivity.google.com">myactivity.google.com</a>. Bei Datenhändlern (z.B. <code>meineauskunft.ch</code>, <code>numero24.de</code>) nach DSGVO Art. 17 Löschung fordern.</p>
+
+        <!-- Stufe 2 -->
+        <span class="section-label">Stufe 2 · Fortgeschritten</span>
+        <h2>Der Burggraben</h2>
+        <p>Hier geht ihr über Hygiene hinaus und baut aktive Isolation. Spürbarer Komfortverlust — dafür ein Level, bei dem ihr nicht mehr „Mitfahrgelegenheit" seid.</p>
+
+        <h3>Biometrie deaktivieren</h3>
+
+        <div class="highlight-box">
+            <strong>Passwörter genießen höheren rechtlichen Schutz als Fingerabdrücke.</strong>
+            <p style="margin-top: 0.4rem; margin-bottom: 0; font-size: 0.9rem;">Das Nemo-tenetur-Prinzip schützt euch davor, euch selbst zu belasten — ein Passwort darf verweigert werden, einen Fingerabdruck kann man euch abnehmen. An Flughäfen, Grenzen oder Demos: Face ID / Touch ID ausschalten.</p>
+        </div>
+
+        <h3>Identitätstrennung</h3>
+        <p>Nutzt verschiedene E-Mail-Adressen und Pseudonyme für verschiedene Lebensbereiche: eine für Beruf, eine für Shopping, eine für Foren, eine privat. Dienste wie <a href="https://simplelogin.io">SimpleLogin</a> (Proton) oder <a href="https://addy.io">addy.io</a> erzeugen Wegwerf-Aliase, die alle in euer echtes Postfach weiterleiten — ihr könnt sie bei Spam einfach abschalten.</p>
+
+        <h3>Browser-Härtung</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Gehärteter Firefox</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Firefox lässt sich tief konfigurieren (unter <code>about:config</code>) — Telemetrie aus, Third-Party-Cookies blockiert, Fingerprinting-Schutz an.</p>
+            <p><strong>Wofür:</strong> Euer täglicher Browser. Mit uBlock Origin als einziger Extension seid ihr weiter als 95% aller Nutzer.</p>
+            <p><strong>Wie:</strong> <a href="https://firefox.com">firefox.com</a> → Installieren → uBlock Origin aus dem Add-on-Store → Privacy-Einstellungen auf „Streng"</p>
+            <p><strong>Alternative:</strong> <a href="https://waterfox.net">Waterfox</a> — Firefox-Fork ohne Mozilla-Telemetrie, ab Werk strenger konfiguriert.</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Tor Browser</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Anonymisierendes Netzwerk — euer Traffic läuft über drei zufällige Knoten weltweit, keine Seite sieht eure echte IP.</p>
+            <p><strong>Wofür:</strong> Recherche zu sensiblen Themen, Quellenschutz, Umgehen von Zensur. Langsamer als normale Browser, aber alternativlos für echte Anonymität.</p>
+            <p><strong>Wie:</strong> <a href="https://torproject.org">torproject.org</a> → Download → direkt nutzen</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">NextDNS / Pi-hole</span>
+            <span class="tool-label label-freemium">Freemium / Self-hosted</span>
+            <p><strong>Was es kann:</strong> Blockiert Tracker auf DNS-Ebene (der „Telefonbuch-Ebene" des Internets) — wirkt für <em>alle</em> Geräte im Netzwerk, auch für Smart-TVs und IoT.</p>
+            <p><strong>Wofür:</strong> Einmal einrichten, euer ganzes Haus ist sauberer. Pi-hole läuft auf einem Raspberry Pi (~40€).</p>
+            <p><strong>Wie:</strong> <a href="https://nextdns.io">nextdns.io</a> (einfach, cloud-basiert) oder <a href="https://pi-hole.net">pi-hole.net</a> (lokal, mehr Kontrolle)</p>
+        </div>
+        </div>
+
+        <h3>Mobil & Festplatte</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">GrapheneOS</span>
+            <span class="tool-label label-opensource">Open Source · nur Pixel</span>
+            <p><strong>Was es kann:</strong> Ein gehärtetes Android-System. Läuft nur auf Google-Pixel-Geräten (ironischerweise haben die die beste Hardware-Sicherheit).</p>
+            <p><strong>Wofür:</strong> Wer maximalen Schutz auf dem Smartphone will. Alternative: <a href="https://calyxos.org">CalyxOS</a> (etwas benutzerfreundlicher).</p>
+            <p><strong>Wie:</strong> <a href="https://grapheneos.org">grapheneos.org</a> → Web-Installer → Pixel-Gerät anschließen → folgen</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Festplattenverschlüsselung</span>
+            <span class="tool-label label-kostenlos">Built-in</span>
+            <p><strong>Was es kann:</strong> Verschlüsselt die gesamte Festplatte — ohne Passwort liest niemand eure Daten, selbst wenn das Gerät geklaut wird.</p>
+            <p><strong>Wofür:</strong> Absolute Pflicht für jedes Notebook das das Haus verlässt.</p>
+            <p><strong>Wie:</strong> macOS → FileVault (Systemeinstellungen → Datenschutz & Sicherheit). Linux → LUKS bei der Installation. Windows → BitLocker (Pro-Version) oder <a href="https://veracrypt.fr">VeraCrypt</a>.</p>
+        </div>
+        </div>
+
+        <!-- Stufe 3 -->
+        <span class="section-label">Stufe 3 · Maximum</span>
+        <h2>Digitale Souveränität</h2>
+        <p>Nur für Leute mit sehr hohem Schutzbedarf — Journalisten im Krisengebiet, Whistleblower, Dissidenten. Der Alltag wird spürbar unbequemer. Für die meisten Forscher und Tech-Leute ist Stufe 2 das realistische Ziel; Stufe 3 ist da, damit ihr wisst, was möglich ist.</p>
+
+        <h3>Self-Hosting statt Cloud</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Nextcloud</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Ersatz für Google Drive, Dropbox und Google Calendar. Läuft auf eurem eigenen Server (oder einem gehosteten bei einem Anbieter eures Vertrauens).</p>
+            <p><strong>Wofür:</strong> Volle Kontrolle über eure Dateien. Für Forschungsdaten ist das oft sogar DSGVO-rechtlich einfacher als Google Workspace.</p>
+            <p><strong>Wie:</strong> <a href="https://nextcloud.com">nextcloud.com</a> → Hosting-Anbieter (Hetzner, Mailbox.org) oder Raspberry Pi → AIO-Installer</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Vaultwarden</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Selbstgehosteter Bitwarden-Server. Kompatibel mit allen offiziellen Bitwarden-Apps.</p>
+            <p><strong>Wofür:</strong> Passwortmanager ohne dass ein externer Anbieter eure Tresore sieht.</p>
+            <p><strong>Wie:</strong> <a href="https://github.com/dani-garcia/vaultwarden">github.com/dani-garcia/vaultwarden</a> → Docker-Container</p>
+        </div>
+        </div>
+
+        <h3>Anonymes Bezahlen</h3>
+        <p>Im physischen Raum: Bargeld. Online: <a href="https://getmonero.org">Monero</a> (Privacy-Coin, nicht öffentlich nachverfolgbar) oder mit Bargeld gekaufte Geschenkkarten/Prepaid-Kreditkarten. Niemals echte Kreditkarten für Dienste, bei denen ihr anonym bleiben wollt.</p>
+
+        <h3>Spezial-Betriebssysteme</h3>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Tails OS</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Live-System vom USB-Stick. Alles läuft über Tor, beim Herunterfahren bleiben keine Spuren.</p>
+            <p><strong>Wofür:</strong> Wenn ihr auf einem beliebigen Rechner kurzzeitig anonym arbeiten müsst.</p>
+            <p><strong>Wie:</strong> <a href="https://tails.net">tails.net</a> → Image runterladen → auf USB flashen → davon booten</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Qubes OS</span>
+            <span class="tool-label label-opensource">Open Source</span>
+            <p><strong>Was es kann:</strong> Betriebssystem mit Kompartmentalisierung — jede Anwendung läuft in einer isolierten VM (virtuelle Maschine). Wenn eine kompromittiert ist, kommt niemand aus ihr raus.</p>
+            <p><strong>Wofür:</strong> Das härteste Consumer-OS. Empfohlen von Edward Snowden. Lernkurve ist steil.</p>
+            <p><strong>Wie:</strong> <a href="https://qubes-os.org">qubes-os.org</a> → Hardware-Kompatibilität prüfen → Installation</p>
+        </div>
+        </div>
+
+        <h3>Physischer Schutz</h3>
+        <p>Faraday-Taschen blockieren alle Funksignale (GPS, WLAN, Mobilfunk). Praktisch wenn das Handy wirklich mal „weg" sein soll — z.B. bei einer Recherchereise oder einem Arzttermin zu einem sensiblen Thema. Kosten: ~20€.</p>
+
+        <!-- Goldene Regel -->
+        <div class="golden-rule">
+            <h2>Die goldene Regel</h2>
+            <p>Privacy ist kein Zustand, sondern ein Prozess. Fangt mit Stufe 1 an — <em>konsequent</em>. Passwortmanager + 2FA + verschlüsselter Messenger + aufgeräumte Google-Einstellungen decken 80% der realistischen Risiken ab.</p>
+            <ol>
+                <li><strong>Woche 1:</strong> Bitwarden einrichten, alle Passwörter ersetzen</li>
+                <li><strong>Woche 2:</strong> Aegis für 2FA, SMS-2FA überall abschalten</li>
+                <li><strong>Woche 3:</strong> Signal / Proton Mail für sensible Kommunikation</li>
+                <li><strong>Woche 4:</strong> Festplattenverschlüsselung, Google-Aktivitäten deaktivieren</li>
+            </ol>
+            <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Wichtiger als Tools: die Haltung.</strong> Je privater ihr werden wollt, desto unbequemer wird der Alltag. Niemand muss auf Stufe 3 — aber jeder sollte Stufe 1 verdienen.</p>
+        </div>
+
+        <!-- Für die Lehre -->
+        <div class="lehre-section">
+            <h2>Für die Lehre: 3 Übungsideen</h2>
+
+            <div class="exercise">
+                <strong>1. Passwort-Check</strong> <span class="time">20 Min</span>
+                <p>Studierende prüfen mit <a href="https://haveibeenpwned.com">haveibeenpwned.com</a> ob ihre Emails in Datenlecks aufgetaucht sind, und richten gemeinsam Bitwarden ein. Diskussion: Welche 3 Accounts bekommen zuerst ein neues Passwort?</p>
+            </div>
+
+            <div class="exercise">
+                <strong>2. Digitaler Fußabdruck</strong> <span class="time">30 Min</span>
+                <p>Jede/r googelt sich selbst, dokumentiert was öffentlich auffindbar ist. Danach: Welche Spuren kann ich löschen (Just Delete Me, DSGVO Art. 17), welche sind beruflich nötig (LinkedIn)? Output: ein persönlicher Aufräumplan.</p>
+            </div>
+
+            <div class="exercise">
+                <strong>3. Bedrohungsmodell</strong> <span class="time">45 Min</span>
+                <p>Teams entwerfen ein Bedrohungsmodell für eine konkrete Rolle (Journalist in Krisengebiet / Forscher mit Industriepartner / Dozent mit Studierendendaten). Welche Stufe passt? Was sind die drei wichtigsten Maßnahmen? Präsentation in 5 Minuten.</p>
+            </div>
+        </div>
+
+        <div class="source-note">
+            Inspiriert von <a href="https://www.youtube.com/watch?v=_sCrtGJ1k0o">„Deutschland überwacht dich: Rette deine Privatsphäre, bevor es zu spät ist!"</a> von <a href="https://www.youtube.com/@privacytutor">PrivacyTutor</a> — kuratiert, auf den deutschsprachigen Wissenschafts- und Tech-Kontext adaptiert, und mit Übungen für die Lehre ergänzt. Alle Tools haben wir selbst getestet oder sind in der Privacy-Community etabliert.
+        </div>
+
+        <div class="footer">
+            Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+            <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
+        </div>
+    </div>
+</body>
+</html>
