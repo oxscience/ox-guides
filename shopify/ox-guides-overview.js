@@ -29,6 +29,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 .section-label{
   font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
   color:var(--text-dim);margin-top:48px;margin-bottom:16px;padding-left:4px;
+  scroll-margin-top:24px;
 }
 .section-label:first-of-type{margin-top:0}
 
@@ -63,6 +64,22 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
   border-top:1px solid #1a1a1a;color:var(--text-dim);font-size:13.6px;
 }
 
+/* ── Floating TOC (right margin) ──────────────── */
+.toc{
+  position:fixed;top:50%;right:32px;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:2px;z-index:50;
+}
+.toc-link{
+  font-size:12.5px;color:#666;text-decoration:none;
+  padding:5px 10px;border-radius:6px;transition:all 0.15s;white-space:nowrap;
+}
+.toc-link:hover{color:#999;background:rgba(255,255,255,0.04);text-decoration:none}
+.toc-link.active{color:#fff;background:rgba(99,102,241,0.1)}
+.toc-divider{height:1px;background:#222;margin:6px 10px}
+
+@media(max-width:1200px){
+  .toc{display:none}
+}
 @media(max-width:600px){
   .container{padding:32px 16px 48px}
   h1{font-size:25.6px}
@@ -70,12 +87,23 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 }
       </style>
 
+      <!-- Floating TOC -->
+      <nav class="toc">
+        <a href="#sec-grundlagen" class="toc-link" data-section="sec-grundlagen">&#128218; KI-Grundlagen</a>
+        <a href="#sec-claude" class="toc-link" data-section="sec-claude">&#129302; Claude verstehen</a>
+        <a href="#sec-produktivitaet" class="toc-link" data-section="sec-produktivitaet">&#9889; Produktivit&auml;t</a>
+        <a href="#sec-medienkompetenz" class="toc-link" data-section="sec-medienkompetenz">&#128737; Medienkompetenz</a>
+        <a href="#sec-forschung" class="toc-link" data-section="sec-forschung">&#128300; Forschung</a>
+        <div class="toc-divider"></div>
+        <a href="/pages/kostenlose-ox-tools" class="toc-link">&#128736; Tools</a>
+      </nav>
+
       <div class="container">
         <h1>Kostenlose OX Guides</h1>
         <p class="subtitle">KI-Tools und Tech-Guides f&uuml;r Health Professionals. Kostenlos und praxisnah.</p>
         <div style="text-align:center;margin-bottom:48px;font-size:14.4px"><a href="/pages/kostenlose-ox-tools" style="color:#6366f1;text-decoration:none;padding:6px 14px;border:1px solid #333;border-radius:20px">&#128736; Tools ansehen &rarr;</a></div>
 
-        <div class="section-label">KI-Grundlagen</div>
+        <div class="section-label" id="sec-grundlagen">KI-Grundlagen</div>
         <div class="guide-grid">
         <a href="/pages/6-stufen-ki-nutzung" class="guide-card">
           <div class="guide-info">
@@ -126,7 +154,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         </a>
         </div>
 
-        <div class="section-label">Claude verstehen</div>
+        <div class="section-label" id="sec-claude">Claude verstehen</div>
         <div class="guide-grid">
         <a href="/pages/von-chatgpt-zu-claude" class="guide-card">
           <div class="guide-info">
@@ -169,7 +197,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         </a>
         </div>
 
-        <div class="section-label">Produktivit&auml;t</div>
+        <div class="section-label" id="sec-produktivitaet">Produktivit&auml;t</div>
         <div class="guide-grid">
         <a href="/pages/claude-code-obsidian-wissenssystem" class="guide-card">
           <div class="guide-info">
@@ -204,7 +232,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         </a>
         </div>
 
-        <div class="section-label">Medienkompetenz</div>
+        <div class="section-label" id="sec-medienkompetenz">Medienkompetenz</div>
         <div class="guide-grid">
         <a href="/pages/digitale-selbstverteidigung-2026" class="guide-card">
           <div class="guide-info">
@@ -223,7 +251,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         </a>
         </div>
 
-        <div class="section-label">Forschung</div>
+        <div class="section-label" id="sec-forschung">Forschung</div>
         <div class="guide-grid">
         <a href="/pages/claude-code-notebooklm-forschung" class="guide-card">
           <div class="guide-info">
@@ -247,6 +275,27 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         </div>
       </div>
     `;
+
+    // Scroll Spy inside Shadow DOM
+    const root = this.shadowRoot;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = root.querySelector('[data-section="' + id + '"]');
+        if (link) link.classList.toggle('active', entry.isIntersecting);
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    root.querySelectorAll('.section-label[id]').forEach(s => observer.observe(s));
+
+    // Smooth scroll
+    root.querySelectorAll('.toc-link[data-section]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = root.getElementById(link.dataset.section);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
   }
 }
 
