@@ -27,12 +27,13 @@ class OxGuideGate extends HTMLElement {
     const description = this.getAttribute('description') || '';
     const guideUrl = '/pages/' + guide;
 
-    // Check login via /account — Shopify redirects unauthenticated users to /login
+    // Check login: follow /account redirect, check if final URL is a login page
     let isLoggedIn = false;
     try {
-      const resp = await fetch('/account', { redirect: 'manual' });
-      // Logged in: 200. Logged out: opaqueredirect (to /login) or 302
-      isLoggedIn = resp.type === 'basic' && resp.status === 200;
+      const resp = await fetch('/account', { redirect: 'follow' });
+      const finalUrl = resp.url || '';
+      // If final URL contains /login or /register, user is NOT logged in
+      isLoggedIn = resp.ok && !finalUrl.includes('/login') && !finalUrl.includes('/register');
     } catch (e) {
       isLoggedIn = false;
     }
