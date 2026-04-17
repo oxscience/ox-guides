@@ -1,5 +1,14 @@
 <script src="{{ 'ox-guide-claude-memory.js' | file_url }}"></script>
+<script src="{{ 'ox-guide-paywall.js' | file_url }}"></script>
+
 <ox-guide-claude-memory></ox-guide-claude-memory>
+<ox-guide-paywall
+  guide="{{ page.handle }}"
+  title="Claude Code Memory"
+  description="/memory und /compact: Wie Claude sich Kontext merkt und bei langen Projekten schnell bleibt."
+  benefits="CLAUDE.md richtig aufsetzen, /memory und /compact-Befehle, Projekt-Kontext strukturieren, Bei großen Codebases performant bleiben"
+  pages="4"
+></ox-guide-paywall>
 
 <style>
   .main-page-title, .page-header { display: none !important; }

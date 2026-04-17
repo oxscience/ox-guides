@@ -1,5 +1,14 @@
 <script src="{{ 'ox-guide-claude-notebooklm.js' | file_url }}"></script>
+<script src="{{ 'ox-guide-paywall.js' | file_url }}"></script>
+
 <ox-guide-claude-notebooklm></ox-guide-claude-notebooklm>
+<ox-guide-paywall
+  guide="{{ page.handle }}"
+  title="Claude Code + NotebookLM"
+  description="Paper analysieren, Briefing Docs generieren, Ergebnisse weiterverarbeiten. Der komplette Workflow."
+  benefits="Paper zu NotebookLM Pipeline, Briefing Docs generieren, Ergebnisse in Obsidian, Claude Skills für Forschung"
+  pages="5"
+></ox-guide-paywall>
 
 <style>
   .main-page-title, .page-header { display: none !important; }

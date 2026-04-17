@@ -172,6 +172,14 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
           <div class="guide-meta">4-Seiten-Guide &rarr;</div>
         </a>
 
+        <a href="/pages/claude-cowork-setup" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">Claude Cowork 2.0 &mdash; Das komplette Setup <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Ordnerstruktur, drei ABOUT ME-Dateien, Global Instructions, Spracheingabe und 6 Tipps zum Credits sparen.</div>
+          </div>
+          <div class="guide-meta">6-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/claude-code-fur-dozenten" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">Claude Code &mdash; Setup in 5 Minuten</div>
