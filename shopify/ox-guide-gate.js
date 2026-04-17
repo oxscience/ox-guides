@@ -25,6 +25,8 @@ class OxGuideGate extends HTMLElement {
     const guide = this.getAttribute('guide') || '';
     const title = this.getAttribute('title') || 'Kostenlos Zugang erhalten';
     const description = this.getAttribute('description') || '';
+    const benefits = (this.getAttribute('benefits') || '').split(',').map(b => b.trim()).filter(Boolean);
+    const pages = this.getAttribute('pages') || '';
     const guideUrl = '/pages/' + guide;
 
     // Check login: follow /account redirect, check if final URL is a login page
@@ -61,7 +63,14 @@ class OxGuideGate extends HTMLElement {
 
 .gate{max-width:560px;margin:0 auto;padding:72px 24px 96px;text-align:center}
 
-.icon{font-size:48px;margin-bottom:16px}
+.badge-tag{
+  display:inline-block;font-size:11.2px;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--primary);padding:4px 12px;
+  background:rgba(99,102,241,0.08);
+  border:1px solid rgba(99,102,241,0.2);
+  border-radius:20px;margin-bottom:20px;
+}
 
 h1{
   font-size:32px;font-weight:700;color:var(--white);
@@ -70,6 +79,20 @@ h1{
 .desc{
   color:var(--text-secondary);font-size:15.2px;line-height:1.55;
   margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;
+}
+
+.benefits{
+  list-style:none;text-align:left;
+  max-width:400px;margin:0 auto 32px;padding:0;
+}
+.benefits li{
+  padding:8px 0 8px 28px;position:relative;
+  font-size:14.4px;color:var(--text-secondary);
+  line-height:1.5;
+}
+.benefits li::before{
+  content:'\2713';position:absolute;left:0;top:8px;
+  color:var(--primary);font-weight:700;font-size:16px;
 }
 
 .form{
@@ -132,9 +155,15 @@ button:disabled{opacity:0.5;cursor:not-allowed}
       </style>
 
       <div class="gate">
-        <div class="icon">&#128274;</div>
+        <div class="badge-tag">${pages ? pages + '-Seiten-Guide · ' : ''}Kostenlos</div>
         <h1>${title}</h1>
         ${description ? `<p class="desc">${description}</p>` : ''}
+
+        ${benefits.length > 0 ? `
+        <ul class="benefits">
+          ${benefits.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+        ` : ''}
 
         <form class="form" action="/contact" method="post" accept-charset="UTF-8">
           <input type="hidden" name="form_type" value="customer">
