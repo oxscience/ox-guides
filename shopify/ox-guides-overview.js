@@ -105,7 +105,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 
         <div class="section-label" id="sec-grundlagen">KI-Grundlagen</div>
         <div class="guide-grid">
-        <a href="/pages/6-stufen-ki-nutzung" class="guide-card">
+        <a href="/pages/6-stufen-der-ki-nutzung" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">Die 6 Stufen der KI-Nutzung <span class="badge-new">Neu</span></div>
             <div class="guide-desc">Von &bdquo;besseres Google&ldquo; bis zu autonomen Agenten. Finde heraus wo du stehst und was der n&auml;chste Schritt ist.</div>
