@@ -249,6 +249,14 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
           </div>
           <div class="guide-meta">5-Seiten-Guide &rarr;</div>
         </a>
+
+        <a href="/pages/eu-digital-stack" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">EU Digital Stack &mdash; Big-Tech-Alternativen aus Europa</div>
+            <div class="guide-desc">Datenschutzfreundliche, unabh&auml;ngige Software aus der EU. DSGVO-konform, transparent und frei von Tech-Giganten.</div>
+          </div>
+          <div class="guide-meta">Interaktive &Uuml;bersicht &rarr;</div>
+        </a>
         </div>
 
         <div class="section-label" id="sec-forschung">Forschung</div>
