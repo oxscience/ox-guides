@@ -115,7 +115,7 @@ li{margin-bottom:8px}
 
         <p>Claude Cowork ist mehr als ein Chat-Fenster. Es arbeitet direkt in deinem Ordner, kennt deine Projekte, und erledigt Aufgaben selbstst&auml;ndig &mdash; ohne dass du jedes Mal erkl&auml;ren musst, wer du bist und was du willst.</p>
 
-        <p>Dieser Guide zeigt das aktuelle Setup: wie der Ordner aufgebaut ist, welche drei Dateien Cowork vor jeder Aufgabe liest, wie du per Sprache statt Tippen arbeitest, und wie du Credits sparst.</p>
+        <p>Dieser Guide zeigt das aktuelle Setup: wie der Ordner aufgebaut ist, welche drei Dateien Cowork vor jeder Aufgabe liest, wie du per Sprache statt Tippen arbeitest, wie du Credits sparst &mdash; und vier Szenarien aus Lehre und Forschung die Ruben nicht abdeckt.</p>
 
         <div class="tip-box">
           <strong>Voraussetzung:</strong> Claude Desktop App (<a href="https://claude.com/download">claude.com/download</a>) + bezahltes Abo (Claude Pro, 20 &euro;/Monat). Cowork ist der Tab zwischen Chat und Code in der Desktop-App.
@@ -143,24 +143,57 @@ li{margin-bottom:8px}
 
         <p>Paste diesen Prompt in eine neue Cowork-Session. Cowork interviewt dich dann mit 20 Fragen und schreibt die Datei selbst:</p>
 
-        <pre>You are building my about-me.md file for my Cowork folder.
-This file will be read by Claude at the start of every session.
-It needs to be concise and high-signal.
+        <pre>Du baust meine about-me.md-Datei f&uuml;r meinen Cowork-Ordner.
+Claude liest diese Datei zu Beginn jeder Session.
+Sie muss kurz und hochrelevant sein.
 
-Your job: interview me using AskUserQuestion (20 questions),
-then compile the answers into a condensed about-me.md under 2,000 tokens.
+Deine Aufgabe: Interviewe mich mit AskUserQuestion (20 Fragen),
+dann fasse die Antworten zu einer kondensierten about-me.md
+unter 2.000 Tokens zusammen.
 
-Interview me on: who I am + my role, how I work day to day,
-what good output looks like in my field, what I hate
-(bad patterns, AI clich&eacute;s, wrong tone), and my hard rules.
+Interview-Themen: Wer ich bin + meine Rolle, wie ich Tag f&uuml;r Tag
+arbeite, wie gute Ergebnisse in meinem Feld aussehen, was ich hasse
+(schlechte Muster, KI-Phrasen, falscher Ton), und meine harten Regeln.
 
-After the interview: compile everything into structured markdown.
-No raw Q&amp;A, no filler. Extract patterns, write condensed prose.
-Save as about-me.md in my ABOUT ME/ folder.</pre>
+Nach dem Interview: Alles zu strukturiertem Markdown verdichten.
+Keine rohen Q&amp;A-Protokolle, kein F&uuml;llmaterial. Muster extrahieren,
+kondensierte Prosa schreiben.
+Speichere als about-me.md in meinem ABOUT ME/-Ordner.</pre>
 
         <div class="warn-box">
           <strong>Wichtig:</strong> Halte die Datei unter 2.000 Tokens. Cowork liest sie vor jeder Aufgabe komplett. Zu gro&szlig;e Dateien werden nur noch zusammengefasst &mdash; der Vorteil geht verloren.
         </div>
+
+        <h3>Beispiel: about-me.md f&uuml;r eine:n Dozent:in</h3>
+        <p>So sieht eine fertige Datei aus &mdash; als Referenz oder zum Anpassen:</p>
+        <pre># ABOUT ME: Dozent Sportmedizin
+
+## Wer ich bin
+Physiotherapeut + Dozent an zwei Hochschulen (HAW,
+priv. FH). Fachbereich: Sportmedizin, Rehabilitation.
+Lehrformate: 90-Min-Vorlesung, Seminare, Praktika.
+
+## Wie ich arbeite
+Vorbereitung in Obsidian-Vault. Prim&auml;rquellen aus
+PubMed + Physio-Network. Handouts als Markdown &rarr; PDF.
+Zitierung immer APA 7th, exakte Titel, nichts k&uuml;rzen.
+
+## Was gut aussieht
+Evidenzbasiert mit Prim&auml;rquellen. Struktur vor Stil.
+Wenn ein Student den Text liest und die Methode
+reproduzieren kann = gut.
+
+## Was ich hasse
+"Ganzheitlich", "harmonisch", "revolution&auml;r" &mdash;
+Marketing-Sprech in Fachtexten. Staccato-S&auml;tze.
+Einwort-Abs&auml;tze f&uuml;r Drama. KI-Tapestry-Metaphern.
+
+## Regeln f&uuml;r Claude
+1. APA 7th, exakte Titel, nie abk&uuml;rzen
+2. Deutsch in Lehrmaterial, Englisch in Paper-Drafts
+3. Quellen immer, keine Behauptungen ohne Beleg
+4. Flie&szlig;text, nicht Stichpunkt-Terror
+5. Bei Unsicherheit nachfragen, nicht raten</pre>
 
         <h3>Datei 2 &mdash; anti-ai-writing-style.md</h3>
 
@@ -174,17 +207,17 @@ Save as about-me.md in my ABOUT ME/ folder.</pre>
 
         <p>Deine Ziele, deine Strategie, und was du gerade sagst. Kein &Uuml;berlapp mit about-me &mdash; nur Richtung, Priorit&auml;ten, konkrete Zahlen. Update wenn sich etwas &auml;ndert, nicht nach Kalender.</p>
 
-        <pre>You are building my my-company.md for my Cowork folder.
-This file tells Claude what I'm working toward right now.
+        <pre>Du baust meine my-company.md f&uuml;r meinen Cowork-Ordner.
+Diese Datei sagt Claude, worauf ich gerade hinarbeite.
 
-Interview me using AskUserQuestion (6-8 questions) on:
-- My top 2-3 goals this year (specific numbers or milestones)
-- What platforms / channels / markets matter most right now
-- What I'm actively saying no to
-- Where I spend most time and energy this quarter
+Interviewe mich mit AskUserQuestion (6-8 Fragen) zu:
+- Meine Top 2-3 Ziele dieses Jahr (konkrete Zahlen oder Meilensteine)
+- Welche Plattformen / Kan&auml;le / M&auml;rkte jetzt wichtig sind
+- Wozu ich aktiv Nein sage
+- Worin ich dieses Quartal die meiste Zeit und Energie stecke
 
-After the interview: compile into my-company.md, bullet points,
-under 1,000 tokens. Save in my ABOUT ME/ folder.</pre>
+Nach dem Interview: zu my-company.md verdichten, Bullet Points,
+unter 1.000 Tokens. Speichere im ABOUT ME/-Ordner.</pre>
 
         <hr class="divider">
 
@@ -194,17 +227,19 @@ under 1,000 tokens. Save in my ABOUT ME/ folder.</pre>
 
         <p><strong>Settings &rarr; Cowork &rarr; Edit Global Instructions</strong> &mdash; l&ouml;sche was dort steht und ersetze es durch:</p>
 
-        <pre>Before any and every single task, read every file in ABOUT ME/:
-- about-me: who I am, how I work, what I love and hate
-- anti-ai-writing-style: apply these rules to every piece of writing
-- my-company: my goals, my focus, what I'm saying no to
+        <pre>Vor jeder einzelnen Aufgabe lies jede Datei in ABOUT ME/:
+- about-me: wer ich bin, wie ich arbeite, was ich liebe und hasse
+- anti-ai-writing-style: wende diese Regeln auf jeden Text an
+- my-company: meine Ziele, mein Fokus, wozu ich Nein sage
 
-Never read OUTPUTS/ or TEMPLATES/ unless I point you to a file there.
+Lies niemals OUTPUTS/ oder TEMPLATES/, au&szlig;er ich zeige dir
+explizit auf eine Datei dort.
 
-Save all deliverables in OUTPUTS/ under a subfolder named after the project.
+Speichere alle Ergebnisse in OUTPUTS/ in einem Unterordner mit
+dem Projektnamen.
 
-If the brief is unclear, use AskUserQuestion. Don't fill gaps with filler.
-Don't over-explain. Deliver the work.</pre>
+Wenn der Auftrag unklar ist, nutze AskUserQuestion. F&uuml;lle keine
+L&uuml;cken mit Floskeln. Keine &Uuml;berl&auml;nge. Liefere die Arbeit.</pre>
 
         <div class="highlight-box">
           <strong>Warum das wichtig ist:</strong> Cowork wei&szlig; sonst nicht was deine Dateien bedeuten oder wann es sie lesen soll. Mit diesen Instructions ist das einmal gekl&auml;rt &mdash; f&uuml;r jede zuk&uuml;nftige Session.
@@ -234,6 +269,10 @@ Don't over-explain. Deliver the work.</pre>
           <li>Lieblingskurztaste ausw&auml;hlen (z.B. Shift). Dr&uuml;cken &rarr; Reden &rarr; Loslassen.</li>
           <li>Kostenlose Testversion: 2.000 W&ouml;rter/Woche. F&uuml;r den Start mehr als genug.</li>
         </ol>
+
+        <div class="warn-box">
+          <strong>DSGVO-Hinweis:</strong> Wispr Flow sendet dein Audio an US-Server zur Transkription. F&uuml;r sensible Inhalte (Patientendaten, studentische Arbeiten, interne Uni-Dokumente) problematisch. Alternative: <a href="https://superwhisper.com">SuperWhisper</a> &mdash; l&auml;uft lokal auf dem Mac, kein Cloud-Upload, etwas langsamer aber DSGVO-konform. Unsere Empfehlung: Wispr f&uuml;r &ouml;ffentliche Texte, SuperWhisper f&uuml;r alles andere.
+        </div>
 
         <p>Drei Momente wo Spracheingabe den gr&ouml;&szlig;ten Unterschied macht:</p>
 
@@ -266,7 +305,50 @@ Don't over-explain. Deliver the work.</pre>
 
         <hr class="divider">
 
-        <h2>V &mdash; 20-Minuten-Quickstart</h2>
+        <h2>V &mdash; Cowork f&uuml;r Lehre und Forschung</h2>
+
+        <p>Ruben schreibt f&uuml;r CEOs und Content-Creator. Im Hochschul- und Wissenschaftskontext sieht die Arbeit anders aus. Vier Szenarien die bei uns regelm&auml;&szlig;ig funktionieren:</p>
+
+        <h3>Szenario 1 &mdash; Vorlesung aktualisieren</h3>
+        <p>Neue Leitlinien kommen raus, die alte Vorlesung muss mit. Statt stundenlang querzulesen:</p>
+        <pre>Lies Semester-SS26/vorlesung-03-knie.md. Vergleiche
+den Inhalt mit den drei neuen Papers in
+literatur/knie-2026/. Schlag mir die drei wichtigsten
+Updates f&uuml;r die Folien vor &mdash; mit Seitenangabe in
+der alten Vorlesung und Quelle aus dem neuen Paper.</pre>
+
+        <h3>Szenario 2 &mdash; Bachelorarbeit begutachten</h3>
+        <p>Ein Gutachten f&uuml;r eine studentische Arbeit. Dein Bewertungsraster liegt schon als Template vor:</p>
+        <pre>Lies gutachten/mueller-ba.pdf. Erstelle strukturiertes
+Feedback nach meinem Raster in TEMPLATES/bewertungsraster.md.
+Fokus: Methodik, Quellenarbeit, rote F&auml;den.
+Keine Wertung &mdash; nur Beobachtungen mit Seitenangabe.
+Speichere als OUTPUTS/gutachten-mueller/feedback.md.</pre>
+
+        <h3>Szenario 3 &mdash; Klausurfragen generieren</h3>
+        <p>Aus dem Semester-Material eine Klausur ableiten, ohne alles selbst zu formulieren:</p>
+        <pre>Aus den 6 Vorlesungen in Semester-SS26/ generiere
+20 MC-Fragen mit 4 Antworten, je eine richtig.
+Schwierigkeit gemischt (40% Verst&auml;ndnis, 40% Anwendung,
+20% Transfer). L&ouml;sungsdokument separat.
+Speichere Klausur und L&ouml;sung in
+OUTPUTS/klausur-ss26/.</pre>
+
+        <h3>Szenario 4 &mdash; Paper-Draft schreiben</h3>
+        <p>Aus der ausgewerteten Studie einen Results-Abschnitt, der nicht wie ChatGPT klingt:</p>
+        <pre>Lies forschung/studie-knie-2026/datenauswertung.md.
+Schreib den Results-Abschnitt nach dem Stil in
+TEMPLATES/paper-results.md. Englisch, APA, Tabellen
+als Markdown. Keine Claude-Phrasen (siehe
+anti-ai-writing-style). Kein "delve", kein "nuanced".</pre>
+
+        <div class="tip-box">
+          <strong>Muster erkennen:</strong> Jedes Szenario hat drei Zutaten &mdash; Quelle (was lesen), Template/Stil (wie schreiben), Output-Ort (wo speichern). Wenn Cowork alle drei hat, braucht es kaum noch R&uuml;ckfragen.
+        </div>
+
+        <hr class="divider">
+
+        <h2>VI &mdash; 20-Minuten-Quickstart</h2>
 
         <p>Kalender aufmachen, 20 Minuten blocken. Dann:</p>
 
@@ -303,7 +385,8 @@ Don't over-explain. Deliver the work.</pre>
         </div>
 
         <div class="footer">
-          <a href="https://outoftheb-ox.de">Out Of The Box Science</a> &mdash; Tech-Tools f&uuml;r Wissenschaft und Lehre. Mit und ohne KI.
+          <p style="margin-bottom:12px;font-size:12.8px">Struktur, Interview-Prompts und Credit-Spar-Tipps basieren auf <a href="https://ruben.substack.com/p/claude-cowork-20">Cowork 2.0 von Ruben Hassid</a>. Dieser Guide &uuml;bersetzt, kondensiert und erg&auml;nzt das Original f&uuml;r den deutschsprachigen Lehr- und Wissenschaftskontext.</p>
+          <p><a href="https://outoftheb-ox.de">Out Of The Box Science</a> &mdash; Tech-Tools f&uuml;r Wissenschaft und Lehre. Mit und ohne KI.</p>
         </div>
       </div>
     `;

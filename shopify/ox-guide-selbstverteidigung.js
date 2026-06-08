@@ -342,7 +342,7 @@ li{margin-bottom:8px}
         </div>
 
         <div class="footer">
-          Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+          Mehr Interesse? <a href="/pages/erstgesprach">Kostenloses Erstgespräch &rarr;</a><br>
           <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
         </div>
       </div>

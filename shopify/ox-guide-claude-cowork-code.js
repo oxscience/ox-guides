@@ -361,7 +361,7 @@ f&uuml;r Tablet und Desktop.</pre>
         <p>Alle drei Tools sind eigenst&auml;ndig nutzbar &mdash; ihr m&uuml;sst nicht alle gleichzeitig einsetzen. Fangt mit dem an, das euer dr&auml;ngendstes Problem l&ouml;st, und erweitert von dort aus.</p>
 
         <div class="footer">
-            Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+            Mehr Interesse? <a href="/pages/erstgesprach">Kostenloses Erstgespräch &rarr;</a><br>
             <a href="https://outoftheb-ox.de">Out Of The Box Science</a> &mdash; Tech-Tools f&uuml;r Wissenschaft und Lehre. Mit und ohne KI.
         </div>
       </div>

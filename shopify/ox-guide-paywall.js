@@ -24,6 +24,11 @@ class OxGuidePaywall extends HTMLElement {
     const pages = this.getAttribute('pages') || '';
     const teaserLines = parseInt(this.getAttribute('teaser-lines') || '12');
 
+    // Soft-Unlock: wenn der User schon Email eingegeben hat, Paywall komplett skippen
+    try {
+      if (localStorage.getItem('ox-paywall-unlocked') === '1') return;
+    } catch (e) { /* localStorage disabled */ }
+
     // Check login
     let isLoggedIn = false;
     try {
@@ -169,6 +174,19 @@ class OxGuidePaywall extends HTMLElement {
         }
         #ox-paywall-modal button:hover { background: #5558e6; }
 
+        #ox-paywall-modal .why-email {
+          font-size: 12px;
+          color: #8a8f98;
+          line-height: 1.5;
+          margin: 0 0 12px;
+          padding-left: 12px;
+          border-left: 2px solid rgba(99,102,241,0.4);
+        }
+        #ox-paywall-modal .why-email strong {
+          color: #c9d1d9;
+          font-weight: 600;
+        }
+
         #ox-paywall-modal .consent {
           font-size: 11.5px;
           color: #666;
@@ -192,6 +210,17 @@ class OxGuidePaywall extends HTMLElement {
           text-decoration: none;
         }
         #ox-paywall-modal .login a:hover { text-decoration: underline; }
+
+        #ox-paywall-modal .back {
+          text-align: center;
+          font-size: 12px;
+          margin-top: 10px;
+        }
+        #ox-paywall-modal .back a {
+          color: #777;
+          text-decoration: none;
+        }
+        #ox-paywall-modal .back a:hover { color: #a5b4fc; }
 
         @media (max-width: 600px) {
           #ox-paywall-modal {
@@ -230,6 +259,9 @@ class OxGuidePaywall extends HTMLElement {
           <button type="submit">Weiterlesen →</button>
         </form>
 
+        <p class="why-email">
+          <strong>Warum E-Mail statt Social Media?</strong> Mit jeder Adresse müssen wir Social Media weniger befeuern — und unsere Verbindung bleibt in der EU, ohne Algorithmus dazwischen.
+        </p>
         <p class="consent">
           Mit dem Absenden stimmst du zu, dass wir dir gelegentlich Updates zu neuen Guides schicken.
           Abmeldung jederzeit. <a href="/policies/privacy-policy">Datenschutz</a>.
@@ -237,6 +269,10 @@ class OxGuidePaywall extends HTMLElement {
 
         <div class="login">
           Schon OX-Kunde? <a href="/account/login?return_url=${encodeURIComponent(window.location.pathname)}">Einloggen &rarr;</a>
+        </div>
+
+        <div class="back">
+          <a href="/pages/kostenlose-ox-guides">&larr; Zurück zur Guide-Übersicht</a>
         </div>
       </div>
     `;
@@ -246,13 +282,15 @@ class OxGuidePaywall extends HTMLElement {
     // Find the previous sibling (the guide web component) and wrap it in cutoff
     const paywallEl = this;
     const guideEl = paywallEl.previousElementSibling;
+    let cutoff = null;
+    let fade = null;
     if (guideEl) {
-      const cutoff = document.createElement('div');
+      cutoff = document.createElement('div');
       cutoff.id = 'ox-paywall-cutoff';
       guideEl.parentNode.insertBefore(cutoff, guideEl);
       cutoff.appendChild(guideEl);
 
-      const fade = document.createElement('div');
+      fade = document.createElement('div');
       fade.id = 'ox-paywall-fade';
       cutoff.appendChild(fade);
     }
@@ -260,6 +298,43 @@ class OxGuidePaywall extends HTMLElement {
     // Block scrolling below the fold
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
+
+    // Form submit: Email per AJAX an Shopify, Soft-Unlock, Content freigeben
+    const unlockPage = () => {
+      try { localStorage.setItem('ox-paywall-unlocked', '1'); } catch (e) {}
+      if (cutoff && guideEl) {
+        cutoff.parentNode.insertBefore(guideEl, cutoff);
+        if (fade) fade.remove();
+        cutoff.remove();
+      }
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+
+    const form = overlay.querySelector('form');
+    const modal = overlay.querySelector('#ox-paywall-modal');
+    if (form && modal) {
+      form.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const data = new FormData(form);
+        // Fire-and-forget: Shopify Customer-Record anlegen
+        fetch('/contact', { method: 'POST', body: data, credentials: 'same-origin' }).catch(() => {});
+        // Sofort entsperren (nicht auf Response warten — Shopify antwortet mit HTML-Redirect)
+        unlockPage();
+        modal.innerHTML = `
+          <div class="badge">Freigeschaltet</div>
+          <h2>Danke, du bist drauf.</h2>
+          <p class="desc">Wir schicken dir gelegentlich Updates zu neuen Guides. Viel Spaß beim Lesen &mdash; scroll einfach weiter.</p>
+          <div style="text-align:center;margin-top:18px">
+            <button type="button" id="ox-paywall-close">Weiter zum Guide</button>
+          </div>
+        `;
+        const closeBtn = modal.querySelector('#ox-paywall-close');
+        if (closeBtn) closeBtn.addEventListener('click', () => overlay.remove());
+        // Automatisch nach 3s schließen
+        setTimeout(() => overlay.remove(), 3000);
+      });
+    }
   }
 }
 

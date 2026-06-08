@@ -219,7 +219,7 @@ li{margin-bottom:8px}
         <p>Was ohne LLM ginge: Ein Python-Script mit hartcodierten Regeln. Aber dann keine intelligenten Entscheidungen (wie &bdquo;dieser Lead ist ausgelutscht, &uuml;berspringen&ldquo;). Und 2-3 Tage Entwicklungszeit statt 30 Minuten Setup.</p>
 
         <div class="footer">
-          Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+          Mehr Interesse? <a href="/pages/erstgesprach">Kostenloses Erstgespräch &rarr;</a><br>
           <a href="https://outoftheb-ox.de">outoftheb-ox.de</a> &mdash; KI-Tools f&uuml;r Wissenschaft, Lehre &amp; Health.
         </div>
       </div>

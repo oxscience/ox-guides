@@ -425,7 +425,7 @@ Therapieberichte f&uuml;r Kostentr&auml;ger verfasst.
         </div>
 
         <div class="footer">
-          Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+          Mehr Interesse? <a href="/pages/erstgesprach">Kostenloses Erstgespräch &rarr;</a><br>
           <a href="https://outoftheb-ox.de">Out Of The Box Science</a> &mdash; Tech-Tools f&uuml;r Wissenschaft und Lehre. Mit und ohne KI.
         </div>
       </div>

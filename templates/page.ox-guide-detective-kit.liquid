@@ -1,0 +1,15 @@
+<script src="{{ 'ox-guide-detective-kit.js' | file_url }}"></script>
+<script src="{{ 'ox-guide-paywall.js' | file_url }}"></script>
+
+<ox-guide-detective-kit></ox-guide-detective-kit>
+<ox-guide-paywall
+  guide="{{ page.handle }}"
+  title="Digital Detective Kit"
+  description="Das Toolkit für evidenzbasierte Recherche — von Primärquellen finden bis Fake News entlarven."
+  benefits="Primärquellen identifizieren, Zitationen und Impact prüfen, Retraction und Predatory Journals erkennen, KI-generierte Inhalte einordnen"
+  pages="7"
+></ox-guide-paywall>
+
+<style>
+  .main-page-title, .page-header { display: none !important; }
+</style>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dein eigenes ChatGPT — lokal und ohne Cloud (Odysseus)</title>
+    <meta name="description" content="So hostest du eine ChatGPT-artige KI komplett auf deiner eigenen Hardware: Odysseus, Docker, LM Studio und lokale Web-Suche. Für Forschende, Dozenten und Tech-Professionals.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #d4d4d4;
+            line-height: 1.75;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .tools-grid .tool-card { margin: 0; }
+        .lehre-section {
+            background: #0d1117;
+            border: 1px solid #1f2937;
+            border-radius: 12px;
+            padding: 2rem 2.25rem;
+            margin: 3rem 0 2rem;
+        }
+        .lehre-section h2 { margin-top: 0; }
+        .lehre-section .exercise { background: #111827; }
+        @media (max-width: 720px) {
+            .tools-grid { grid-template-columns: 1fr; }
+            .lehre-section { padding: 1.25rem 1.4rem; }
+        }
+        .back {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+        .back:hover { text-decoration: underline; }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+        .meta {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 2.5rem;
+        }
+        .intro {
+            color: #999;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        p { margin-bottom: 1rem; }
+        a { color: #6366f1; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        code {
+            background: #1a1a2e;
+            color: #a5b4fc;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+        pre {
+            background: #11111f;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            margin: 0.75rem 0 0;
+            overflow-x: auto;
+        }
+        pre code {
+            background: none;
+            color: #a5b4fc;
+            padding: 0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        ul, ol {
+            margin: 0.75rem 0 1.25rem 1.5rem;
+        }
+        li { margin-bottom: 0.5rem; }
+        .tool-card {
+            background: #111827;
+            border-left: 3px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+        .tool-card strong { color: #fff; }
+        .tool-card .tool-name {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .tool-card .tool-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+        }
+        .label-kostenlos { background: #064e3b; color: #6ee7b7; }
+        .label-freemium { background: #3b2f06; color: #fbbf24; }
+        .label-extension { background: #1e1b4b; color: #a5b4fc; }
+        .tool-card p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .tool-card p:last-child { margin-bottom: 0; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6366f1;
+            margin-top: 3rem;
+            margin-bottom: 0;
+        }
+        .section-label + h2 { margin-top: 0.25rem; }
+        .highlight-box {
+            background: #111827;
+            border-left: 3px solid #6366f1;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .highlight-box strong { color: #fff; }
+        .threat-box {
+            background: #1a0f0f;
+            border-left: 3px solid #ef4444;
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .threat-box strong { color: #fca5a5; }
+        .golden-rule {
+            background: linear-gradient(135deg, #1a1a2e 0%, #111827 100%);
+            border: 1px solid #6366f1;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+        }
+        .golden-rule h2 { margin-top: 0; }
+        .step {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 1rem 1.25rem 1.1rem;
+            margin: 0.75rem 0;
+        }
+        .step .step-head {
+            color: #fff;
+            font-weight: 600;
+        }
+        .step .step-num {
+            display: inline-block;
+            min-width: 1.5rem;
+            color: #6366f1;
+            font-weight: 700;
+        }
+        .step p { margin: 0.5rem 0 0; font-size: 0.92rem; }
+        .exercise {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+        }
+        .exercise strong { color: #fff; }
+        .exercise .time {
+            color: #6366f1;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .source-note {
+            color: #555;
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1a1a1a;
+        }
+        .source-note a { color: #666; }
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem 3rem; }
+            h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../" class="back">&larr; Alle Guides</a>
+
+        <h1>Dein eigenes ChatGPT — lokal und ohne Cloud</h1>
+        <div class="meta">Setup-Guide &middot; 5 Tools &middot; Out Of The Box Science</div>
+
+        <p class="intro">Jede Frage an ChatGPT, Gemini oder Claude wandert auf fremde Server. Dort wird sie gespeichert, oft zum Training genutzt und zu einem Profil über euch verdichtet. Für unveröffentlichte Daten, Interview-Transkripte oder alles unter Schweigepflicht ist das ein echtes Problem. PewDiePie hat mit <strong>Odysseus</strong> gezeigt, wie einfach es inzwischen ist, eine komplette ChatGPT-artige Oberfläche auf der eigenen Hardware laufen zu lassen — Chat, Agenten, Web-Suche, Gedächtnis. Dieser Guide zeigt euch, welche Werkzeuge ihr braucht, wie das Setup in vier Schritten läuft und wo die ehrlichen Grenzen liegen.</p>
+
+        <!-- Das Prinzip -->
+        <span class="section-label">Das Prinzip</span>
+        <h2>Was lokale KI bedeutet</h2>
+
+        <p>Eine gehostete KI wie ChatGPT ist im Kern zwei Dinge: ein <strong>Sprachmodell</strong>, das die Antworten erzeugt, und eine <strong>Oberfläche</strong> drumherum, die Chats, Suche und Gedächtnis verwaltet. Beides läuft auf den Servern des Anbieters. Lokale KI dreht genau das um — das Modell läuft auf eurem Rechner, die Oberfläche ebenfalls, und keine eurer Eingaben verlässt das Gerät.</p>
+
+        <div class="highlight-box">
+            <p style="margin-bottom:0;"><strong>Warum das für die Wissenschaft zählt:</strong> Wer eine vertrauliche Studie, Patientendaten oder ein laufendes Manuskript in ein Cloud-Tool kippt, gibt die Kontrolle darüber ab. Lokal bleibt die Datenhoheit bei euch — DSGVO-konform per Architektur, nicht per Versprechen in den AGB.</p>
+        </div>
+
+        <!-- Was du brauchst -->
+        <span class="section-label">Werkzeuge</span>
+        <h2>Was ihr braucht</h2>
+
+        <div class="tools-grid">
+        <div class="tool-card">
+            <span class="tool-name">Odysseus</span>
+            <span class="tool-label label-kostenlos">Open Source</span>
+            <p><strong>Was es ist:</strong> Die Oberfläche — ein selbst-gehostetes KI-Workspace mit Chat, Agenten-Modus, Web-Suche, Gedächtnis, Notizen und Deep Research. PewDiePies Projekt, MIT-Lizenz.</p>
+            <p><strong>Wofür:</strong> Euer „ChatGPT-Fenster", nur eben auf eurem eigenen Server.</p>
+            <p><strong>Wie:</strong> <a href="https://github.com/pewdiepie-archdaemon/odysseus">github.com/pewdiepie-archdaemon/odysseus</a></p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">Docker</span>
+            <span class="tool-label label-kostenlos">Kostenlos</span>
+            <p><strong>Was es ist:</strong> Der „Motor", der Odysseus und seine Hilfsdienste in Containern startet — ein Befehl statt manueller Installation.</p>
+            <p><strong>Wofür:</strong> Läuft auf Windows, macOS und Linux gleich. Der einfachste Weg, alles zum Laufen zu bringen.</p>
+            <p><strong>Wie:</strong> <a href="https://docs.docker.com/get-docker/">Docker Desktop</a> installieren.</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">LM Studio</span>
+            <span class="tool-label label-kostenlos">Kostenlos</span>
+            <p><strong>Was es ist:</strong> Ein Programm mit Oberfläche, das lokale Modelle herunterlädt und als Server bereitstellt. Der einsteigerfreundliche Weg.</p>
+            <p><strong>Wofür:</strong> Modell aussuchen, laden, Server starten — Odysseus klinkt sich dann ein.</p>
+            <p><strong>Neu:</strong> Mit <strong>LM Link</strong> erreicht ihr eure Modelle jetzt auch aus der Ferne, Ende-zu-Ende-verschlüsselt (mehr dazu unten).</p>
+            <p><strong>Wie:</strong> <a href="https://lmstudio.ai">lmstudio.ai</a> &middot; Alternative ohne Oberfläche: <a href="https://ollama.com">Ollama</a> (schlank, per Terminal).</p>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-name">SearXNG</span>
+            <span class="tool-label label-kostenlos">Open Source</span>
+            <p><strong>Was es ist:</strong> Eine eigene Meta-Suchmaschine, die Odysseus automatisch mitstartet. Gibt eurem Modell Zugriff aufs Web, ohne über Google zu laufen.</p>
+            <p><strong>Wofür:</strong> Aktuelle Infos und Quellen — die Suche bleibt anonym und unter eurer Kontrolle.</p>
+            <p><strong>Wie:</strong> Kommt im Docker-Setup von Odysseus mit, kein eigener Schritt nötig.</p>
+        </div>
+        </div>
+
+        <div class="highlight-box">
+            <p style="margin-bottom:0;"><strong>Zur Hardware:</strong> Die Oberfläche selbst ist leichtgewichtig — anstrengend wird nur das Modell. Kleine Modelle (7–8 Mrd. Parameter) laufen auf einer GPU mit rund 8&nbsp;GB VRAM oder einem Apple-Silicon-Mac. Mehr Kontext und größere Modelle brauchen mehr Speicher: Im Video flossen rund 22&nbsp;GB VRAM für ein größeres Modell mit langem Kontextfenster. Faustregel: Je mehr Kontext ihr wollt, desto mehr Speicher kostet es.</p>
+        </div>
+
+        <!-- Setup -->
+        <span class="section-label">Setup</span>
+        <h2>In vier Schritten zum eigenen KI-Workspace</h2>
+
+        <div class="step">
+            <span class="step-head"><span class="step-num">1.</span>Docker installieren</span>
+            <p>Ladet euch Docker Desktop herunter und startet es. Damit habt ihr den Container-Motor — den Rest erledigen ein paar Zeilen im Terminal.</p>
+        </div>
+
+        <div class="step">
+            <span class="step-head"><span class="step-num">2.</span>Odysseus holen und starten</span>
+            <p>Im Terminal das Projekt klonen und hochfahren. Der letzte Befehl baut alles und lässt es im Hintergrund laufen:</p>
+            <pre><code>git clone https://github.com/pewdiepie-archdaemon/odysseus.git
+cd odysseus
+cp .env.example .env
+docker compose up -d --build</code></pre>
+            <p>Danach läuft die Oberfläche unter <a href="http://127.0.0.1:7000">http://127.0.0.1:7000</a> — erreichbar von jedem Gerät im eigenen Netzwerk, auch vom Handy.</p>
+        </div>
+
+        <div class="step">
+            <span class="step-head"><span class="step-num">3.</span>Ein Modell laden</span>
+            <p>In LM Studio ein Modell herunterladen (z.&nbsp;B. Qwen, Gemma, Llama oder GLM), es im Reiter „Developer" laden und den lokalen Server starten. LM Studio zeigt dann eine Adresse wie <code>http://192.168.x.x:1234</code>.</p>
+            <p>In Odysseus über das Zahnrad einen Modell-Server hinzufügen, diese Adresse mit angehängtem <code>/v1</code> eintragen und auf „Test" klicken. Sobald „online" erscheint, ist das Modell verbunden.</p>
+        </div>
+
+        <div class="step">
+            <span class="step-head"><span class="step-num">4.</span>Loslegen</span>
+            <p>Neuen Chat öffnen, das geladene Modell auswählen — und ihr habt drei Modi: normaler <strong>Chat</strong>, <strong>Agenten-Modus</strong> für mehrschrittige Aufgaben und <strong>Web-Suche</strong> über die mitgelieferte SearXNG-Instanz. Alles auf eurer Maschine.</p>
+        </div>
+
+        <!-- Modellwahl -->
+        <span class="section-label">Modellwahl</span>
+        <h2>Welches Modell nehmen?</h2>
+
+        <p>Es gibt keinen Königsweg — die richtige Wahl hängt an eurer Hardware. Ein paar bewährte Open-Weight-Familien als Startpunkt:</p>
+        <ul>
+            <li><strong>Gemma</strong> (Google) und <strong>Llama</strong> (Meta) — solide Allrounder, gut dokumentiert.</li>
+            <li><strong>Qwen</strong> (Alibaba) — stark im Schlussfolgern, viele Größen von klein bis groß.</li>
+            <li><strong>GLM</strong> und <strong>Mistral</strong> — gute Alternativen, wenn die anderen zu groß sind.</li>
+        </ul>
+        <p>Odysseus bringt einen <strong>Cookbook</strong>-Bereich mit, der aus über 270 Modellen passende Empfehlungen für eure Hardware vorschlägt. Praktisch, wenn ihr nicht raten wollt, was auf eure GPU passt. Fangt klein an (7–8 Mrd. Parameter) und tastet euch hoch, bis Geschwindigkeit und Qualität für euch stimmen.</p>
+
+        <!-- LM Link -->
+        <span class="section-label">Von überall</span>
+        <h2>Dein Modell von unterwegs nutzen — sicher</h2>
+
+        <p>Bis hierhin läuft alles im eigenen Netzwerk. Die neue LM-Studio-Funktion <strong>LM Link</strong> erweitert das auf „von überall" — ohne dass ihr dafür irgendetwas ins offene Internet stellen müsst.</p>
+
+        <div class="highlight-box">
+            <p><strong>Wie es funktioniert:</strong> LM Link verbindet eure eigenen Geräte über eine Ende-zu-Ende-verschlüsselte Verbindung, aufgebaut in Partnerschaft mit <a href="https://tailscale.com/blog/lm-link-remote-llm-access">Tailscale</a>. Die Geräte finden sich automatisch, egal in welchem Netz sie gerade hängen. Weder Tailscale noch LM Studio sehen dabei eure Prompts oder Antworten.</p>
+            <p style="margin-bottom:0;"><strong>Der Clou:</strong> Ein entferntes Modell verhält sich wie ein lokales — es bleibt unter <code>localhost:1234</code> erreichbar. Heißt konkret: Das schwere Modell läuft auf eurer GPU-Maschine zuhause, ihr arbeitet vom Laptop unterwegs, und in Odysseus müsst ihr nichts umstellen.</p>
+        </div>
+
+        <p><strong>Einrichten:</strong> Im <a href="https://lmstudio.ai/link">LM-Studio-Desktop</a> genügen ein paar Klicks über „Add a remote machine"; alternativ per Terminal mit <code>lms login</code> und anschließend <code>lms link enable</code>. LM Link läuft derzeit in einer kostenlosen Preview — kostenpflichtige Pläne sind für den späteren Release angekündigt.</p>
+
+        <!-- Grenzen -->
+        <span class="section-label">Ehrlich bleiben</span>
+        <h2>Grenzen &amp; Sicherheit</h2>
+
+        <p>Lokale KI ist beeindruckend, aber kein fertiges Produkt. Was ihr wissen solltet, bevor ihr euch darauf verlasst:</p>
+
+        <div class="threat-box">
+            <p><strong>Modelle halluzinieren.</strong> Lokale Modelle erfinden Fakten genauso wie die großen — bei kleineren Modellen eher mehr. Im Video mischte das Modell schlicht falsche Figuren in eine Antwort. Behandelt keine Ausgabe als gesichert; prüft jede Behauptung und jede Quelle nach.</p>
+            <p><strong>Die Codebasis ist jung.</strong> Odysseus ist in wenigen Tagen mit viel KI-Hilfe entstanden — über 800 Pull Requests, bekannte Architektur- und Sicherheitslücken. Es ist ein spannender Startpunkt zum Experimentieren, kein gehärtetes System.</p>
+            <p><strong>Nicht ins offene Internet hängen.</strong> Lasst Odysseus auf <code>localhost</code> oder im Heim-/Büro-Netz laufen. KI-generierter Code bringt überdurchschnittlich viele Schwachstellen mit — kein Port-Forwarding nach draußen. Wollt ihr von unterwegs ran, nehmt LM Link (siehe oben): verschlüsselt und ohne offene Ports.</p>
+            <p style="margin-bottom:0;"><strong>Krypto-Spam ignorieren.</strong> Rund um populäre Open-Source-Projekte tauchen Betrüger auf, die Tokens oder „Airdrops" pushen. Das hat mit dem Projekt nichts zu tun. Finger weg.</p>
+        </div>
+
+        <p>Und zur Einordnung: Odysseus ist nicht das erste Tool dieser Art. Wer etwas Ausgereifteres sucht, schaut sich <a href="https://openwebui.com">Open WebUI</a> zusammen mit Ollama an — gleiches Prinzip, längere Reifezeit. Der eigentliche Punkt von Odysseus ist nicht, dass es neu ist, sondern dass es zeigt, wie zugänglich lokale KI geworden ist.</p>
+
+        <!-- Goldene Regel -->
+        <div class="golden-rule">
+            <h2>Die goldene Regel</h2>
+            <p>Lokal heißt nicht magisch. Ihr gewinnt Datenhoheit, keine Wahrheit. Das Setup ändert nichts daran, dass ihr die Ergebnisse prüfen müsst — es ändert nur, wer eure Daten sieht: niemand außer euch.</p>
+            <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Die Kombination macht's:</strong> lokales Modell für die Privatsphäre, lokale Suche für aktuelle Quellen, euer eigenes Urteil für den Rest.</p>
+        </div>
+
+        <!-- Lehre -->
+        <div class="lehre-section">
+            <h2>Für die Lehre: 3 Übungsideen</h2>
+
+            <div class="exercise">
+                <strong>1. Privacy-by-Design live</strong> <span class="time">30 Min</span>
+                <p>Setzt mit den Studierenden gemeinsam Odysseus auf einem Rechner auf. Der Aha-Moment: Eine vollwertige KI-Oberfläche, die nachweislich offline funktioniert — Netzwerkstecker ziehen, Chat läuft weiter.</p>
+            </div>
+
+            <div class="exercise">
+                <strong>2. Lokal vs. Cloud</strong> <span class="time">20 Min</span>
+                <p>Dieselbe Frage an das lokale Modell und an ChatGPT stellen. Antworten, Geschwindigkeit und Quellen vergleichen. Diskussion: Wo lohnt sich die Cloud, wo reicht lokal — und was war der Preis dafür?</p>
+            </div>
+
+            <div class="exercise">
+                <strong>3. Halluzinationen jagen</strong> <span class="time">25 Min</span>
+                <p>Studierende stellen dem lokalen Modell Fachfragen aus dem eigenen Gebiet und prüfen jede Antwort gegen echte Quellen. Ziel: ein Gespür dafür entwickeln, wo Modelle zuverlässig sind und wo sie raten.</p>
+            </div>
+        </div>
+
+        <div class="source-note">
+            Inspiriert vom Video <a href="https://www.youtube.com/watch?v=C_E0wN1-Cjs">„PewDiePie Released Free ChatGPT…"</a> von SomeOrdinaryGamers (Mutahar) und PewDiePies Open-Source-Projekt <a href="https://github.com/pewdiepie-archdaemon/odysseus">Odysseus</a> (MIT-Lizenz). Kuratiert und für den deutschsprachigen Wissenschafts- und Lehrkontext adaptiert.
+        </div>
+
+        <div class="footer">
+            Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+            <a href="https://outoftheb-ox.de">Out Of The Box Science</a> — Tech-Tools für Wissenschaft und Lehre. Mit und ohne KI.
+        </div>
+    </div>
+</body>
+</html>

@@ -9,25 +9,40 @@ class OxGuidesOverview extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#141414;--surface-hover:#1a1a1a;
-  --border:#222;--border-hover:#444;
-  --text:#e0e0e0;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
-  --primary:#6366f1;--primary-light:#1e1b4b;
+  /* Erbt OX-Tokens vom :root: --ox-font, --ox-size-*, --ox-line-* */
+  --bg:#0f0f11;--surface:#1a1a1f;--surface-hover:#222228;
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --text:#e8e6e3;--text-secondary:#8e8c89;--text-muted:#666;--text-dim:#555;
+  --primary:#6d8cff;--primary-light:#1e1b4b;
   --white:#fff;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;
+  display:block;font-family:var(--ox-font);background:var(--bg);color:var(--text);line-height:var(--ox-line-body,1.6);
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--primary);text-decoration:none}
 a:hover{text-decoration:underline}
 
-.container{max-width:880px;margin:0 auto;padding:48px 24px 64px}
+.container{max-width:880px;margin:0 auto;padding:0 24px 64px}
 
-h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bottom:8px;letter-spacing:-0.02em}
-.subtitle{text-align:center;color:var(--text-secondary);font-size:16.8px;margin-bottom:48px}
+/* === HERO (wie Home/Campus: Gradient-Label, Glow, Mono-H1) === */
+.hero{position:relative;text-align:center;padding:var(--ox-hero-padding)}
+.hero::before{
+  content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse at center, rgba(109,140,255,0.06) 0%, rgba(167,139,250,0.03) 40%, transparent 70%);
+  pointer-events:none;
+}
+.hero__inner{position:relative;z-index:1}
+.hero__label{
+  font-size:var(--ox-size-label);font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;margin:0 0 16px;
+  background:linear-gradient(135deg,#6d8cff 0%,#a78bfa 50%,#6d8cff 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800;color:var(--white);margin:0 0 20px;letter-spacing:-0.03em;line-height:var(--ox-line-heading,1.15)}
+.subtitle{color:var(--text-secondary);font-size:var(--ox-size-sub);max-width:700px;margin:0 auto;line-height:var(--ox-line-body,1.6)}
 
 .section-label{
-  font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
+  font-size:var(--ox-size-label);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
   color:var(--text-dim);margin-top:48px;margin-bottom:16px;padding-left:4px;
   scroll-margin-top:24px;
 }
@@ -42,26 +57,53 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 .guide-card{
   background:var(--surface);border:1px solid var(--border);border-radius:12px;
   padding:24px;display:flex;flex-direction:column;
-  gap:12px;transition:border-color 0.2s,background 0.2s;
+  gap:12px;transition:border-color 0.2s,background 0.2s,opacity 0.3s ease,transform 0.3s ease;
   text-decoration:none;color:inherit;cursor:pointer;height:100%;
+  position:relative;opacity:0;transform:translateY(16px);
 }
 .guide-card:hover{border-color:var(--border-hover);background:var(--surface-hover);text-decoration:none}
+.guide-card.is-visible{opacity:1;transform:none}
+.guide-card::after{
+  content:"";position:absolute;inset:0;border-radius:12px;
+  pointer-events:none;opacity:0;transition:opacity 500ms;
+  background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 65%);
+  mask-image:radial-gradient(500px circle at var(--mouse-x,50%) var(--mouse-y,50%),black,transparent 70%);
+}
+.guide-card:hover::after{opacity:1}
 
 .guide-info{flex:1}
-.guide-title{font-size:17.6px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
-.guide-desc{font-size:14.4px;color:var(--text-secondary);line-height:1.5}
+.guide-title{font-size:var(--ox-size-h3);font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
+.guide-desc{font-size:var(--ox-size-small);color:var(--text-secondary);line-height:1.5}
 
-.guide-meta{font-size:13.6px;color:var(--primary);font-weight:500;margin-top:auto}
+.guide-meta{font-size:var(--ox-size-small);color:var(--primary);font-weight:500;margin-top:auto}
 
 .badge-new{
   display:inline-block;background:var(--primary);color:var(--white);
-  font-size:10.4px;font-weight:700;padding:2px 8px;border-radius:4px;
+  font-size:var(--ox-size-label);font-weight:700;padding:2px 8px;border-radius:4px;
   text-transform:uppercase;letter-spacing:0.05em;margin-left:8px;vertical-align:middle;
 }
 
+.big-guide{
+  display:block;margin:0 0 48px;padding:32px 28px;
+  background:linear-gradient(135deg,rgba(109,140,255,0.12),rgba(109,140,255,0.03));
+  border:1px solid rgba(109,140,255,0.3);border-radius:16px;
+  text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;
+  position:relative;overflow:hidden;
+}
+.big-guide:hover{border-color:rgba(109,140,255,0.6);text-decoration:none;transform:translateY(-2px)}
+.big-guide .badge-feature{
+  display:inline-block;font-size:var(--ox-size-label);font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:#a5b4fc;padding:4px 10px;
+  background:rgba(109,140,255,0.1);border:1px solid rgba(109,140,255,0.25);
+  border-radius:20px;margin-bottom:14px;
+}
+.big-guide h2{font-size:var(--ox-size-h2);font-weight:800;color:var(--white);line-height:var(--ox-line-heading,1.15);margin:0 0 10px}
+.big-guide p{font-size:var(--ox-size-sub);color:var(--text-secondary);line-height:1.55;margin:0 0 16px;max-width:640px}
+.big-guide .cta{font-size:var(--ox-size-small);color:var(--primary);font-weight:500}
+
 .footer{
   text-align:center;margin-top:64px;padding-top:32px;
-  border-top:1px solid #1a1a1a;color:var(--text-dim);font-size:13.6px;
+  border-top:1px solid var(--border);color:var(--text-dim);font-size:var(--ox-size-small);
 }
 
 /* ── Floating TOC (right margin) ──────────────── */
@@ -70,19 +112,18 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
   display:flex;flex-direction:column;gap:2px;z-index:50;
 }
 .toc-link{
-  font-size:12.5px;color:#666;text-decoration:none;
+  font-size:var(--ox-size-label);color:var(--text-muted);text-decoration:none;
   padding:5px 10px;border-radius:6px;transition:all 0.15s;white-space:nowrap;
 }
-.toc-link:hover{color:#999;background:rgba(255,255,255,0.04);text-decoration:none}
-.toc-link.active{color:#fff;background:rgba(99,102,241,0.1)}
-.toc-divider{height:1px;background:#222;margin:6px 10px}
+.toc-link:hover{color:var(--text-secondary);background:rgba(255,255,255,0.04);text-decoration:none}
+.toc-link.active{color:var(--white);background:rgba(109,140,255,0.1)}
+.toc-divider{height:1px;background:var(--border);margin:6px 10px}
 
 @media(max-width:1200px){
   .toc{display:none}
 }
-@media(max-width:600px){
+@media(max-width:749px){
   .container{padding:32px 16px 48px}
-  h1{font-size:25.6px}
   .guide-grid{grid-template-columns:1fr;gap:12px}
 }
       </style>
@@ -94,20 +135,37 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         <a href="#sec-produktivitaet" class="toc-link" data-section="sec-produktivitaet">&#9889; Produktivit&auml;t</a>
         <a href="#sec-medienkompetenz" class="toc-link" data-section="sec-medienkompetenz">&#128737; Medienkompetenz</a>
         <a href="#sec-forschung" class="toc-link" data-section="sec-forschung">&#128300; Forschung</a>
-        <div class="toc-divider"></div>
-        <a href="/pages/kostenlose-ox-tools" class="toc-link">&#128736; Tools</a>
       </nav>
 
       <div class="container">
-        <h1>Kostenlose OX Guides</h1>
-        <p class="subtitle">KI-Tools und Tech-Guides f&uuml;r Health Professionals. Kostenlos und praxisnah.</p>
-        <div style="text-align:center;margin-bottom:48px;font-size:14.4px"><a href="/pages/kostenlose-ox-tools" style="color:#6366f1;text-decoration:none;padding:6px 14px;border:1px solid #333;border-radius:20px">&#128736; Tools ansehen &rarr;</a></div>
+        <section class="hero">
+          <div class="hero__inner">
+            <p class="hero__label">OX Guides</p>
+            <h1>Kostenlose Guides</h1>
+            <p class="subtitle">KI-Tools und Tech-Guides f&uuml;r Gesundheitsexperten &mdash; von der Praxis bis zur Hochschule. Kostenlos und praxisnah.</p>
+          </div>
+        </section>
+
+        <a href="/pages/eu-digital-stack" class="big-guide">
+          <div class="badge-feature">&#9733; Big Guide</div>
+          <h2>Der EU Digital Stack</h2>
+          <p>Welche KI-Tools, Cloud-Dienste und Plattformen sind DSGVO-konform, europ&auml;isch gehostet und praxistauglich? Die gro&szlig;e &Uuml;bersicht &uuml;ber souver&auml;ne Alternativen zu US-Big-Tech &mdash; einsetzbar f&uuml;r Gesundheit, Bildung und Wissenschaft.</p>
+          <div class="cta">Zum Big Guide &rarr;</div>
+        </a>
 
         <div class="section-label" id="sec-grundlagen">KI-Grundlagen</div>
         <div class="guide-grid">
+        <a href="/pages/7-skills-ai-agents" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">Die 7 Skills f&uuml;r hilfreiche AI-Agents <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Vom Prompt-Engineer zum Agent-Engineer &mdash; System Design, Schemas, Retrieval, Reliability, Security, Eval, Produkt-Denken. Mit Self-Assessment.</div>
+          </div>
+          <div class="guide-meta">4-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/6-stufen-der-ki-nutzung" class="guide-card">
           <div class="guide-info">
-            <div class="guide-title">Die 6 Stufen der KI-Nutzung <span class="badge-new">Neu</span></div>
+            <div class="guide-title">Die 6 Stufen der KI-Nutzung</div>
             <div class="guide-desc">Von &bdquo;besseres Google&ldquo; bis zu autonomen Agenten. Finde heraus wo du stehst und was der n&auml;chste Schritt ist.</div>
           </div>
           <div class="guide-meta">4-Seiten-Guide &rarr;</div>
@@ -129,14 +187,6 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
           <div class="guide-meta">4-Seiten-Guide &rarr;</div>
         </a>
 
-        <a href="/pages/ki-texte-menschlich-machen" class="guide-card">
-          <div class="guide-info">
-            <div class="guide-title">KI-Texte menschlich machen</div>
-            <div class="guide-desc">24 Muster die KI-generierte Texte verraten und wie du sie in Berichten und Dokumenten vermeidest.</div>
-          </div>
-          <div class="guide-meta">5-Seiten-Guide &rarr;</div>
-        </a>
-
         <a href="/pages/10-ki-briefing-prompts" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">10 KI-Briefing-Prompts f&uuml;r Health Professionals</div>
@@ -147,7 +197,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 
         <a href="/pages/5-mini-apps-claude-code" class="guide-card">
           <div class="guide-info">
-            <div class="guide-title">5 Mini-Apps die du in 10 Minuten baust <span class="badge-new">Neu</span></div>
+            <div class="guide-title">5 Mini-Apps die du in 10 Minuten baust</div>
             <div class="guide-desc">Quiz-Generator, Bewertungsraster, Semesterplaner &mdash; Claude Code baut dir fertige Tools als HTML-Datei.</div>
           </div>
           <div class="guide-meta">4-Seiten-Guide &rarr;</div>
@@ -156,14 +206,6 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 
         <div class="section-label" id="sec-claude">Claude verstehen</div>
         <div class="guide-grid">
-        <a href="/pages/von-chatgpt-zu-claude" class="guide-card">
-          <div class="guide-info">
-            <div class="guide-title">Von ChatGPT zu Claude wechseln <span class="badge-new">Neu</span></div>
-            <div class="guide-desc">Ehrlicher Feature-Vergleich, St&auml;rken beider Tools, und der Umzug Schritt f&uuml;r Schritt.</div>
-          </div>
-          <div class="guide-meta">5-Seiten-Guide &rarr;</div>
-        </a>
-
         <a href="/pages/claude-cowork-oder-claude-code" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">Claude, Cowork oder Claude Code &mdash; Was wof&uuml;r?</div>
@@ -174,8 +216,16 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 
         <a href="/pages/claude-cowork-setup" class="guide-card">
           <div class="guide-info">
-            <div class="guide-title">Claude Cowork 2.0 &mdash; Das komplette Setup <span class="badge-new">Neu</span></div>
+            <div class="guide-title">Claude Cowork 2.0 &mdash; Das komplette Setup</div>
             <div class="guide-desc">Ordnerstruktur, drei ABOUT ME-Dateien, Global Instructions, Spracheingabe und 6 Tipps zum Credits sparen.</div>
+          </div>
+          <div class="guide-meta">6-Seiten-Guide &rarr;</div>
+        </a>
+
+        <a href="/pages/claude-code-token-audit" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">Claude Code Token-Audit <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Versteckten Kontext-Bloat finden, MCPs durch CLIs ersetzen, settings.json richtig tweaken &mdash; nie wieder Usage-Limits.</div>
           </div>
           <div class="guide-meta">6-Seiten-Guide &rarr;</div>
         </a>
@@ -209,7 +259,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         <div class="guide-grid">
         <a href="/pages/claude-code-obsidian-wissenssystem" class="guide-card">
           <div class="guide-info">
-            <div class="guide-title">Claude Code + Obsidian: Dein KI-Wissenssystem <span class="badge-new">Neu</span></div>
+            <div class="guide-title">Claude Code + Obsidian: Dein KI-Wissenssystem</div>
             <div class="guide-desc">Claude Code als intelligenter Assistent f&uuml;r deinen Obsidian-Vault. 5 Workflows, Copy-Paste-Prompts, Skills.</div>
           </div>
           <div class="guide-meta">5-Seiten-Guide &rarr;</div>
@@ -233,7 +283,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
 
         <a href="/pages/claude-code-email-va" class="guide-card">
           <div class="guide-info">
-            <div class="guide-title">Claude Code als E-Mail-VA <span class="badge-new">Neu</span></div>
+            <div class="guide-title">Claude Code als E-Mail-VA</div>
             <div class="guide-desc">Gmail scannen, Leads ins CRM, Follow-up Drafts &mdash; dein automatischer B2B-Assistent mit Datenschutz-Hinweisen.</div>
           </div>
           <div class="guide-meta">5-Seiten-Guide &rarr;</div>
@@ -271,7 +321,7 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         <div class="guide-grid">
         <a href="/pages/claude-code-notebooklm-forschung" class="guide-card">
           <div class="guide-info">
-            <div class="guide-title">Claude Code + NotebookLM f&uuml;r den Forschungsprozess <span class="badge-new">Neu</span></div>
+            <div class="guide-title">Claude Code + NotebookLM f&uuml;r den Forschungsprozess</div>
             <div class="guide-desc">Paper analysieren, Briefing Docs generieren, Ergebnisse weiterverarbeiten. Der komplette Workflow.</div>
           </div>
           <div class="guide-meta">5-Seiten-Guide &rarr;</div>
@@ -286,14 +336,43 @@ h1{font-size:32px;font-weight:700;color:var(--white);text-align:center;margin-bo
         </a>
         </div>
 
-        <div class="footer">
-          <a href="https://outoftheb-ox.de">Out Of The Box Science</a> &mdash; KI-Tools f&uuml;r Health Professionals. Mit und ohne KI.
-        </div>
       </div>
     `;
 
-    // Scroll Spy inside Shadow DOM
     const root = this.shadowRoot;
+
+    // Mouse shimmer
+    root.querySelectorAll('.guide-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    });
+
+    // Scroll reveal with stagger per grid
+    const cards = root.querySelectorAll('.guide-card');
+    if ('IntersectionObserver' in window) {
+      // stagger within each .guide-grid
+      root.querySelectorAll('.guide-grid').forEach(grid => {
+        grid.querySelectorAll('.guide-card').forEach((c, i) => {
+          c.style.transitionDelay = (i * 0.05) + 's';
+        });
+      });
+      const revealObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(c => revealObs.observe(c));
+    } else {
+      cards.forEach(c => c.classList.add('is-visible'));
+    }
+
+    // Scroll Spy inside Shadow DOM
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const id = entry.target.id;

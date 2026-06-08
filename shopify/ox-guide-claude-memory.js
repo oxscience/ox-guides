@@ -328,7 +328,7 @@ H&uuml;ft-TEP Info im gleichen Format.</pre>
 
 
         <div class="footer">
-          Dieser Guide ist kostenlos. Kein Haken, kein Email-Formular.<br>
+          Mehr Interesse? <a href="/pages/erstgesprach">Kostenloses Erstgespräch &rarr;</a><br>
           <a href="https://outoftheb-ox.de">outoftheb-ox.de</a> &mdash; KI-Tools f&uuml;r Health Professionals.
         </div>
       </div>
