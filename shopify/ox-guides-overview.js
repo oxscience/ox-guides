@@ -155,6 +155,22 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 
         <div class="section-label" id="sec-grundlagen">KI-Grundlagen</div>
         <div class="guide-grid">
+        <a href="/pages/ki-durchschauen" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">KI durchschauen <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Warum KI halluziniert und Bias zeigt &mdash; und wie du beides erkennst. Die 4 Eigenschaften jeder KI, eine 5-Punkte-Checkliste gegen Halluzinationen, der Bias-Paar-Test und ein Kompetenz-Modell.</div>
+          </div>
+          <div class="guide-meta">6-Seiten-Guide &rarr;</div>
+        </a>
+
+        <a href="/pages/10-paper-hinter-der-ki" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">Die 10 Paper, die KI m&ouml;glich gemacht haben <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Von Turings Frage 1936 bis ChatGPT &mdash; die zehn wissenschaftlichen Arbeiten hinter der modernen KI. Mit Originalquellen und dem, was popul&auml;re Erkl&auml;rungen weglassen.</div>
+          </div>
+          <div class="guide-meta">6-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/7-skills-ai-agents" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">Die 7 Skills f&uuml;r hilfreiche AI-Agents <span class="badge-new">Neu</span></div>
@@ -292,6 +308,14 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 
         <div class="section-label" id="sec-medienkompetenz">Medienkompetenz</div>
         <div class="guide-grid">
+        <a href="/pages/searxng-vs-google" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">SearXNG vs. Google &mdash; Suche, die dir geh&ouml;rt <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Wie sich die selbstbestimmte Metasuchmaschine technisch von Google unterscheidet: Crawler, Index, Ranking, der Proxy-Datenschutz und der JSON-Trick f&uuml;r eigene Tools.</div>
+          </div>
+          <div class="guide-meta">5-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/digitale-selbstverteidigung-2026" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">Digitale Selbstverteidigung 2026</div>

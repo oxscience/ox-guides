@@ -65,6 +65,9 @@ GUIDES = [
     ("Claude Cowork Code", "ox-guide-claude-cowork-code"),
     ("Claude Code Token-Audit", "ox-guide-claude-code-limits"),
     ("7 Skills AI Agents", "ox-guide-7-skills-ai-agents"),
+    ("SearXNG vs Google", "ox-guide-searxng-vs-google"),
+    ("Die 10 Paper, die KI möglich gemacht haben", "ox-guide-ki-paper"),
+    ("KI durchschauen", "ox-guide-ki-durchschauen"),
     ("Kostenlose OX Tools", "ox-tools-overview"),
 ]
 
