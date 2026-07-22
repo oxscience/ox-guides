@@ -155,6 +155,14 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 
         <div class="section-label" id="sec-grundlagen">KI-Grundlagen</div>
         <div class="guide-grid">
+        <a href="/pages/ki-modellnamen" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">KI-Modellnamen entschl&uuml;sseln <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Was Qwen2.5-7B-Instruct-Q4_K_M wirklich bedeutet: Parameter, Instruct vs. Base, MoE, GGUF und Quantisierung. Plus Speicher-Faustregel und 5-Schritte-Checkliste f&uuml;rs passende lokale Modell.</div>
+          </div>
+          <div class="guide-meta">5-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/ki-durchschauen" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">KI durchschauen <span class="badge-new">Neu</span></div>

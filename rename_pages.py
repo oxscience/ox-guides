@@ -34,6 +34,7 @@ GRAPHQL_URL = f"https://{SHOP}/admin/api/2024-10/graphql.json"
 
 # templateSuffix → gewünschter Handle (aus ox-guides-overview.js)
 RENAMES = {
+    "ox-guide-hf-modellnamen": "ki-modellnamen",
     "ox-guide-10-briefing-prompts": "10-ki-briefing-prompts",
     "ox-guide-4-disziplinen-prompting": "4-disziplinen-ki-prompting",
     "ox-guide-5-mini-apps": "5-mini-apps-claude-code",
@@ -47,6 +48,7 @@ RENAMES = {
     "ox-guide-ki-texte-menschlich": "ki-texte-menschlich-machen",
     "ox-guide-spracheingabe": "spracheingabe-statt-tippen",
     "ox-guide-chatgpt-zu-claude": "von-chatgpt-zu-claude",
+    "ox-guide-ki-paper": "10-paper-hinter-der-ki",
 }
 
 

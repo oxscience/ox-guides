@@ -68,6 +68,7 @@ GUIDES = [
     ("SearXNG vs Google", "ox-guide-searxng-vs-google"),
     ("Die 10 Paper, die KI möglich gemacht haben", "ox-guide-ki-paper"),
     ("KI durchschauen", "ox-guide-ki-durchschauen"),
+    ("KI-Modellnamen entschlüsseln", "ox-guide-hf-modellnamen"),
     ("Kostenlose OX Tools", "ox-tools-overview"),
 ]
 
