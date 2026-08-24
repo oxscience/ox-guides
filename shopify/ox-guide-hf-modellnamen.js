@@ -132,7 +132,7 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
         <a href="/pages/kostenlose-ox-guides" class="back">&larr; Alle Guides</a>
 
         <h1>KI-Modellnamen entschl&uuml;sseln</h1>
-        <div class="meta">5-Seiten-Guide &middot; Out Of The Box Science</div>
+        <div class="meta">6-Seiten-Guide &middot; Out Of The Box Science</div>
 
         <p class="intro">Auf Hugging Face, der gr&ouml;&szlig;ten Plattform f&uuml;r offene KI-Modelle, liegen weit &uuml;ber eine Million Modelle. Wer dort zum ersten Mal nach einem Modell f&uuml;r den eigenen Rechner sucht, trifft auf Namen wie <code>Qwen2.5-7B-Instruct-GGUF</code> und klickt oft ratlos wieder weg. Dabei ist so ein Name ein komplettes Datenblatt: Er verr&auml;t, wer das Modell gebaut hat, wie viel Speicher es braucht, wof&uuml;r es trainiert wurde und ob es auf deiner Hardware l&auml;uft. Dieser Guide bringt dir bei, dieses Datenblatt zu lesen. Danach w&auml;hlst du in wenigen Minuten das passende Modell aus, statt zu raten.</p>
 
@@ -231,15 +231,15 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
         <span class="section-label">Seite 4 &middot; Formate</span>
         <h2>safetensors, GGUF &amp; Co.: die Verpackung</h2>
 
-        <p>Dasselbe Modell wird in verschiedenen Dateiformaten angeboten, und das Format entscheidet, mit welcher Software es l&auml;uft. Die vier, die dir begegnen werden:</p>
+        <p>Dasselbe Modell wird in verschiedenen Dateiformaten angeboten, und das Format entscheidet, mit welcher Software es l&auml;uft. Die f&uuml;nf, die dir begegnen werden:</p>
 
         <div class="table-wrap">
         <table>
           <tr><th>Format</th><th>F&uuml;r wen</th></tr>
           <tr><td><code>safetensors</code></td><td>Das Standardformat auf Hugging Face: die Originalgewichte, oft in mehrere Dateien gest&uuml;ckelt (<code>model-00001-of-00004</code> &hellip;). Gedacht f&uuml;r GPU-Server und Python-Umgebungen, nicht f&uuml;r den Hausgebrauch.</td></tr>
           <tr class="hl"><td><code>GGUF</code></td><td>Das Format f&uuml;rs lokale Ausf&uuml;hren: eine einzige Datei inklusive aller Metadaten, l&auml;uft auf CPU, Grafikkarte oder beidem gemischt. Entwickelt f&uuml;r llama.cpp, die Engine hinter Ollama, LM Studio und &auml;hnlichen Tools. F&uuml;rs lokale Arbeiten die richtige Wahl.</td></tr>
-          <tr><td><code>MLX</code></td><td>Apples Format f&uuml;r M-Serie-Macs, in LM Studio teils sp&uuml;rbar schneller als GGUF.</td></tr>
-          <tr><td><code>GPTQ</code> / <code>AWQ</code></td><td>Komprimierte Formate, die komplett auf der Grafikkarte laufen m&uuml;ssen. Relevant f&uuml;r Server, nicht f&uuml;r den Laptop.</td></tr>
+          <tr><td><code>MLX</code></td><td>Die Mac-Antwort auf GGUF: Modelle im Zuschnitt f&uuml;r Apples hauseigenes Rechen-Framework, das direkt auf dem gemeinsamen Speicher der M-Chips arbeitet. Auf einem Mac oft sp&uuml;rbar schneller als dieselbe Stufe in GGUF, daf&uuml;r auf keiner anderen Hardware lauff&auml;hig.</td></tr>
+          <tr><td><code>GPTQ</code> / <code>AWQ</code> / <code>EXL3</code></td><td>Komprimierte Formate, die komplett in den Speicher einer NVIDIA-Grafikkarte passen m&uuml;ssen. Relevant f&uuml;r Server, nicht f&uuml;r den Laptop.</td></tr>
         </table>
         </div>
 
@@ -247,6 +247,13 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
           <p><strong>Ein GGUF-Repository ist ein Regal, kein einzelnes Produkt.</strong> &Ouml;ffnest du ein Repo mit GGUF im Namen, findest du darin ein Dutzend Dateien: dasselbe Modell in verschiedenen Kompressionsstufen, von <code>q2</code> bis <code>f16</code>. Du l&auml;dst genau eine davon herunter. Welche, kl&auml;rt die n&auml;chste Seite. (Tools wie LM Studio und Ollama treffen eine brauchbare Vorauswahl f&uuml;r dich.)</p>
         </div>
 
+
+
+        <h3>Mac oder PC: die Formatfrage in einem Satz</h3>
+
+        <p>Auf einem Mac mit M-Chip hast du die Wahl zwischen GGUF und MLX, &uuml;berall sonst f&auml;llt MLX weg. Praktisch hei&szlig;t das: <strong>MLX, wenn du auf einem Mac das letzte bisschen Tempo willst, GGUF in allen anderen F&auml;llen.</strong> GGUF bleibt die sichere Bank, weil mehr Software damit umgeht, weil es zu jedem Modell mehr Fassungen gibt und weil dieselbe Datei sp&auml;ter auch auf einem Windows-Rechner l&auml;uft.</p>
+
+        <p>Beim Umstieg f&auml;llt ein Detail sofort auf: MLX beschriftet seine Kompressionsstufen anders. Statt <code>Q4_K_M</code> hei&szlig;en die Dateien schlicht <code>-4bit</code>, <code>-8bit</code> oder <code>-bf16</code>. Die fertigen Fassungen liegen meist beim Community-Account <code>mlx-community</code>, etwa <code>mlx-community/Qwen3-8B-4bit</code>. Zum &Uuml;bersetzen: 4bit entspricht ungef&auml;hr Q4_K_M, 8bit ungef&auml;hr Q8_0.</p>
 
         <!-- ==================== SEITE 5 ==================== -->
 
@@ -277,7 +284,31 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
         </div>
 
 
-        <!-- ==================== PRAXIS ==================== -->
+        
+        <!-- Seite 6 -->
+        <span class="section-label">Seite 6 &middot; Neue K&uuml;rzel</span>
+        <h2>Was zuletzt dazugekommen ist</h2>
+
+        <p>Die Bausteine der Seiten 1 bis 5 sind stabil, die halten seit Jahren. Schneller &auml;ndern sich die Zus&auml;tze, die jede neue Modellgeneration mitbringt. Diese hier begegnen dir inzwischen regelm&auml;&szlig;ig:</p>
+
+        <div class="table-wrap">
+        <table>
+          <tr><th>K&uuml;rzel</th><th>Bedeutung</th></tr>
+          <tr><td><code>Instruct</code> und <code>Thinking</code> getrennt</td><td>Eine Weile gab es Modelle mit umschaltbarem Denkmodus. Inzwischen erscheinen wieder zwei getrennte Fassungen derselben Generation, etwa <code>Qwen3-30B-A3B-Instruct-2507</code> neben <code>Qwen3-30B-A3B-Thinking-2507</code>. F&uuml;r Alltagsfragen die Instruct-Fassung, f&uuml;r Knobelaufgaben die Thinking-Fassung.</td></tr>
+          <tr><td><code>Air</code>, <code>Flash</code>, <code>mini</code>, <code>nano</code>, <code>Lite</code></td><td>Herstellereigene Namen f&uuml;r die abgespeckte Ausgabe einer Generation. Dahinter steckt keine Norm, also immer die Parameterzahl gegenpr&uuml;fen.</td></tr>
+          <tr><td><code>Omni</code>, <code>Audio</code></td><td>Versteht neben Text und Bild auch gesprochene Sprache, manche Modelle antworten auch gesprochen.</td></tr>
+          <tr><td><code>abliterated</code>, <code>uncensored</code></td><td>Nachtr&auml;glich von der Community umgebaut, damit das Modell keine Antworten mehr verweigert. Kein Herstellerprodukt und entsprechend ungepr&uuml;ft.</td></tr>
+          <tr><td><code>UD-Q4_K_XL</code></td><td>Dynamische Quantisierung, bekannt vom Account <code>unsloth</code>: Nicht jede Schicht wird gleich stark komprimiert, empfindliche Teile behalten mehr Bit. Kostet etwas mehr Platz als <code>Q4_K_M</code> und antwortet in derselben Gr&ouml;&szlig;enklasse besser.</td></tr>
+          <tr><td><code>MXFP4</code>, <code>NVFP4</code></td><td>Neue 4-Bit-Zahlenformate, die aktuelle Chips direkt in Hardware rechnen. OpenAIs offenes Modell gpt-oss wurde gleich so ausgeliefert.</td></tr>
+          <tr><td><code>128k</code>, <code>1M</code></td><td>Das Kontextfenster (<i>context window</i>): wie viel Text auf einmal hineinpasst. Der Wert ist eine Herstellerangabe, keine Zusage, dass die Antwortqualit&auml;t bis zum letzten Wort tr&auml;gt.</td></tr>
+        </table>
+        </div>
+
+        <div class="deeper">
+          <strong>Tiefer gegraben:</strong> Zwei Angaben stehen fast nie im Namen und entscheiden trotzdem &uuml;ber die Brauchbarkeit. Erstens Tool Calling: ob das Modell gelernt hat, selbstst&auml;ndig Werkzeuge aufzurufen, also Websuche, Taschenrechner oder den eigenen Dateiordner. Fehlt das, bleibt auch ein starkes lokales Modell ein reiner Textgenerator. Zweitens die Lizenz, die von wirklich frei (Apache 2.0, MIT) &uuml;ber Community-Lizenzen mit Nutzungsgrenzen bis zur reinen Forschungsfreigabe reicht. Beides steht auf der Modellkarte (<i>model card</i>), dem Beschreibungstext oberhalb der Dateiliste.
+        </div>
+
+<!-- ==================== PRAXIS ==================== -->
 
         <span class="section-label">Praxis</span>
         <h2>In f&uuml;nf Schritten zum passenden Modell</h2>
@@ -298,8 +329,8 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
         </div>
 
         <div class="step">
-          <span class="step-head"><span class="step-num">4.</span>GGUF-Fassung nehmen</span>
-          <p>F&uuml;rs lokale Arbeiten mit Ollama, LM Studio und Co. immer das GGUF-Repository, vom Hersteller selbst oder von Community-Accounts wie unsloth und bartowski.</p>
+          <span class="step-head"><span class="step-num">4.</span>Format w&auml;hlen</span>
+          <p>F&uuml;rs lokale Arbeiten mit Ollama, LM Studio und Co. das GGUF-Repository, vom Hersteller selbst oder von Community-Accounts wie unsloth und bartowski. Auf einem Mac mit M-Chip ist die MLX-Fassung die schnellere Alternative, sofern es sie f&uuml;r dein Modell gibt.</p>
         </div>
 
         <div class="step">
@@ -320,6 +351,9 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
         <div class="source-item"><span class="source-num">3</span>c't 3003 / Janssen, J.-K. (2025, 24. Oktober). <i>Lokale KI ist jetzt WIRKLICH brauchbar (und auf dieser Hardware l&auml;uft sie)</i> [Video]. YouTube. <a href="https://www.youtube.com/watch?v=ii8Npn8H2BQ" target="_blank" rel="noopener">youtube.com/watch?v=ii8Npn8H2BQ</a></div>
         <div class="source-item"><span class="source-num">4</span>IBM Technology. (2026). <i>What is Llama.cpp? The LLM inference engine for local AI</i> [Video]. YouTube. <a href="https://www.youtube.com/watch?v=P8m5eHAyrFM" target="_blank" rel="noopener">youtube.com/watch?v=P8m5eHAyrFM</a></div>
         <div class="source-item"><span class="source-num">5</span>IBM Technology. (2026). <i>LLM compression explained: Build faster, efficient AI models</i> [Video]. YouTube. <a href="https://www.youtube.com/watch?v=wIXr22QTEHg" target="_blank" rel="noopener">youtube.com/watch?v=wIXr22QTEHg</a></div>
+        <div class="source-item"><span class="source-num">6</span>Hugging Face. (o.&nbsp;D.). Using MLX at Hugging Face. In <i>Hugging Face Hub Documentation</i>. <a href="https://huggingface.co/docs/hub/en/mlx" target="_blank" rel="noopener">huggingface.co/docs/hub/en/mlx</a></div>
+        <div class="source-item"><span class="source-num">7</span>Apple Machine Learning Research. (o.&nbsp;D.). <i>MLX: An array framework for Apple silicon</i> [Software]. GitHub. <a href="https://github.com/ml-explore/mlx" target="_blank" rel="noopener">github.com/ml-explore/mlx</a></div>
+        <div class="source-item"><span class="source-num">8</span>Unsloth. (o.&nbsp;D.). Unsloth Dynamic 2.0 GGUFs. In <i>Unsloth Documentation</i>. <a href="https://docs.unsloth.ai/basics/unsloth-dynamic-2.0-ggufs" target="_blank" rel="noopener">docs.unsloth.ai/basics/unsloth-dynamic-2.0-ggufs</a></div>
 
         <div class="footer">
           Mehr Interesse? <a href="/pages/erstgesprach">Kostenloses Erstgespr&auml;ch &rarr;</a><br>
