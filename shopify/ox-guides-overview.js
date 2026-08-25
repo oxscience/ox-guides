@@ -35,8 +35,8 @@ a:hover{text-decoration:underline}
 .hero__label{
   font-size:var(--ox-size-label);font-weight:600;letter-spacing:0.1em;
   text-transform:uppercase;margin:0 0 16px;
-  background:linear-gradient(135deg,#6d8cff 0%,#a78bfa 50%,#6d8cff 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  /* Startseiten-Stil 2026-08-25: Label einfarbig statt Gradient (Statuslicht-Regel) */
+  color:#6d8cff;
 }
 h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800;color:var(--white);margin:0 0 20px;letter-spacing:-0.03em;line-height:var(--ox-line-heading,1.15)}
 .subtitle{color:var(--text-secondary);font-size:var(--ox-size-sub);max-width:700px;margin:0 auto;line-height:var(--ox-line-body,1.6)}
@@ -72,7 +72,8 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 .guide-card:hover::after{opacity:1}
 
 .guide-info{flex:1}
-.guide-title{font-size:var(--ox-size-h3);font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
+/* Karten-Titel im Display-Serif (Startseiten-Stil 2026-08-25); Token erbt vom :root durch den Shadow DOM */
+.guide-title{font-family:var(--ox-font-display, ui-serif, Georgia, serif);font-size:var(--ox-size-h3);font-weight:600;letter-spacing:-0.01em;color:var(--white);margin-bottom:8px;line-height:1.3}
 .guide-desc{font-size:var(--ox-size-small);color:var(--text-secondary);line-height:1.5}
 
 .guide-meta{font-size:var(--ox-size-small);color:var(--primary);font-weight:500;margin-top:auto}
@@ -97,7 +98,8 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
   background:rgba(109,140,255,0.1);border:1px solid rgba(109,140,255,0.25);
   border-radius:20px;margin-bottom:14px;
 }
-.big-guide h2{font-size:var(--ox-size-h2);font-weight:800;color:var(--white);line-height:var(--ox-line-heading,1.15);margin:0 0 10px}
+/* Section-Headline im Display-Serif 600 (Startseiten-Stil 2026-08-25) */
+.big-guide h2{font-family:var(--ox-font-display, ui-serif, Georgia, serif);font-size:var(--ox-size-h2);font-weight:600;letter-spacing:-0.01em;color:var(--white);line-height:var(--ox-line-heading,1.15);margin:0 0 10px}
 .big-guide p{font-size:var(--ox-size-sub);color:var(--text-secondary);line-height:1.55;margin:0 0 16px;max-width:640px}
 .big-guide .cta{font-size:var(--ox-size-small);color:var(--primary);font-weight:500}
 

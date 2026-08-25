@@ -21,7 +21,6 @@ class OxCollectionHero extends HTMLElement {
   --bg:#0f0f11;
   --text:#e8e6e3;
   --muted:#8e8c89;
-  --gradient:linear-gradient(135deg,#6d8cff 0%,#a78bfa 50%,#6d8cff 100%);
   display:block;
   font-family:var(--ox-font);
   background:var(--bg);
@@ -55,10 +54,8 @@ class OxCollectionHero extends HTMLElement {
   letter-spacing:0.1em;
   text-transform:uppercase;
   margin:0 0 16px;
-  background:var(--gradient);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
+  /* Startseiten-Stil 2026-08-25: Label einfarbig statt Gradient (Statuslicht-Regel) */
+  color:#6d8cff;
 }
 
 h1{
@@ -70,11 +67,9 @@ h1{
   margin:0 0 20px;
   color:var(--text);
 }
+/* Startseiten-Stil 2026-08-25: Wortakzent einfarbig statt 135deg-Verlauf */
 .gradient{
-  background:var(--gradient);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#6d8cff;
 }
 
 .sub{
