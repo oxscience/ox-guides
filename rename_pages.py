@@ -45,9 +45,7 @@ RENAMES = {
     "ox-guide-claude-cowork-code": "claude-cowork-oder-claude-code",
     "ox-guide-claude-cowork-20": "claude-cowork-setup",
     "ox-guide-erste-automatisierung": "erste-ki-automatisierung",
-    "ox-guide-ki-texte-menschlich": "ki-texte-menschlich-machen",
     "ox-guide-spracheingabe": "spracheingabe-statt-tippen",
-    "ox-guide-chatgpt-zu-claude": "von-chatgpt-zu-claude",
     "ox-guide-ki-paper": "10-paper-hinter-der-ki",
 }
 
