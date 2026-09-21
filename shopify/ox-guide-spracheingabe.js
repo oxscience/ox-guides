@@ -212,7 +212,7 @@ li{margin-bottom:8px}
         <p>Spracheingabe ersetzt nicht das Tippen in jeder Situation, aber es gibt Aufgaben, bei denen der Geschwindigkeitsvorteil besonders deutlich ausf&auml;llt. Freitext-Dokumentation geh&ouml;rt dazu, also alles, wo ihr l&auml;ngere Abs&auml;tze formuliert statt nur K&auml;stchen anzukreuzen: Befunde, Berichte, Emails, Notizen. Weniger geeignet ist Spracheingabe f&uuml;r stark strukturierte Eingabemasken, bei denen ihr zwischen Feldern springen und einzelne Werte eintragen m&uuml;sst.</p>
 
         <h3>1.2 Was heutige KI-Diktiersoftware von Siri und Co. unterscheidet</h3>
-        <p>Die eingebaute Diktierfunktion auf dem iPhone oder Mac erkennt gesprochene W&ouml;rter, aber sie versteht keinen Kontext. Neue KI-basierte Tools wie SuperWhisper oder Wispr Flow nutzen Sprachmodelle, die den Sinn des Gesagten mitverarbeiten &mdash; dadurch setzen sie Fachbegriffe korrekt, erg&auml;nzen fehlende Satzzeichen automatisch und k&ouml;nnen sogar gesprochene F&uuml;llw&ouml;rter und Versprecher herausfiltern. Der Unterschied in der Praxis ist erheblich: Statt einen diktierten Text anschlie&szlig;end zu korrigieren, k&ouml;nnt ihr ihn in den meisten F&auml;llen direkt verwenden.</p>
+        <p>Die eingebaute Diktierfunktion auf dem iPhone oder Mac erkennt gesprochene W&ouml;rter, aber sie versteht keinen Kontext. Neue KI-basierte Tools wie VoiceInk oder Wispr Flow nutzen Sprachmodelle, die den Sinn des Gesagten mitverarbeiten &mdash; dadurch setzen sie Fachbegriffe korrekt, erg&auml;nzen fehlende Satzzeichen automatisch und k&ouml;nnen sogar gesprochene F&uuml;llw&ouml;rter und Versprecher herausfiltern. Der Unterschied in der Praxis ist erheblich: Statt einen diktierten Text anschlie&szlig;end zu korrigieren, k&ouml;nnt ihr ihn in den meisten F&auml;llen direkt verwenden.</p>
 
 
         <!-- ================================================================ -->
@@ -222,16 +222,17 @@ li{margin-bottom:8px}
         <span class="section-label">Seite 2 &middot; Werkzeuge</span>
         <h2>2. Die zwei Tools im Vergleich</h2>
         <p>Es gibt aktuell zwei Tools, die sich f&uuml;r den professionellen Einsatz eignen und die wir ohne Einschr&auml;nkung empfehlen k&ouml;nnen. Beide laufen auf dem Mac, beide arbeiten systemweit &mdash; das hei&szlig;t, ihr k&ouml;nnt in jedes Textfeld diktieren, egal ob Browser, Praxissoftware oder Email-Programm. Der entscheidende Unterschied liegt im Datenschutz.</p>
+        <p>Wer auf Windows oder Linux arbeitet: <a href="https://handy.computer">Handy</a> ist eine kostenlose Open-Source-App (MIT-Lizenz), die dasselbe Prinzip auf allen drei Systemen umsetzt, Whisper-Modell lokal, Push-to-Talk, keine Cloud. Eine eigene Wortliste fehlt dort allerdings noch.</p>
 
         <div class="comparison">
           <div class="comparison-col col-local">
-            <h3>SuperWhisper</h3>
+            <h3>VoiceInk</h3>
             <p><strong>Verarbeitung:</strong> Komplett lokal auf eurem Mac. Kein Internet n&ouml;tig, keine Daten verlassen das Ger&auml;t.</p>
             <p><strong>Genauigkeit:</strong> Sehr gut, besonders mit den gr&ouml;&szlig;eren Whisper-Modellen (Large v3). Bei Fachbegriffen gelegentlich kleine Abweichungen.</p>
-            <p><strong>Preis:</strong> Einmalig ca. 30 USD (Lifetime)</p>
-            <p><strong>Systemanforderung:</strong> Apple Silicon (M1 oder neuer), mindestens 16 GB RAM f&uuml;r die gro&szlig;en Modelle empfohlen</p>
+            <p><strong>Preis:</strong> Einmalig ab ca. 25 USD (Lifetime), kostenlose Testversion. Quellcode offen (GPL), wer mag, baut die App selbst aus dem Quellcode.</p>
+            <p><strong>Systemanforderung:</strong> Apple Silicon (M1 oder neuer), macOS 14.4 oder neuer, mindestens 8 GB RAM, f&uuml;r die gro&szlig;en Modelle besser 16 GB</p>
             <ul>
-              <li>Basiert auf OpenAIs Whisper-Modell, l&auml;uft aber vollst&auml;ndig offline</li>
+              <li>Open Source, basiert auf OpenAIs Whisper-Modell (whisper.cpp), l&auml;uft vollst&auml;ndig offline</li>
               <li>Mehrere Modellgr&ouml;&szlig;en w&auml;hlbar (Tiny bis Large)</li>
               <li>Unterst&uuml;tzt Deutsch nativ</li>
             </ul>
@@ -254,8 +255,8 @@ li{margin-bottom:8px}
         <p>Beide Tools funktionieren nach demselben Prinzip: Ihr dr&uuml;ckt eine Tastenkombination, sprecht, und der Text erscheint dort, wo euer Cursor gerade steht. Es ist keine App, die ihr &ouml;ffnen m&uuml;sst, kein Fenster, das im Weg ist &mdash; einfach dr&uuml;cken, reden, fertig.</p>
 
         <div class="shortcut-box">
-          <span class="shortcut-keys">&#x2325; + Leertaste</span>
-          <span class="shortcut-desc"><strong>SuperWhisper</strong> &mdash; Option + Leertaste gedr&uuml;ckt halten, sprechen, loslassen. Text erscheint nach einer kurzen Verarbeitung.</span>
+          <span class="shortcut-keys">Push-to-Talk</span>
+          <span class="shortcut-desc"><strong>VoiceInk</strong> &mdash; frei w&auml;hlbaren Shortcut gedr&uuml;ckt halten, sprechen, loslassen. Text erscheint nach einer kurzen Verarbeitung.</span>
         </div>
         <div class="shortcut-box">
           <span class="shortcut-keys">fn fn</span>
@@ -267,7 +268,7 @@ li{margin-bottom:8px}
 
         <div class="privacy-safe">
           <span class="privacy-label">DSGVO-konform einsetzbar</span>
-          <p><strong>SuperWhisper verarbeitet alles lokal.</strong> Kein Audio verl&auml;sst euren Rechner, keine Daten gehen an externe Server. Aus Datenschutz-Sicht ist das gleichbedeutend mit dem Tippen auf eurer Tastatur &mdash; die Daten bleiben bei euch. Ihr k&ouml;nnt damit Patientennamen, Befunde, Diagnosen und alle anderen sensiblen Inhalte diktieren, ohne gegen Datenschutzauflagen zu versto&szlig;en.</p>
+          <p><strong>VoiceInk verarbeitet alles lokal.</strong> Kein Audio verl&auml;sst euren Rechner, keine Daten gehen an externe Server. Aus Datenschutz-Sicht ist das gleichbedeutend mit dem Tippen auf eurer Tastatur &mdash; die Daten bleiben bei euch. Ihr k&ouml;nnt damit Patientennamen, Befunde, Diagnosen und alle anderen sensiblen Inhalte diktieren, ohne gegen Datenschutzauflagen zu versto&szlig;en.</p>
         </div>
 
         <div class="privacy-warn">
@@ -276,7 +277,7 @@ li{margin-bottom:8px}
         </div>
 
         <div class="callout">
-          <strong>Empfehlung f&uuml;r den Praxisalltag:</strong> Wer auf Nummer sicher gehen will, nutzt SuperWhisper f&uuml;r alles, was Patientendaten enth&auml;lt, und Wispr Flow f&uuml;r den Rest. Wer nur ein Tool will und im Gesundheitswesen arbeitet, nimmt SuperWhisper &mdash; lieber minimal weniger Genauigkeit als ein Datenschutz-Problem.
+          <strong>Empfehlung f&uuml;r den Praxisalltag:</strong> Wer auf Nummer sicher gehen will, nutzt VoiceInk f&uuml;r alles, was Patientendaten enth&auml;lt, und Wispr Flow f&uuml;r den Rest. Wer nur ein Tool will und im Gesundheitswesen arbeitet, nimmt VoiceInk &mdash; lieber minimal weniger Genauigkeit als ein Datenschutz-Problem.
         </div>
 
 
@@ -351,7 +352,7 @@ li{margin-bottom:8px}
         </div>
 
         <div class="highlight-box">
-          <strong>Praxistipp f&uuml;r alle zehn Szenarien:</strong> Diktiert in ganzen S&auml;tzen, nicht in Stichworten. Die KI-Erkennung arbeitet deutlich besser, wenn sie vollst&auml;ndige Satzstrukturen verarbeiten kann. Wenn ihr Satzzeichen explizit ansagen m&uuml;sst (bei SuperWhisper manchmal n&ouml;tig), sagt einfach &bdquo;Punkt&ldquo;, &bdquo;Komma&ldquo; oder &bdquo;Neue Zeile&ldquo; &mdash; beide Tools erkennen diese Befehle.
+          <strong>Praxistipp f&uuml;r alle zehn Szenarien:</strong> Diktiert in ganzen S&auml;tzen, nicht in Stichworten. Die KI-Erkennung arbeitet deutlich besser, wenn sie vollst&auml;ndige Satzstrukturen verarbeiten kann. Wenn ihr Satzzeichen explizit ansagen m&uuml;sst (bei lokalen Whisper-Modellen manchmal n&ouml;tig), sagt einfach &bdquo;Punkt&ldquo;, &bdquo;Komma&ldquo; oder &bdquo;Neue Zeile&ldquo; &mdash; beide Tools erkennen diese Befehle.
         </div>
 
 
@@ -363,12 +364,12 @@ li{margin-bottom:8px}
         <h2>4. Setup in f&uuml;nf Minuten</h2>
         <p>Beide Tools sind in wenigen Schritten einsatzbereit. Ihr braucht keine IT-Abteilung und keine Konfigurationsdatei &mdash; herunterladen, eine Einstellung pr&uuml;fen, fertig.</p>
 
-        <h3>4.1 SuperWhisper einrichten</h3>
+        <h3>4.1 VoiceInk einrichten</h3>
 
         <div class="step-card">
           <span class="step-label">Schritt 1</span>
           <span class="step-title">Herunterladen</span>
-          <p><a href="https://superwhisper.com">superwhisper.com</a> aufrufen und die App installieren. Die kostenlose Testversion reicht zum Ausprobieren.</p>
+          <p><a href="https://tryvoiceink.com">tryvoiceink.com</a> aufrufen und die App installieren. Die kostenlose Testversion reicht zum Ausprobieren. Der Quellcode liegt auf <a href="https://github.com/Beingpax/VoiceInk">GitHub</a>.</p>
         </div>
 
         <div class="step-card">
@@ -380,33 +381,33 @@ li{margin-bottom:8px}
         <div class="step-card">
           <span class="step-label">Schritt 3</span>
           <span class="step-title">Sprache und Shortcut pr&uuml;fen</span>
-          <p>Sprache auf Deutsch stellen und den Shortcut pr&uuml;fen: <code>Option + Leertaste</code> ist der Standard. Falls eine andere App diesen Shortcut belegt, k&ouml;nnt ihr ihn in den Einstellungen &auml;ndern.</p>
+          <p>Sprache auf Deutsch stellen und in den Einstellungen einen Shortcut f&uuml;r Push-to-Talk festlegen, den keine andere App belegt.</p>
         </div>
 
         <div class="step-card">
           <span class="step-label">Schritt 4</span>
           <span class="step-title">Mikrofon-Zugriff best&auml;tigen</span>
-          <p>macOS fragt beim ersten Start, ob SuperWhisper auf das Mikrofon zugreifen darf. Best&auml;tigen &mdash; ohne Mikrofon-Zugriff geht es nicht. Falls ihr ein externes Mikrofon nutzt, stellt sicher, dass es in den Systemeinstellungen als Eingabeger&auml;t ausgew&auml;hlt ist.</p>
+          <p>macOS fragt beim ersten Start, ob VoiceInk auf das Mikrofon zugreifen darf. Best&auml;tigen &mdash; ohne Mikrofon-Zugriff geht es nicht. Falls ihr ein externes Mikrofon nutzt, stellt sicher, dass es in den Systemeinstellungen als Eingabeger&auml;t ausgew&auml;hlt ist.</p>
         </div>
 
         <div class="step-card">
           <span class="step-label">Schritt 5</span>
           <span class="step-title">Testen</span>
-          <p>&Ouml;ffnet ein beliebiges Textfeld (Notizen-App, Browser, Praxissoftware), dr&uuml;ckt <code>Option + Leertaste</code>, sprecht einen Satz und lasst los. Der transkribierte Text sollte nach wenigen Sekunden erscheinen.</p>
+          <p>&Ouml;ffnet ein beliebiges Textfeld (Notizen-App, Browser, Praxissoftware), haltet euren Shortcut gedr&uuml;ckt, sprecht einen Satz und lasst los. Der transkribierte Text sollte nach wenigen Sekunden erscheinen.</p>
         </div>
 
         <h3>4.2 Wispr Flow einrichten</h3>
         <p>Das Setup l&auml;uft fast identisch ab: App von <a href="https://wisprflow.com">wisprflow.com</a> herunterladen, Account erstellen, Mikrofon-Zugriff erlauben. Der Shortcut ist <code>fn fn</code> (Fn-Taste doppelt antippen). Wispr Flow braucht kein lokales Modell herunterzuladen, weil die Verarbeitung in der Cloud passiert &mdash; daf&uuml;r braucht ihr eine stabile Internetverbindung.</p>
 
         <div class="callout">
-          <strong>Beide Tools parallel nutzen?</strong> Das geht, und es ist sogar eine sinnvolle Strategie: SuperWhisper f&uuml;r alles mit Patientenbezug (lokal und DSGVO-konform), Wispr Flow f&uuml;r allgemeine Texte, bei denen die etwas h&ouml;here Genauigkeit den Unterschied macht. Beide k&ouml;nnen gleichzeitig installiert sein, solange die Shortcuts unterschiedlich bleiben.
+          <strong>Beide Tools parallel nutzen?</strong> Das geht, und es ist sogar eine sinnvolle Strategie: VoiceInk f&uuml;r alles mit Patientenbezug (lokal und DSGVO-konform), Wispr Flow f&uuml;r allgemeine Texte, bei denen die etwas h&ouml;here Genauigkeit den Unterschied macht. Beide k&ouml;nnen gleichzeitig installiert sein, solange die Shortcuts unterschiedlich bleiben.
         </div>
 
         <h3>4.3 Drei Tipps f&uuml;r bessere Ergebnisse</h3>
         <ol>
           <li><strong>Ruhige Umgebung:</strong> Hintergrundger&auml;usche sind der gr&ouml;&szlig;te Feind der Spracherkennung. In einem lauten Behandlungsraum mit laufender Musik und Ger&auml;ten sinkt die Genauigkeit deutlich. Im eigenen B&uuml;ro oder im ruhigen Pausenraum funktioniert es am besten.</li>
           <li><strong>Deutlich, aber nat&uuml;rlich sprechen:</strong> Ihr m&uuml;sst nicht &uuml;bertrieben langsam oder laut sprechen. Normales, klares Sprechtempo reicht aus. Was hilft: Ganze S&auml;tze statt Stichworte, weil die KI aus dem Satzkontext R&uuml;ckschl&uuml;sse auf einzelne W&ouml;rter zieht.</li>
-          <li><strong>Fachbegriffe trainieren:</strong> SuperWhisper erlaubt es, eine eigene Wortliste (Custom Vocabulary) anzulegen. Tragt dort die Fachbegriffe ein, die ihr h&auml;ufig verwendet &mdash; Gonarthrose, Tendinopathie, Lasegue, Maitland &mdash; und die Erkennung wird bei diesen W&ouml;rtern sp&uuml;rbar besser.</li>
+          <li><strong>Fachbegriffe trainieren:</strong> VoiceInk erlaubt es, eine eigene Wortliste (Personal Dictionary) anzulegen. Tragt dort die Fachbegriffe ein, die ihr h&auml;ufig verwendet &mdash; Gonarthrose, Tendinopathie, Lasegue, Maitland &mdash; und die Erkennung wird bei diesen W&ouml;rtern sp&uuml;rbar besser.</li>
         </ol>
 
 
@@ -423,11 +424,11 @@ li{margin-bottom:8px}
           <h2>F&uuml;r die Lehre: 3 &Uuml;bungsideen</h2>
           <div class="exercise">
             <strong>1. Diktat-Wettbewerb</strong> <span class="time">15 Min</span>
-            <p>Alle bekommen denselben Befund auf Papier. Eine H&auml;lfte tippt ihn ab, die andere diktiert ihn per SuperWhisper. Anschlie&szlig;end vergleichen: Zeit, Fehlerquote und Lesbarkeit. Der Unterschied ist eindr&uuml;cklich genug, dass niemand mehr zum Tippen zur&uuml;ck will.</p>
+            <p>Alle bekommen denselben Befund auf Papier. Eine H&auml;lfte tippt ihn ab, die andere diktiert ihn per VoiceInk. Anschlie&szlig;end vergleichen: Zeit, Fehlerquote und Lesbarkeit. Der Unterschied ist eindr&uuml;cklich genug, dass niemand mehr zum Tippen zur&uuml;ck will.</p>
           </div>
           <div class="exercise">
             <strong>2. Datenschutz-Diskussion</strong> <span class="time">20 Min</span>
-            <p>Szenarien durchspielen: Welches Tool d&uuml;rft ihr in welcher Situation verwenden? Fall 1: Befund mit Patientenname. Fall 2: Allgemeine Fortbildungsnotizen. Fall 3: Therapiebericht f&uuml;r die Krankenkasse. Teilnehmende ordnen zu (SuperWhisper vs. Wispr Flow vs. beides m&ouml;glich) und begr&uuml;nden warum.</p>
+            <p>Szenarien durchspielen: Welches Tool d&uuml;rft ihr in welcher Situation verwenden? Fall 1: Befund mit Patientenname. Fall 2: Allgemeine Fortbildungsnotizen. Fall 3: Therapiebericht f&uuml;r die Krankenkasse. Teilnehmende ordnen zu (VoiceInk vs. Wispr Flow vs. beides m&ouml;glich) und begr&uuml;nden warum.</p>
           </div>
           <div class="exercise">
             <strong>3. Workflow-Design</strong> <span class="time">30 Min</span>

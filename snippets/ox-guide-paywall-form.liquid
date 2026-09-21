@@ -1,0 +1,18 @@
+{%- comment -%}
+  OX Guide Paywall — natives Shopify-Customer-Formular.
+
+  Server-seitig via {% form 'customer' %} gerendert, damit Shopifys reCAPTCHA-Token
+  beim Submit automatisch mitgeht. Ein reiner fetch()-POST auf /contact wird sonst
+  mit HTTP 400 + Captcha geblockt -> es entsteht KEIN Kunde (alter Bug).
+
+  ox-guide-paywall.js erkennt dieses Formular als Kind von <ox-guide-paywall> und
+  verschiebt es ins Modal-Overlay. Ohne JS bleibt es versteckt (gleiche Wirkung wie
+  bisher, wo das Formular rein per JS gebaut wurde).
+{%- endcomment -%}
+<style>ox-guide-paywall{display:none !important;}</style>
+{% form 'customer', class: 'ox-guide-signup-form' %}
+  <input type="hidden" name="contact[tags]" value="ox-guide-subscriber,{{ page.handle }}">
+  <input type="hidden" name="contact[accepts_marketing]" value="true">
+  <input type="email" name="contact[email]" placeholder="deine@email.de" required autocomplete="email" aria-label="E-Mail-Adresse">
+  <button type="submit">Weiterlesen &rarr;</button>
+{% endform %}

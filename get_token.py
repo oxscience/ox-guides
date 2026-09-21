@@ -21,7 +21,7 @@ from pathlib import Path
 
 SHOP = "5681d7.myshopify.com"
 CLIENT_ID = "8ac8474da90b01d70db3dbf5d7739529"
-SCOPES = "write_online_store_pages,read_online_store_pages,write_files,read_files,read_products,write_products"
+SCOPES = "write_online_store_pages,read_online_store_pages,write_files,read_files,read_products,write_products,read_customers,write_customers"
 PORT = 8765
 REDIRECT_URI = f"http://localhost:{PORT}/callback"
 STATE = secrets.token_urlsafe(16)

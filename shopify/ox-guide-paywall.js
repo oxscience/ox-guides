@@ -4,16 +4,17 @@
  * Zeigt einen Content-Teaser mit Fade-Out und ein Modal-Overlay mit
  * Email-Form. Eingeloggte Kunden sehen den Content ohne Overlay.
  *
- * Einbindung in Guide-Templates:
- *   <script src="{{ 'ox-guide-paywall.js' | file_url }}"></script>
- *   <ox-guide-XYZ></ox-guide-XYZ>
- *   <ox-guide-paywall
- *     guide="6-stufen-ki-nutzung"
- *     title="Die 6 Stufen der KI-Nutzung"
- *     description="..."
- *     benefits="Eins, Zwei, Drei"
- *   ></ox-guide-paywall>
+ * WICHTIG (2026-06): Die Anmeldung läuft NICHT mehr über Shopifys /contact.
+ * Grund: Shopifys reCAPTCHA lädt auf den Custom-Guide-Pages nicht, verlangt aber
+ * einen Token -> "Missing CAPTCHA token", jede Anmeldung ging verloren. Stattdessen
+ * postet das Formular an unseren eigenen Endpoint (signup.outoftheb-ox.de), der den
+ * Kunden per Shopify-Admin-API anlegt. Der Endpoint umgeht /contact komplett.
+ *
+ * Robust: wir warten auf die Antwort (await). Erfolg -> entsperren. Fehler ->
+ * sichtbare Meldung + Retry (KEIN stilles Entsperren wie früher).
  */
+
+const OX_SIGNUP_ENDPOINT = 'https://signup.outoftheb-ox.de/signup';
 
 class OxGuidePaywall extends HTMLElement {
   async connectedCallback() {
@@ -141,11 +142,13 @@ class OxGuidePaywall extends HTMLElement {
 
         #ox-paywall-modal form {
           display: flex;
+          flex-wrap: wrap;
           gap: 8px;
-          margin-bottom: 12px;
+          margin-bottom: 8px;
         }
         #ox-paywall-modal input[type=email] {
           flex: 1;
+          min-width: 180px;
           background: #0a0a0a;
           border: 1px solid #222;
           border-radius: 8px;
@@ -159,8 +162,15 @@ class OxGuidePaywall extends HTMLElement {
           border-color: #6366f1;
         }
         #ox-paywall-modal input::placeholder { color: #666; }
+        /* Honeypot — für Menschen unsichtbar, Bots füllen es aus */
+        #ox-paywall-modal .ox-hp {
+          position: absolute !important;
+          left: -9999px !important;
+          width: 1px; height: 1px;
+          opacity: 0; overflow: hidden;
+        }
 
-        #ox-paywall-modal button {
+        #ox-paywall-modal button[type=submit] {
           background: #6366f1;
           color: #fff;
           border: none;
@@ -172,7 +182,16 @@ class OxGuidePaywall extends HTMLElement {
           cursor: pointer;
           white-space: nowrap;
         }
-        #ox-paywall-modal button:hover { background: #5558e6; }
+        #ox-paywall-modal button[type=submit]:hover { background: #5558e6; }
+        #ox-paywall-modal button[type=submit]:disabled { opacity: 0.6; cursor: default; }
+
+        #ox-paywall-error {
+          min-height: 0;
+          font-size: 12.5px;
+          color: #f0a0a0;
+          line-height: 1.4;
+          margin: 0 0 8px;
+        }
 
         #ox-paywall-modal .why-email {
           font-size: 12px;
@@ -248,16 +267,12 @@ class OxGuidePaywall extends HTMLElement {
         </ul>
         ` : ''}
 
-        <form action="/contact" method="post" accept-charset="UTF-8">
-          <input type="hidden" name="form_type" value="customer">
-          <input type="hidden" name="utf8" value="&#10003;">
-          <input type="hidden" name="contact[tags]" value="ox-guide-subscriber,${guide}">
-          <input type="hidden" name="contact[accepts_marketing]" value="true">
-          <input type="hidden" name="return_to" value="${window.location.pathname}">
-
-          <input type="email" name="contact[email]" placeholder="deine@email.de" required autocomplete="email">
+        <form novalidate>
+          <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+          <input type="text" class="ox-hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit">Weiterlesen →</button>
         </form>
+        <p id="ox-paywall-error"></p>
 
         <p class="why-email">
           <strong>Warum E-Mail statt Social Media?</strong> Mit jeder Adresse müssen wir Social Media weniger befeuern — und unsere Verbindung bleibt in der EU, ohne Algorithmus dazwischen.
@@ -299,7 +314,6 @@ class OxGuidePaywall extends HTMLElement {
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
-    // Form submit: Email per AJAX an Shopify, Soft-Unlock, Content freigeben
     const unlockPage = () => {
       try { localStorage.setItem('ox-paywall-unlocked', '1'); } catch (e) {}
       if (cutoff && guideEl) {
@@ -313,13 +327,43 @@ class OxGuidePaywall extends HTMLElement {
 
     const form = overlay.querySelector('form');
     const modal = overlay.querySelector('#ox-paywall-modal');
+    const errEl = overlay.querySelector('#ox-paywall-error');
+
     if (form && modal) {
-      form.addEventListener('submit', (ev) => {
+      form.addEventListener('submit', async (ev) => {
         ev.preventDefault();
-        const data = new FormData(form);
-        // Fire-and-forget: Shopify Customer-Record anlegen
-        fetch('/contact', { method: 'POST', body: data, credentials: 'same-origin' }).catch(() => {});
-        // Sofort entsperren (nicht auf Response warten — Shopify antwortet mit HTML-Redirect)
+        const email = (form.querySelector('input[name=email]').value || '').trim();
+        const hp = (form.querySelector('input[name=hp]').value || '').trim();
+        const btn = form.querySelector('button[type=submit]');
+        if (errEl) errEl.textContent = '';
+        if (!email) return;
+
+        if (btn) { btn.disabled = true; btn.textContent = 'Senden …'; }
+
+        let ok = false;
+        try {
+          const resp = await fetch(OX_SIGNUP_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, guide, hp }),
+          });
+          const data = await resp.json().catch(() => ({}));
+          ok = resp.ok && data && data.ok === true;
+          if (!ok && errEl) {
+            errEl.textContent = (data && data.error === 'email')
+              ? 'Bitte gib eine gültige E-Mail-Adresse ein.'
+              : 'Hat gerade nicht geklappt — bitte nochmal versuchen.';
+          }
+        } catch (e) {
+          if (errEl) errEl.textContent = 'Verbindungsfehler — bitte nochmal versuchen.';
+        }
+
+        if (!ok) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Weiterlesen →'; }
+          return;
+        }
+
+        // Erfolg: entsperren + Danke
         unlockPage();
         modal.innerHTML = `
           <div class="badge">Freigeschaltet</div>
@@ -331,7 +375,6 @@ class OxGuidePaywall extends HTMLElement {
         `;
         const closeBtn = modal.querySelector('#ox-paywall-close');
         if (closeBtn) closeBtn.addEventListener('click', () => overlay.remove());
-        // Automatisch nach 3s schließen
         setTimeout(() => overlay.remove(), 3000);
       });
     }
