@@ -305,7 +305,7 @@ class OxGuidePaywall extends HTMLElement {
         <p id="ox-paywall-error"></p>
 
         <p class="why-email">
-          <strong>Warum wir nach deiner Mail fragen:</strong> Auf Instagram und Co. entscheidet der Algorithmus, ob wir uns überhaupt noch sehen. Da hält Big Tech die Strippe zwischen uns beiden in der Hand. Mit deiner Mail haben wir einen direkten Draht, ohne dass jemand dazwischen entscheidet.
+          <strong>Warum wir nach deiner Mail fragen:</strong> Auf Instagram und Co. entscheidet der Algorithmus, ob wir uns überhaupt noch sehen. Da hält Big Tech die Strippe zwischen uns beiden in der Hand. Mit deiner Mail haben wir einen direkten Draht: Neue Guides wie diesen bekommst du kostenlos ins Postfach, ohne dass ein Algorithmus dazwischen entscheidet.
         </p>
         <p class="consent">
           Mit dem Absenden stimmst du zu, dass wir dir gelegentlich Updates zu neuen Guides schicken.
