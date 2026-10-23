@@ -157,6 +157,14 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 
         <div class="section-label" id="sec-grundlagen">KI-Grundlagen</div>
         <div class="guide-grid">
+        <a href="/pages/medizin-ki-oder-chatgpt" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">Medizin-KI oder ChatGPT? <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Was die Studien 2026 zu AMBOSS, OpenEvidence, Elicit und Co. wirklich zeigen: drei Schl&uuml;sselstudien mit ihrem Haken, eine Werkzeugkarte nach Fragetyp und der Stand f&uuml;r Physio und Sport.</div>
+          </div>
+          <div class="guide-meta">8-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/ki-modellnamen" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">KI-Modellnamen entschl&uuml;sseln <span class="badge-new">Neu</span></div>

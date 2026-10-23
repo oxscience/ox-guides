@@ -65,6 +65,7 @@ GUIDES = [
     ("7 Skills AI Agents", "ox-guide-7-skills-ai-agents"),
     ("SearXNG vs Google", "ox-guide-searxng-vs-google"),
     ("Die 10 Paper, die KI möglich gemacht haben", "ox-guide-ki-paper"),
+    ("Medizin-KI oder ChatGPT?", "ox-guide-medizin-ki"),
     ("KI durchschauen", "ox-guide-ki-durchschauen"),
     ("KI-Modellnamen entschlüsseln", "ox-guide-hf-modellnamen"),
     ("Kostenlose OX Tools", "ox-tools-overview"),

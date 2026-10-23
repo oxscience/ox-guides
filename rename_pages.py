@@ -47,6 +47,7 @@ RENAMES = {
     "ox-guide-erste-automatisierung": "erste-ki-automatisierung",
     "ox-guide-spracheingabe": "spracheingabe-statt-tippen",
     "ox-guide-ki-paper": "10-paper-hinter-der-ki",
+    "ox-guide-medizin-ki": "medizin-ki-oder-chatgpt",
 }
 
 
