@@ -5,6 +5,8 @@ class OxGuidesOverview extends HTMLElement {
   }
 
   connectedCallback() {
+    // Anonymer Aufrufzaehler (siehe ox-guide-paywall.js), Fehler egal
+    try { navigator.sendBeacon('https://signup.outoftheb-ox.de/view', JSON.stringify({ guide: 'kostenlose-ox-guides', state: 'overview' })); } catch (e) {}
     this.shadowRoot.innerHTML = `
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}

@@ -15,6 +15,18 @@
  */
 
 const OX_SIGNUP_ENDPOINT = 'https://signup.outoftheb-ox.de/signup';
+const OX_VIEW_ENDPOINT = 'https://signup.outoftheb-ox.de/view';
+
+// Anonymer Aufrufzaehler: Guide + Status, "first" = erster Aufruf in diesem Browser.
+// Keine Cookies, keine IP-Speicherung. Darf nie etwas kaputt machen -> alles in try.
+function oxTrackView(guide, state) {
+  let first = false;
+  try {
+    first = !localStorage.getItem('ox-seen-' + guide);
+    localStorage.setItem('ox-seen-' + guide, '1');
+  } catch (e) {}
+  try { navigator.sendBeacon(OX_VIEW_ENDPOINT, JSON.stringify({ guide, state, first })); } catch (e) {}
+}
 
 class OxGuidePaywall extends HTMLElement {
   async connectedCallback() {
@@ -27,7 +39,7 @@ class OxGuidePaywall extends HTMLElement {
 
     // Soft-Unlock: wenn der User schon Email eingegeben hat, Paywall komplett skippen
     try {
-      if (localStorage.getItem('ox-paywall-unlocked') === '1') return;
+      if (localStorage.getItem('ox-paywall-unlocked') === '1') return oxTrackView(guide, 'unlocked');
     } catch (e) { /* localStorage disabled */ }
 
     // Check login
@@ -42,8 +54,10 @@ class OxGuidePaywall extends HTMLElement {
 
     if (isLoggedIn) {
       // Eingeloggte User: Modal & Teaser-Abschneiden entfernen
-      return;
+      return oxTrackView(guide, 'member');
     }
+
+    oxTrackView(guide, 'paywall');
 
     // Build overlay + modal in Light DOM so it can cover the whole page
     const overlay = document.createElement('div');
@@ -217,6 +231,22 @@ class OxGuidePaywall extends HTMLElement {
           text-decoration: underline;
         }
 
+        #ox-paywall-modal .skip {
+          text-align: center;
+          margin: 0 0 14px;
+        }
+        #ox-paywall-modal .skip button {
+          background: none;
+          border: none;
+          padding: 4px 6px;
+          font-size: 12px;
+          font-family: inherit;
+          color: #777;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        #ox-paywall-modal .skip button:hover { color: #a5b4fc; }
+
         #ox-paywall-modal .login {
           text-align: center;
           font-size: 12.5px;
@@ -275,12 +305,15 @@ class OxGuidePaywall extends HTMLElement {
         <p id="ox-paywall-error"></p>
 
         <p class="why-email">
-          <strong>Warum E-Mail statt Social Media?</strong> Mit jeder Adresse müssen wir Social Media weniger befeuern — und unsere Verbindung bleibt in der EU, ohne Algorithmus dazwischen.
+          <strong>Warum wir nach deiner Mail fragen:</strong> Auf Instagram und Co. entscheidet der Algorithmus, ob wir uns überhaupt noch sehen. Da hält Big Tech die Strippe zwischen uns beiden in der Hand. Mit deiner Mail haben wir einen direkten Draht, ohne dass jemand dazwischen entscheidet.
         </p>
         <p class="consent">
           Mit dem Absenden stimmst du zu, dass wir dir gelegentlich Updates zu neuen Guides schicken.
           Abmeldung jederzeit. <a href="/policies/privacy-policy">Datenschutz</a>.
         </p>
+        <div class="skip">
+          <button type="button" id="ox-paywall-skip">Ist mir zu doof, ich will einfach so lesen</button>
+        </div>
 
         <div class="login">
           Schon OX-Kunde? <a href="/account/login?return_url=${encodeURIComponent(window.location.pathname)}">Einloggen &rarr;</a>
@@ -314,8 +347,9 @@ class OxGuidePaywall extends HTMLElement {
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
-    const unlockPage = () => {
-      try { localStorage.setItem('ox-paywall-unlocked', '1'); } catch (e) {}
+    // remember=false beim Ueberspringen: dann fragt die Paywall beim naechsten Besuch wieder
+    const unlockPage = (remember = true) => {
+      if (remember) { try { localStorage.setItem('ox-paywall-unlocked', '1'); } catch (e) {} }
       if (cutoff && guideEl) {
         cutoff.parentNode.insertBefore(guideEl, cutoff);
         if (fade) fade.remove();
@@ -328,6 +362,15 @@ class OxGuidePaywall extends HTMLElement {
     const form = overlay.querySelector('form');
     const modal = overlay.querySelector('#ox-paywall-modal');
     const errEl = overlay.querySelector('#ox-paywall-error');
+    const skipBtn = overlay.querySelector('#ox-paywall-skip');
+
+    if (skipBtn) {
+      skipBtn.addEventListener('click', () => {
+        oxTrackView(guide, 'skip');
+        unlockPage(false);
+        overlay.remove();
+      });
+    }
 
     if (form && modal) {
       form.addEventListener('submit', async (ev) => {
@@ -352,10 +395,10 @@ class OxGuidePaywall extends HTMLElement {
           if (!ok && errEl) {
             errEl.textContent = (data && data.error === 'email')
               ? 'Bitte gib eine gültige E-Mail-Adresse ein.'
-              : 'Hat gerade nicht geklappt — bitte nochmal versuchen.';
+              : 'Hat gerade nicht geklappt, bitte nochmal versuchen.';
           }
         } catch (e) {
-          if (errEl) errEl.textContent = 'Verbindungsfehler — bitte nochmal versuchen.';
+          if (errEl) errEl.textContent = 'Verbindungsfehler, bitte nochmal versuchen.';
         }
 
         if (!ok) {
@@ -368,7 +411,7 @@ class OxGuidePaywall extends HTMLElement {
         modal.innerHTML = `
           <div class="badge">Freigeschaltet</div>
           <h2>Danke, du bist drauf.</h2>
-          <p class="desc">Wir schicken dir gelegentlich Updates zu neuen Guides. Viel Spaß beim Lesen &mdash; scroll einfach weiter.</p>
+          <p class="desc">Wir schicken dir gelegentlich Updates zu neuen Guides. Viel Spaß beim Lesen, scroll einfach weiter.</p>
           <div style="text-align:center;margin-top:18px">
             <button type="button" id="ox-paywall-close">Weiter zum Guide</button>
           </div>
