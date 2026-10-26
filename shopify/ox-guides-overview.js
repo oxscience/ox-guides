@@ -15,7 +15,7 @@ class OxGuidesOverview extends HTMLElement {
   --bg:#0f0f11;--surface:#1a1a1f;--surface-hover:#222228;
   --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
   --text:#e8e6e3;--text-secondary:#8e8c89;--text-muted:#666;--text-dim:#555;
-  --primary:#6d8cff;--primary-light:#1e1b4b;
+  --primary:#6fbdbb;--primary-light:#133433;
   --white:#fff;
   display:block;font-family:var(--ox-font);background:var(--bg);color:var(--text);line-height:var(--ox-line-body,1.6);
   -webkit-font-smoothing:antialiased;
@@ -30,7 +30,7 @@ a:hover{text-decoration:underline}
 .hero::before{
   content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);
   width:600px;height:400px;
-  background:radial-gradient(ellipse at center, rgba(109,140,255,0.06) 0%, rgba(167,139,250,0.03) 40%, transparent 70%);
+  background:radial-gradient(ellipse at center, rgba(111,189,187,0.06) 0%, rgba(174,219,183,0.03) 40%, transparent 70%);
   pointer-events:none;
 }
 .hero__inner{position:relative;z-index:1}
@@ -38,7 +38,7 @@ a:hover{text-decoration:underline}
   font-size:var(--ox-size-label);font-weight:600;letter-spacing:0.1em;
   text-transform:uppercase;margin:0 0 16px;
   /* Startseiten-Stil 2026-08-25: Label einfarbig statt Gradient (Statuslicht-Regel) */
-  color:#6d8cff;
+  color:#6fbdbb;
 }
 h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800;color:var(--white);margin:0 0 20px;letter-spacing:-0.03em;line-height:var(--ox-line-heading,1.15)}
 .subtitle{color:var(--text-secondary);font-size:var(--ox-size-sub);max-width:700px;margin:0 auto;line-height:var(--ox-line-body,1.6)}
@@ -68,7 +68,7 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 .guide-card::after{
   content:"";position:absolute;inset:0;border-radius:12px;
   pointer-events:none;opacity:0;transition:opacity 500ms;
-  background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 65%);
+  background:radial-gradient(circle,rgba(111,189,187,0.15),transparent 65%);
   mask-image:radial-gradient(500px circle at var(--mouse-x,50%) var(--mouse-y,50%),black,transparent 70%);
 }
 .guide-card:hover::after{opacity:1}
@@ -88,16 +88,16 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 
 .big-guide{
   display:block;margin:0 0 48px;padding:32px 28px;
-  background:linear-gradient(135deg,rgba(109,140,255,0.12),rgba(109,140,255,0.03));
-  border:1px solid rgba(109,140,255,0.3);border-radius:16px;
+  background:linear-gradient(135deg,rgba(111,189,187,0.12),rgba(111,189,187,0.03));
+  border:1px solid rgba(111,189,187,0.3);border-radius:16px;
   text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;
   position:relative;overflow:hidden;
 }
-.big-guide:hover{border-color:rgba(109,140,255,0.6);text-decoration:none;transform:translateY(-2px)}
+.big-guide:hover{border-color:rgba(111,189,187,0.6);text-decoration:none;transform:translateY(-2px)}
 .big-guide .badge-feature{
   display:inline-block;font-size:var(--ox-size-label);font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:#a5b4fc;padding:4px 10px;
-  background:rgba(109,140,255,0.1);border:1px solid rgba(109,140,255,0.25);
+  text-transform:uppercase;color:#a7ccd7;padding:4px 10px;
+  background:rgba(111,189,187,0.1);border:1px solid rgba(111,189,187,0.25);
   border-radius:20px;margin-bottom:14px;
 }
 /* Section-Headline im Display-Serif 600 (Startseiten-Stil 2026-08-25) */
@@ -120,7 +120,7 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
   padding:5px 10px;border-radius:6px;transition:all 0.15s;white-space:nowrap;
 }
 .toc-link:hover{color:var(--text-secondary);background:rgba(255,255,255,0.04);text-decoration:none}
-.toc-link.active{color:var(--white);background:rgba(109,140,255,0.1)}
+.toc-link.active{color:var(--white);background:rgba(111,189,187,0.1)}
 .toc-divider{height:1px;background:var(--border);margin:6px 10px}
 
 @media(max-width:1200px){

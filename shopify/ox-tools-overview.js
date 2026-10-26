@@ -13,7 +13,7 @@ class OxToolsOverview extends HTMLElement {
   --bg:#0f0f11;--surface:#1a1a1f;--surface-hover:#222228;
   --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
   --text:#e8e6e3;--text-secondary:#8e8c89;--text-muted:#666;--text-dim:#555;
-  --primary:#6d8cff;--primary-light:#1e1b4b;
+  --primary:#6fbdbb;--primary-light:#133433;
   --green:#10b981;--green-bg:rgba(16,185,129,0.08);
   --white:#fff;
   display:block;font-family:var(--ox-font);background:var(--bg);color:var(--text);line-height:var(--ox-line-body,1.6);
@@ -29,14 +29,14 @@ a:hover{text-decoration:underline}
 .hero::before{
   content:'';position:absolute;top:10%;left:50%;transform:translateX(-50%);
   width:600px;height:400px;
-  background:radial-gradient(ellipse at center, rgba(109,140,255,0.06) 0%, rgba(167,139,250,0.03) 40%, transparent 70%);
+  background:radial-gradient(ellipse at center, rgba(111,189,187,0.06) 0%, rgba(174,219,183,0.03) 40%, transparent 70%);
   pointer-events:none;
 }
 .hero__inner{position:relative;z-index:1}
 .hero__label{
   font-size:var(--ox-size-label);font-weight:600;letter-spacing:0.1em;
   text-transform:uppercase;margin:0 0 16px;
-  background:linear-gradient(135deg,#6d8cff 0%,#a78bfa 50%,#6d8cff 100%);
+  background:linear-gradient(135deg,#6fbdbb 0%,#aedbb7 50%,#6fbdbb 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
 h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800;color:var(--white);margin:0 0 20px;letter-spacing:-0.03em;line-height:var(--ox-line-heading,1.15)}
@@ -65,7 +65,7 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
 .tool-tags{display:flex;flex-wrap:wrap;gap:6px}
 .tool-tag{
   font-size:var(--ox-size-label);padding:3px 8px;border-radius:4px;
-  background:rgba(109,140,255,0.08);color:var(--primary);
+  background:rgba(111,189,187,0.08);color:var(--primary);
   font-weight:500;
 }
 
@@ -77,7 +77,7 @@ h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800
   display:inline-block;padding:3px 10px;border-radius:12px;font-size:var(--ox-size-label);font-weight:600;
 }
 .badge-free{background:var(--green-bg);color:var(--green)}
-.badge-open{background:rgba(109,140,255,0.08);color:var(--primary)}
+.badge-open{background:rgba(111,189,187,0.08);color:var(--primary)}
 .badge-webapp{background:rgba(251,191,36,0.12);color:#fbbf24}
 .badge-chrome{background:rgba(59,130,246,0.12);color:#3b82f6}
 
