@@ -39,7 +39,7 @@ a:hover{text-decoration:underline}
   background:linear-gradient(135deg,#6fbdbb 0%,#aedbb7 50%,#6fbdbb 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800;color:var(--white);margin:0 0 20px;letter-spacing:-0.03em;line-height:var(--ox-line-heading,1.15)}
+h1{font-family:var(--ox-font-title,Charter,"Bitstream Charter","Charis SIL",Georgia,serif);font-size:var(--ox-size-hero);font-weight:700;color:var(--white);margin:0 0 20px;letter-spacing:-0.02em;line-height:var(--ox-line-heading,1.15)}
 .subtitle{color:var(--text-secondary);font-size:var(--ox-size-sub);max-width:700px;margin:0 auto;line-height:var(--ox-line-body,1.6)}
 
 .tool-grid{

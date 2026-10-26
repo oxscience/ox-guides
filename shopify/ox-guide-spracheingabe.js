@@ -33,7 +33,7 @@ a:hover{text-decoration:underline}
 .back{display:inline-block;color:var(--primary);text-decoration:none;font-size:13.6px;margin-bottom:32px}
 .back:hover{text-decoration:underline}
 
-h1{font-size:28px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-0.02em;line-height:1.3}
+h1{font-family:var(--ox-font-title,Charter,"Bitstream Charter","Charis SIL",Georgia,serif);font-size:28px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-0.02em;line-height:1.3}
 .meta{color:var(--text-muted);font-size:13.6px;margin-bottom:40px}
 .intro{color:var(--text-secondary);margin-bottom:32px;font-size:15.2px}
 

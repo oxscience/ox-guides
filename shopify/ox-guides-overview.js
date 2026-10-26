@@ -40,7 +40,7 @@ a:hover{text-decoration:underline}
   /* Startseiten-Stil 2026-08-25: Label einfarbig statt Gradient (Statuslicht-Regel) */
   color:#6fbdbb;
 }
-h1{font-family:var(--ox-font-mono);font-size:var(--ox-size-hero);font-weight:800;color:var(--white);margin:0 0 20px;letter-spacing:-0.03em;line-height:var(--ox-line-heading,1.15)}
+h1{font-family:var(--ox-font-title,Charter,"Bitstream Charter","Charis SIL",Georgia,serif);font-size:var(--ox-size-hero);font-weight:700;color:var(--white);margin:0 0 20px;letter-spacing:-0.02em;line-height:var(--ox-line-heading,1.15)}
 .subtitle{color:var(--text-secondary);font-size:var(--ox-size-sub);max-width:700px;margin:0 auto;line-height:var(--ox-line-body,1.6)}
 
 .section-label{
