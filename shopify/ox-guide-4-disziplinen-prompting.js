@@ -9,14 +9,14 @@ class OxGuide4DisziplinenPrompting extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --green-bg:#064e3b;--green-text:#6ee7b7;
   --amber:#f59e0b;--amber-bg:#1a1408;--amber-border:#b45309;--amber-light:#fbbf24;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
@@ -57,11 +57,11 @@ li{margin-bottom:8px}
 .section-label + h2{margin-top:4px}
 
 .feature-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:24px 0;
 }
 .feature-number{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   width:28px;height:28px;border-radius:50%;text-align:center;
   line-height:28px;font-size:13.6px;margin-right:8px;
 }
@@ -92,17 +92,17 @@ li{margin-bottom:8px}
   padding:2.4px 8px;border-radius:3px;margin-bottom:8px;
 }
 .level-basic{background:var(--green-bg);color:var(--green-text)}
-.level-advanced{background:#1e1b4b;color:var(--primary-light)}
+.level-advanced{background:#133433;color:var(--primary-light)}
 .level-expert{background:var(--amber-bg);color:var(--amber-light)}
 .level-master{background:#3b0a0a;color:#fca5a5}
 
 .week-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:16px 0;
 }
 .week-card strong{color:var(--white)}
 .week-label{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;
   margin-right:8px;letter-spacing:0.03em;
 }
@@ -110,10 +110,10 @@ li{margin-bottom:8px}
 .week-card p{margin-top:12px;margin-bottom:8px}
 .week-card ul{margin:8px 0 8px 20px}
 
-.golden-rule{background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);border:1px solid var(--primary);border-radius:8px;padding:20px 24px;margin:32px 0}
+.golden-rule{background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);border:1px solid var(--primary);border-radius:8px;padding:20px 24px;margin:32px 0}
 .golden-rule h2{margin-top:0}
 
-.lehre-section{background:#0d1117;border:1px solid #1f2937;border-radius:12px;padding:32px 36px;margin:48px 0 32px}
+.lehre-section{background:#0d1117;border:1px solid #26262c;border-radius:12px;padding:32px 36px;margin:48px 0 32px}
 .lehre-section h2{margin-top:0}
 
 .exercise{background:var(--surface-alt);border-radius:8px;padding:16px 20px;margin:12px 0}

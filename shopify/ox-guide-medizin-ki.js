@@ -9,13 +9,13 @@ class OxGuideMedizinKi extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-muted:#94a3b8;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -49,15 +49,15 @@ li{margin-bottom:8px}
 .section-label + h2{margin-top:4px}
 
 /* Werkzeugkarte */
-.map-row{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:14px 18px;margin:10px 0}
+.map-row{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:14px 18px;margin:10px 0}
 .map-if{display:block;font-size:12.8px;color:var(--text-muted)}
 .map-then{display:block;font-size:15.2px;font-weight:600;color:var(--white);margin:2px 0 4px}
 .map-why{display:block;font-size:13.6px;color:var(--text-secondary);line-height:1.6}
 
 /* Paper-Karten */
-.paper-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:22px 24px;margin:18px 0}
+.paper-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:22px 24px;margin:18px 0}
 .paper-header{display:flex;align-items:flex-start;margin-bottom:14px}
-.paper-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:var(--white);font-weight:700;width:34px;height:34px;border-radius:9px;font-size:15px;margin-right:14px;flex-shrink:0}
+.paper-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#0f0f11;font-weight:700;width:34px;height:34px;border-radius:9px;font-size:15px;margin-right:14px;flex-shrink:0}
 .paper-titleline{display:flex;flex-direction:column}
 .paper-name{font-size:16.8px;font-weight:600;color:var(--white);line-height:1.35}
 .paper-author{font-size:13.6px;color:var(--text-muted);margin-top:3px}
@@ -76,7 +76,7 @@ li{margin-bottom:8px}
 .chart-title{font-size:12.8px;color:var(--text-secondary);margin-bottom:10px}
 .bar-row{display:grid;grid-template-columns:136px 1fr 60px;gap:10px;align-items:center;font-size:13.2px;padding:3px 0}
 .bar-name{color:var(--text);line-height:1.3}
-.bar-track{background:#1a1f2e;height:12px;border-radius:6px;overflow:hidden}
+.bar-track{background:#26262c;height:12px;border-radius:6px;overflow:hidden}
 .bar-fill{height:100%;border-radius:6px;background:var(--blue-muted)}
 .bar-fill.rag{background:var(--primary)}
 .bar-fill.none{background:transparent;border:1px dashed var(--text-muted)}
@@ -89,7 +89,7 @@ li{margin-bottom:8px}
 /* Tabelle */
 .table-wrap{overflow-x:auto;margin:6px 0 16px}
 table{border-collapse:collapse;width:100%;font-size:13.6px}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #1e293b}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #26262c}
 th{color:var(--text-muted);font-weight:600;font-size:12px}
 td:first-child{color:var(--text-secondary)}
 td.win{color:var(--white);font-weight:600}
@@ -104,7 +104,7 @@ td.win{color:var(--white);font-weight:600}
 .deeper strong{color:#fbbf24}
 
 /* Kleinere Studien */
-.mini{background:var(--surface);border:1px solid #1e293b;border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14.4px}
+.mini{background:var(--surface);border:1px solid #26262c;border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14.4px}
 .mini strong{color:var(--white)}
 .mini .src{color:var(--text-muted);font-size:12.8px}
 
@@ -116,7 +116,7 @@ td.win{color:var(--white);font-weight:600}
 .source-num{color:var(--primary);font-weight:700;font-family:var(--mono);margin-right:6px}
 
 .golden-rule{
-  background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);
+  background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);
   border:1px solid var(--primary);border-radius:8px;
   padding:20px 24px;margin:32px 0;
 }
@@ -215,7 +215,7 @@ td.win{color:var(--white);font-weight:600}
             <div class="bar-row"><span class="bar-name">Claude Opus 4.6</span><div class="bar-track"><div class="bar-fill" style="width:77%"></div></div><span class="bar-val">77,0</span></div>
             <div class="bar-row"><span class="bar-name">OpenEvidence</span><div class="bar-track"><div class="bar-fill rag" style="width:62.6%"></div></div><span class="bar-val">62,6</span></div>
             <div class="bar-row"><span class="bar-name">UpToDate Expert AI</span><div class="bar-track"><div class="bar-fill rag" style="width:61.3%"></div></div><span class="bar-val">61,3</span></div>
-            <div class="chart-legend"><span class="dot" style="background:#6366f1"></span>Klinik-Tool &nbsp; <span class="dot" style="background:#94a3b8"></span>Allgemeines Modell</div>
+            <div class="chart-legend"><span class="dot" style="background:#6fbdbb"></span>Klinik-Tool &nbsp; <span class="dot" style="background:#94a3b8"></span>Allgemeines Modell</div>
           </div>
 
           <div class="table-wrap">
@@ -271,7 +271,7 @@ td.win{color:var(--white);font-weight:600}
             <div class="bar-row"><span class="bar-name">Claude Fable 5</span><div class="bar-track"><div class="bar-fill" style="width:36.8%"></div></div><span class="bar-val">13,6 %</span></div>
             <div class="bar-row"><span class="bar-name">Llama 4 Maverick</span><div class="bar-track"><div class="bar-fill" style="width:66.5%"></div></div><span class="bar-val">24,6 %</span></div>
             <div class="bar-row"><span class="bar-name">&#8222;Nichts tun&#8220;</span><div class="bar-track"><div class="bar-fill none" style="width:100%"></div></div><span class="bar-val">37 %</span></div>
-            <div class="chart-legend"><span class="dot" style="background:#6366f1"></span>Klinik-Tool &nbsp; <span class="dot" style="background:#94a3b8"></span>Allgemeines Modell (jeweils bestes je Anbieter) &middot; Auswahl aus Fig. 3a, Version 4</div>
+            <div class="chart-legend"><span class="dot" style="background:#6fbdbb"></span>Klinik-Tool &nbsp; <span class="dot" style="background:#94a3b8"></span>Allgemeines Modell (jeweils bestes je Anbieter) &middot; Auswahl aus Fig. 3a, Version 4</div>
           </div>
 
           <p>&#220;ber 80 Prozent der schweren Fehler waren Auslassungen, also etwa eine n&#246;tige Untersuchung oder ein Hinweis an den Patienten, der in der Antwort fehlte. F&#252;r mich ist das der praktisch wichtigste Befund, da so eine L&#252;cke beim Lesen einer gut formulierten Antwort kaum auff&#228;llt.</p>

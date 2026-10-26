@@ -9,17 +9,17 @@ class OxGuideSelbstverteidigung extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;--surface-2:#0d1117;
-  --border:#1a1a1a;--border-faint:#1f2937;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;--surface-2:#0d1117;
+  --border:#1a1a1a;--border-faint:#26262c;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --green-bg:#064e3b;--green-text:#6ee7b7;
   --yellow-bg:#3b2f06;--yellow-text:#fbbf24;
-  --indigo-bg:#1e1b4b;--indigo-text:#a5b4fc;
+  --indigo-bg:#133433;--indigo-text:#a7ccd7;
   --red-bg:#3b0a0a;--red-text:#fca5a5;
   --amber:#f59e0b;--amber-bg:#1a1408;--amber-border:#b45309;--amber-light:#fbbf24;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
   -webkit-font-smoothing:antialiased;
@@ -74,7 +74,7 @@ li{margin-bottom:8px}
 .checklist li{position:relative;padding-left:28px;margin-bottom:9.6px;font-size:15.2px}
 .checklist li::before{content:"";position:absolute;left:0;top:4.8px;width:17.6px;height:17.6px;border:1.5px solid var(--amber);border-radius:3px;background:#0f0a02}
 
-.golden-rule{background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);border:1px solid var(--primary);border-radius:8px;padding:20px 24px;margin:32px 0}
+.golden-rule{background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);border:1px solid var(--primary);border-radius:8px;padding:20px 24px;margin:32px 0}
 .golden-rule h2{margin-top:0}
 
 .lehre-section{background:var(--surface-2);border:1px solid var(--border-faint);border-radius:12px;padding:32px 36px;margin:48px 0 32px}

@@ -9,14 +9,14 @@ class OxGuideClaudeObsidian extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -39,8 +39,8 @@ ul,ol{margin:12px 0 20px 24px}
 li{margin-bottom:8px}
 .section-label{display:inline-block;font-size:11.2px;text-transform:uppercase;letter-spacing:0.1em;color:var(--primary);margin-top:48px;margin-bottom:0}
 .section-label + h2{margin-top:4px}
-.feature-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:20px 24px;margin:24px 0}
-.feature-number{display:inline-block;background:var(--primary);color:var(--white);font-weight:700;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:13.6px;margin-right:8px}
+.feature-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:20px 24px;margin:24px 0}
+.feature-number{display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:13.6px;margin-right:8px}
 .feature-name{font-size:17.6px;font-weight:600;color:var(--white)}
 .feature-card p{margin-top:12px;margin-bottom:8px}
 .feature-card ul{margin-top:8px}
@@ -49,12 +49,12 @@ li{margin-bottom:8px}
 .callout strong{color:var(--white)}
 .highlight-box{background:var(--surface);border-left:3px solid var(--border-accent);padding:16px 20px;border-radius:0 8px 8px 0;margin:24px 0}
 .highlight-box strong{color:var(--white)}
-.step-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:20px 24px;margin:16px 0}
-.step-label{display:inline-block;background:var(--primary);color:var(--white);font-weight:700;padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;margin-right:8px;letter-spacing:0.03em}
+.step-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:20px 24px;margin:16px 0}
+.step-label{display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;margin-right:8px;letter-spacing:0.03em}
 .step-title{font-size:16.8px;font-weight:600;color:var(--white)}
 .step-card p{margin-top:12px;margin-bottom:8px;font-size:14.4px}
 .step-card p:last-child{margin-bottom:0}
-.golden-rule{background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);border:1px solid var(--primary);border-radius:8px;padding:20px 24px;margin:32px 0}
+.golden-rule{background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);border:1px solid var(--primary);border-radius:8px;padding:20px 24px;margin:32px 0}
 .golden-rule h2{margin-top:0}
 .golden-rule strong{color:var(--white)}
 .footer{text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);color:var(--text-dim);font-size:13.6px}

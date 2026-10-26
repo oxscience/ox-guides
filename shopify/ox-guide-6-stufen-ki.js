@@ -9,15 +9,15 @@ class OxGuide6StufenKi extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
   --green-bg:#064e3b;--green-text:#6ee7b7;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -60,16 +60,16 @@ li{margin-bottom:8px}
 }
 .callout strong{color:var(--white)}
 
-.level-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:20px 24px;margin:16px 0;position:relative;overflow:hidden}
-.level-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:var(--white);font-weight:700;width:36px;height:36px;border-radius:50%;font-size:16px;margin-right:12px;flex-shrink:0}
+.level-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:20px 24px;margin:16px 0;position:relative;overflow:hidden}
+.level-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#0f0f11;font-weight:700;width:36px;height:36px;border-radius:50%;font-size:16px;margin-right:12px;flex-shrink:0}
 .level-header{display:flex;align-items:center;margin-bottom:12px}
 .level-name{font-size:17.6px;font-weight:600;color:var(--white)}
 .level-desc{font-size:14.4px;color:var(--text-secondary)}
-.level-example{margin-top:12px;padding-top:12px;border-top:1px solid #1e293b;font-size:13.6px;color:var(--text-muted)}
+.level-example{margin-top:12px;padding-top:12px;border-top:1px solid #26262c;font-size:13.6px;color:var(--text-muted)}
 .level-example strong{color:var(--primary-light)}
 
 .detail-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:24px 0;
 }
 .detail-card h3{margin-top:0}
@@ -91,7 +91,7 @@ li{margin-bottom:8px}
 .example-label{font-weight:600;color:var(--blue-light);font-size:14.4px;margin-bottom:6px}
 .example-box p{color:var(--blue-muted);font-size:14.4px;margin-bottom:0}
 
-.assessment-item{background:var(--surface-alt);border:1px solid #1e293b;border-radius:8px;padding:14px 20px;margin:8px 0;font-size:14.4px}
+.assessment-item{background:var(--surface-alt);border:1px solid #26262c;border-radius:8px;padding:14px 20px;margin:8px 0;font-size:14.4px}
 .assessment-item strong{color:var(--primary-light)}
 
 .next-step{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:10px;padding:16px 20px;margin:12px 0}
@@ -99,7 +99,7 @@ li{margin-bottom:8px}
 .next-step p{color:var(--blue-muted);font-size:14.4px;margin-bottom:0}
 
 .golden-rule{
-  background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);
+  background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);
   border:1px solid var(--primary);border-radius:8px;
   padding:20px 24px;margin:32px 0;
 }

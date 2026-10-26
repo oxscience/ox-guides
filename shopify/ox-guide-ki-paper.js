@@ -9,15 +9,15 @@ class OxGuideKiPaper extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
   --green-bg:#064e3b;--green-text:#6ee7b7;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -61,9 +61,9 @@ li{margin-bottom:8px}
 .callout strong{color:var(--white)}
 
 /* Paper-Karten */
-.paper-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:22px 24px;margin:18px 0}
+.paper-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:22px 24px;margin:18px 0}
 .paper-header{display:flex;align-items:flex-start;margin-bottom:14px}
-.paper-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:var(--white);font-weight:700;width:34px;height:34px;border-radius:9px;font-size:15px;margin-right:14px;flex-shrink:0}
+.paper-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#0f0f11;font-weight:700;width:34px;height:34px;border-radius:9px;font-size:15px;margin-right:14px;flex-shrink:0}
 .paper-titleline{display:flex;flex-direction:column}
 .paper-name{font-size:16.8px;font-weight:600;color:var(--white);line-height:1.35}
 .paper-author{font-size:13.6px;color:var(--text-muted);margin-top:3px}
@@ -81,7 +81,7 @@ li{margin-bottom:8px}
 .deeper strong{color:#fbbf24}
 
 /* Timeline-Rueckblick */
-.timeline{margin:16px 0 8px;border-left:2px solid #1e293b}
+.timeline{margin:16px 0 8px;border-left:2px solid #26262c}
 .tl-row{display:flex;align-items:baseline;padding:7px 0 7px 22px;position:relative;font-size:14.4px}
 .tl-row::before{content:"";position:absolute;left:-5px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--primary)}
 .tl-year{color:var(--primary-light);font-weight:600;width:64px;flex-shrink:0;font-family:var(--mono);font-size:13px}
@@ -96,7 +96,7 @@ li{margin-bottom:8px}
 .source-num{color:var(--primary);font-weight:700;font-family:var(--mono);margin-right:6px}
 
 .golden-rule{
-  background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);
+  background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);
   border:1px solid var(--primary);border-radius:8px;
   padding:20px 24px;margin:32px 0;
 }

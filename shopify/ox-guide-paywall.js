@@ -88,8 +88,8 @@ class OxGuidePaywall extends HTMLElement {
           transform: translateX(-50%);
           width: 90%;
           max-width: 520px;
-          background: #111827;
-          border: 1px solid rgba(99,102,241,0.3);
+          background: #1a1a1f;
+          border: 1px solid rgba(111,189,187,0.3);
           border-radius: 16px;
           padding: 32px 28px 24px;
           z-index: 9999;
@@ -110,10 +110,10 @@ class OxGuidePaywall extends HTMLElement {
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: #a5b4fc;
+          color: #a7ccd7;
           padding: 4px 10px;
-          background: rgba(99,102,241,0.1);
-          border: 1px solid rgba(99,102,241,0.25);
+          background: rgba(111,189,187,0.1);
+          border: 1px solid rgba(111,189,187,0.25);
           border-radius: 20px;
           margin-bottom: 12px;
         }
@@ -150,7 +150,7 @@ class OxGuidePaywall extends HTMLElement {
           content: '✓';
           position: absolute;
           left: 0;
-          color: #6366f1;
+          color: #6fbdbb;
           font-weight: 700;
         }
 
@@ -173,7 +173,7 @@ class OxGuidePaywall extends HTMLElement {
         }
         #ox-paywall-modal input[type=email]:focus {
           outline: none;
-          border-color: #6366f1;
+          border-color: #6fbdbb;
         }
         #ox-paywall-modal input::placeholder { color: #666; }
         /* Honeypot — für Menschen unsichtbar, Bots füllen es aus */
@@ -185,8 +185,8 @@ class OxGuidePaywall extends HTMLElement {
         }
 
         #ox-paywall-modal button[type=submit] {
-          background: #6366f1;
-          color: #fff;
+          background: #6fbdbb;
+          color: #0f0f11;
           border: none;
           border-radius: 8px;
           padding: 11px 18px;
@@ -196,7 +196,7 @@ class OxGuidePaywall extends HTMLElement {
           cursor: pointer;
           white-space: nowrap;
         }
-        #ox-paywall-modal button[type=submit]:hover { background: #5558e6; }
+        #ox-paywall-modal button[type=submit]:hover { background: #5aa8a6; }
         #ox-paywall-modal button[type=submit]:disabled { opacity: 0.6; cursor: default; }
 
         #ox-paywall-error {
@@ -213,7 +213,7 @@ class OxGuidePaywall extends HTMLElement {
           line-height: 1.5;
           margin: 0 0 12px;
           padding-left: 12px;
-          border-left: 2px solid rgba(99,102,241,0.4);
+          border-left: 2px solid rgba(111,189,187,0.4);
         }
         #ox-paywall-modal .why-email strong {
           color: #c9d1d9;
@@ -245,7 +245,7 @@ class OxGuidePaywall extends HTMLElement {
           text-decoration: underline;
           cursor: pointer;
         }
-        #ox-paywall-modal .skip button:hover { color: #a5b4fc; }
+        #ox-paywall-modal .skip button:hover { color: #a7ccd7; }
 
         #ox-paywall-modal .login {
           text-align: center;
@@ -255,7 +255,7 @@ class OxGuidePaywall extends HTMLElement {
           border-top: 1px solid #222;
         }
         #ox-paywall-modal .login a {
-          color: #a5b4fc;
+          color: #a7ccd7;
           text-decoration: none;
         }
         #ox-paywall-modal .login a:hover { text-decoration: underline; }
@@ -269,7 +269,7 @@ class OxGuidePaywall extends HTMLElement {
           color: #777;
           text-decoration: none;
         }
-        #ox-paywall-modal .back a:hover { color: #a5b4fc; }
+        #ox-paywall-modal .back a:hover { color: #a7ccd7; }
 
         @media (max-width: 600px) {
           #ox-paywall-modal {

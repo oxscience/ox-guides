@@ -9,15 +9,15 @@ class OxGuideErsteAutomatisierung extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
   --green-bg:#064e3b;--green-text:#6ee7b7;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -60,11 +60,11 @@ li{margin-bottom:8px}
 .section-label + h2{margin-top:4px}
 
 .feature-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:24px 0;
 }
 .feature-number{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   width:28px;height:28px;border-radius:50%;text-align:center;
   line-height:28px;font-size:13.6px;margin-right:8px;
 }
@@ -94,7 +94,7 @@ li{margin-bottom:8px}
 .mini-app p:last-child{margin-bottom:0}
 
 .result-table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14.4px}
-.result-table th{text-align:left;color:var(--primary-light);font-weight:600;padding:10px 12px;border-bottom:2px solid #1e293b;font-size:12.8px;text-transform:uppercase;letter-spacing:0.05em}
+.result-table th{text-align:left;color:var(--primary-light);font-weight:600;padding:10px 12px;border-bottom:2px solid #26262c;font-size:12.8px;text-transform:uppercase;letter-spacing:0.05em}
 .result-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
 .result-table tr:last-child td{border-bottom:none}
 .result-table .task-name{color:var(--white);font-weight:500}
@@ -103,11 +103,11 @@ li{margin-bottom:8px}
 .difficulty-medium{background:#3b2f06;color:#fbbf24}
 
 .week-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:16px 0;
 }
 .week-label{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;
   margin-right:8px;letter-spacing:0.03em;
 }
@@ -116,7 +116,7 @@ li{margin-bottom:8px}
 .week-card p:last-child{margin-bottom:0}
 
 .golden-rule{
-  background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);
+  background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);
   border:1px solid var(--primary);border-radius:8px;
   padding:20px 24px;margin:32px 0;
 }

@@ -9,13 +9,13 @@ class OxGuideHfModellnamen extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --amber:#fbbf24;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -62,13 +62,13 @@ li{margin-bottom:8px}
 
 /* Namens-Anatomie */
 .name-display{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:18px 20px;margin:20px 0 6px;font-family:var(--mono);font-size:15px;
   line-height:1.9;word-break:break-all;
 }
 .np{padding:2px 5px;border-radius:5px;font-weight:600}
 .np-org{background:#172554;color:#93c5fd}
-.np-fam{background:#3b0764;color:#d8b4fe}
+.np-fam{background:#422006;color:#fde047}
 .np-size{background:#052e16;color:#86efac}
 .np-var{background:#451a03;color:#fdba74}
 .np-fmt{background:#4c0519;color:#fda4af}
@@ -83,10 +83,10 @@ li{margin-bottom:8px}
 /* Tabellen */
 .table-wrap{overflow-x:auto;margin:18px 0}
 table{border-collapse:collapse;width:100%;font-size:13.6px}
-th{color:var(--white-soft);font-weight:600;text-align:left;padding:9px 12px;border-bottom:2px solid #1e293b;white-space:nowrap}
+th{color:var(--white-soft);font-weight:600;text-align:left;padding:9px 12px;border-bottom:2px solid #26262c;white-space:nowrap}
 td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
 td code{white-space:nowrap}
-tr.hl td{background:#11182f;color:var(--white-soft)}
+tr.hl td{background:#133433;color:var(--white-soft)}
 
 /* Tiefer gegraben */
 .deeper{background:#1a1505;border:1px solid #4a3a14;border-radius:8px;padding:13px 18px;margin:16px 0 0;font-size:13.6px;color:#cbb98f;line-height:1.7}
@@ -99,7 +99,7 @@ tr.hl td{background:#11182f;color:var(--white-soft)}
 .step p{margin:8px 0 0;font-size:14.4px}
 
 .golden-rule{
-  background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);
+  background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);
   border:1px solid var(--primary);border-radius:8px;
   padding:20px 24px;margin:32px 0;
 }

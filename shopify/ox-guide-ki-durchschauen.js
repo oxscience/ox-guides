@@ -9,14 +9,14 @@ class OxGuideKiDurchschauen extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --green-bg:#064e3b;--green-text:#6ee7b7;
   --warn-bg:#1c1007;--warn-border:#f59e0b;--warn-text:#d4a44a;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
@@ -52,7 +52,7 @@ li{margin-bottom:8px}
 .section-label + h2{margin-top:4px}
 
 .feature-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:20px 0;
 }
 .feature-card h3{margin-top:0}
@@ -79,11 +79,11 @@ li{margin-bottom:8px}
 .rule-box strong{color:var(--white)}
 
 .step-box{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:18px 22px;margin:16px 0;
 }
 .step-number{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;
   margin-right:8px;letter-spacing:0.03em;
 }

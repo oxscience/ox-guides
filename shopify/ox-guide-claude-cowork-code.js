@@ -9,14 +9,14 @@ class OxGuideClaudeCoworkCode extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -52,11 +52,11 @@ ul,ol{margin:12px 0 20px 24px}
 li{margin-bottom:8px}
 
 .feature-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:24px 0;
 }
 .feature-number{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   width:28px;height:28px;border-radius:50%;text-align:center;
   line-height:28px;font-size:13.6px;margin-right:8px;
 }
@@ -78,13 +78,13 @@ li{margin-bottom:8px}
 .mini-app p{color:var(--blue-muted);font-size:14.4px;margin-bottom:8px}
 
 .rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
-.rule-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:20px;text-align:center}
+.rule-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:20px;text-align:center}
 .rule-card .rule-verb{display:block;font-size:24px;font-weight:700;color:var(--primary);margin-bottom:4px}
 .rule-card .rule-tool{display:block;font-size:14.4px;font-weight:600;color:var(--white);margin-bottom:8px}
 .rule-card p{font-size:13.6px;margin:0;text-align:left}
 
 .abo-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14.4px}
-.abo-table th{text-align:left;padding:10px 12px;border-bottom:2px solid #1e293b;color:var(--white);font-weight:600}
+.abo-table th{text-align:left;padding:10px 12px;border-bottom:2px solid #26262c;color:var(--white);font-weight:600}
 .abo-table td{padding:10px 12px;border-bottom:1px solid var(--border)}
 .abo-table tr:last-child td{border-bottom:none}
 .abo-table .highlight-row{background:var(--surface)}

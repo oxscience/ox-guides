@@ -9,17 +9,17 @@ class OxGuideSpracheingabe extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --blue-light:#60a5fa;--blue-muted:#94a3b8;
   --blue-bg:#0a1628;--blue-border:#1e3a5f;
   --green-bg:#064e3b;--green-text:#6ee7b7;
   --red-bg:#3b0a0a;--red-text:#fca5a5;
   --amber:#f59e0b;--amber-bg:#1a1408;--amber-border:#b45309;--amber-light:#fbbf24;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -61,11 +61,11 @@ li{margin-bottom:8px}
 .section-label + h2{margin-top:4px}
 
 .feature-card{
-  background:var(--surface);border:1px solid #1e293b;border-radius:10px;
+  background:var(--surface);border:1px solid #26262c;border-radius:10px;
   padding:20px 24px;margin:24px 0;
 }
 .feature-number{
-  display:inline-block;background:var(--primary);color:var(--white);font-weight:700;
+  display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;
   width:28px;height:28px;border-radius:50%;text-align:center;
   line-height:28px;font-size:13.6px;margin-right:8px;
 }
@@ -106,7 +106,7 @@ li{margin-bottom:8px}
 .privacy-warn p{font-size:14.4px}
 
 .comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
-.comparison-col{border-radius:8px;padding:20px 24px;border:1px solid #1e293b}
+.comparison-col{border-radius:8px;padding:20px 24px;border:1px solid #26262c}
 .comparison-col h3{margin-top:0;font-size:17.6px}
 .comparison-col p{font-size:14.4px;margin-bottom:8px}
 .comparison-col p:last-child{margin-bottom:0}
@@ -114,32 +114,32 @@ li{margin-bottom:8px}
 .comparison-col li{font-size:14.4px;margin-bottom:4px}
 .col-local{background:#0a1a0f;border-color:#153b1f}
 .col-local h3{color:var(--green-text)}
-.col-cloud{background:#0f172a;border-color:var(--blue-border)}
+.col-cloud{background:#151518;border-color:var(--blue-border)}
 .col-cloud h3{color:var(--blue-light)}
 
 .stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0}
-.stat-box{background:var(--surface);border:1px solid #1e293b;border-radius:8px;padding:16px;text-align:center}
+.stat-box{background:var(--surface);border:1px solid #26262c;border-radius:8px;padding:16px;text-align:center}
 .stat-number{font-size:28px;font-weight:700;color:var(--primary-light);display:block;line-height:1.2}
 .stat-label{font-size:12.8px;color:var(--text-muted);margin-top:4px;display:block}
 
-.shortcut-box{background:var(--code-bg);border:1px solid #2a2a4e;border-radius:8px;padding:16px 20px;margin:12px 0;display:flex;align-items:center;gap:16px}
+.shortcut-box{background:var(--code-bg);border:1px solid #2a4e4e;border-radius:8px;padding:16px 20px;margin:12px 0;display:flex;align-items:center;gap:16px}
 .shortcut-keys{background:#111;border:1px solid #333;border-radius:6px;padding:6.4px 12px;font-family:var(--mono);font-size:14.4px;color:var(--primary-light);white-space:nowrap;flex-shrink:0}
 .shortcut-desc{font-size:14.4px;color:var(--text-secondary)}
 
-.step-card{background:var(--surface);border:1px solid #1e293b;border-radius:10px;padding:20px 24px;margin:16px 0}
+.step-card{background:var(--surface);border:1px solid #26262c;border-radius:10px;padding:20px 24px;margin:16px 0}
 .step-card strong{color:var(--white)}
-.step-label{display:inline-block;background:var(--primary);color:var(--white);font-weight:700;padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;margin-right:8px;letter-spacing:0.03em}
+.step-label{display:inline-block;background:var(--primary);color:#0f0f11;font-weight:700;padding:2.4px 10.4px;border-radius:6px;font-size:12.8px;margin-right:8px;letter-spacing:0.03em}
 .step-title{font-size:16.8px;font-weight:600;color:var(--white)}
 .step-card p{margin-top:12px;margin-bottom:8px}
 
 .golden-rule{
-  background:linear-gradient(135deg,#1a1a2e 0%,#111827 100%);
+  background:linear-gradient(135deg,#133433 0%,#1a1a1f 100%);
   border:1px solid var(--primary);border-radius:8px;
   padding:20px 24px;margin:32px 0;
 }
 .golden-rule h2{margin-top:0}
 
-.lehre-section{background:#0d1117;border:1px solid #1f2937;border-radius:12px;padding:32px 36px;margin:48px 0 32px}
+.lehre-section{background:#0d1117;border:1px solid #26262c;border-radius:12px;padding:32px 36px;margin:48px 0 32px}
 .lehre-section h2{margin-top:0}
 .lehre-section .exercise{background:var(--surface)}
 

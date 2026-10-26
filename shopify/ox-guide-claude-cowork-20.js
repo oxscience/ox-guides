@@ -9,14 +9,14 @@ class OxGuideClaudeCowork20 extends HTMLElement {
       <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :host{
-  --bg:#0a0a0a;--surface:#111827;--surface-alt:#0f172a;
-  --border:#1a1a1a;--border-accent:#6366f1;
+  --bg:#0a0a0a;--surface:#1a1a1f;--surface-alt:#151518;
+  --border:#1a1a1a;--border-accent:#6fbdbb;
   --text:#d4d4d4;--text-secondary:#999;--text-muted:#666;--text-dim:#555;
   --white:#fff;--white-soft:#e0e0e0;
-  --primary:#6366f1;--primary-light:#a5b4fc;
+  --primary:#6fbdbb;--primary-light:#a7ccd7;
   --green:#4ade80;--green-bg:#052e16;--green-border:#166534;
   --amber:#fbbf24;--amber-bg:#1c1400;--amber-border:#854d0e;
-  --code-bg:#1a1a2e;
+  --code-bg:#133433;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   --mono:'SF Mono','Fira Code',monospace;
   display:block;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.75;
@@ -80,7 +80,7 @@ li{margin-bottom:8px}
 .step-number{
   display:inline-flex;align-items:center;justify-content:center;
   width:26px;height:26px;border-radius:50%;background:var(--primary);
-  color:var(--white);font-size:13px;font-weight:700;margin-right:10px;flex-shrink:0;
+  color:#0f0f11;font-size:13px;font-weight:700;margin-right:10px;flex-shrink:0;
 }
 .step{display:flex;align-items:flex-start;gap:0;margin-bottom:16px}
 .step-content{flex:1}
