@@ -85,7 +85,13 @@ def find_existing(filename):
     data = graphql(q, {"q": f"filename:{filename}"})
     if not data or "data" not in data:
         return []
-    return [e["node"]["id"] for e in data["data"]["files"]["edges"]]
+    # Die Suche ist unscharf: "ox-guide-notebooklm.js" findet auch
+    # "ox-guide-claude-notebooklm.js". Nur exakte Dateinamen loeschen.
+    return [
+        e["node"]["id"]
+        for e in data["data"]["files"]["edges"]
+        if (e["node"].get("url") or "").split("?")[0].rsplit("/", 1)[-1] == filename
+    ]
 
 
 def delete_files(ids):
