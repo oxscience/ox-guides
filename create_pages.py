@@ -68,6 +68,7 @@ GUIDES = [
     ("Medizin-KI oder ChatGPT?", "ox-guide-medizin-ki"),
     ("KI durchschauen", "ox-guide-ki-durchschauen"),
     ("KI-Modellnamen entschlüsseln", "ox-guide-hf-modellnamen"),
+    ("Die Offline-Wissensbox für den Mac", "ox-guide-offline-wissensbox"),
     ("Kostenlose OX Tools", "ox-tools-overview"),
 ]
 

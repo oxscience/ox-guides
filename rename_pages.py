@@ -48,6 +48,7 @@ RENAMES = {
     "ox-guide-spracheingabe": "spracheingabe-statt-tippen",
     "ox-guide-ki-paper": "10-paper-hinter-der-ki",
     "ox-guide-medizin-ki": "medizin-ki-oder-chatgpt",
+    "ox-guide-offline-wissensbox": "offline-wissensbox-mac",
 }
 
 

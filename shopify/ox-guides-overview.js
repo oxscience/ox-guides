@@ -328,6 +328,14 @@ h1{font-family:var(--ox-font-title,Charter,"Bitstream Charter","Charis SIL",Geor
 
         <div class="section-label" id="sec-medienkompetenz">Medienkompetenz</div>
         <div class="guide-grid">
+        <a href="/pages/offline-wissensbox-mac" class="guide-card">
+          <div class="guide-info">
+            <div class="guide-title">Die Offline-Wissensbox f&uuml;r den Mac <span class="badge-new">Neu</span></div>
+            <div class="guide-desc">Wikipedia, Medizin-Lexikon und lokale KI ohne Netz: drei fertige Zusammenstellungen mit Gr&ouml;&szlig;en, Einrichtung mit Kiwix und Ollama und die ehrlichen Grenzen.</div>
+          </div>
+          <div class="guide-meta">5-Seiten-Guide &rarr;</div>
+        </a>
+
         <a href="/pages/searxng-vs-google" class="guide-card">
           <div class="guide-info">
             <div class="guide-title">SearXNG vs. Google &mdash; Suche, die dir geh&ouml;rt <span class="badge-new">Neu</span></div>
